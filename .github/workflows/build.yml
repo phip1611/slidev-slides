@@ -1,0 +1,27 @@
+name: "Build"
+on:
+  pull_request:
+  push:
+jobs:
+  # uses nix
+  nix_build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: cachix/install-nix-action@v31
+      - run: nix build -L .
+      - name: Set date variable
+        id: setdate
+        run: echo "DATE_PREFIX=$(date +%Y-%m-%d)" >> $GITHUB_ENV
+      - name: Create ZIP
+        run: |
+          export ZIP="$PWD/${DATE_PREFIX}-slidev-slides.zip"
+          cd result
+          zip -r "${ZIP}" .
+          cd -
+      - name: Upload ZIP with Slides
+        uses: actions/upload-artifact@v4
+        with:
+          name: Slidev Slides (ZIP)
+          path: |
+            {DATE_PREFIX}-slidev-slides.zip
