@@ -1,16 +1,16 @@
 {
-  "name": "2025-11-xx-jug-saxony-uefi-os-loader",
+  "name": "slidev-slides",
   "type": "module",
   "private": true,
   "scripts": {
     "build": "slidev build",
     "dev": "slidev --open",
+    "fmt": "slidev format",
     "export": "slidev export"
   },
   "dependencies": {
     "@slidev/cli": "^52.2.4",
     "@slidev/theme-default": "latest",
-    "@slidev/theme-seriph": "latest",
     "vue": "^3.5.21"
   }
 }
