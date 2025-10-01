@@ -14,13 +14,16 @@
         inputs.nixpkgs.lib.genAttrs systems (system: function inputs.nixpkgs.legacyPackages.${system});
 
       # All slides (sub projects) with their pnpm dep hash for Nix.
+      # Structure:
+      # - `src`       : Nix path to source
+      # - `depHash`   : pnpm dependency hash
+      # - `meta.slug` : URL friendly short-name
+      # - `meta.title`: Title of the talk
       projectDefs = [
         {
-          dir = "2025-10-10-eurorust-minimal-rust-kernel";
-          # pnpm dependency hash
+          src = ./2025-10-10-eurorust-minimal-rust-kernel;
           depHash = "sha256-3983U/zwu7FpLTlhs+9fWKBGi0PtEGxPewRvAZQKiCw=";
           meta = {
-            # URL-friendly short name.
             slug = "eurorust-2025";
             title = "A Minimal Rust Kernel - Printing to QEMU with core::fmt";
           };
@@ -29,19 +32,20 @@
 
       # Builds a single slidev project.
       buildProject =
-        pkgs: baseSrc:
+        pkgs:
         {
-          dir,
+          src,
           depHash,
           meta,
         }:
         pkgs.callPackage ./nix/build.nix {
-          inherit depHash;
-          meta = meta // {
-            inherit dir;
+          inherit depHash meta;
+          # Limit the files to what is actually relevant.
+          src = pkgs.lib.fileset.toSource {
+            root = src;
+            fileset = pkgs.lib.fileset.gitTracked src;
           };
           pname = meta.slug;
-          src = "${baseSrc}/${dir}";
         };
     in
     {
@@ -66,11 +70,7 @@
         pkgs:
         let
           lib = pkgs.lib;
-          baseSrc = lib.fileset.toSource {
-            root = ./.;
-            fileset = lib.fileset.gitTracked ./.;
-          };
-          buildProject' = buildProject pkgs baseSrc;
+          buildProject' = buildProject pkgs;
 
           # Generates an attribute set for all provided talks (slidev projects)
           # in a `slug => drv` format. Each talk contains its files in flat
@@ -89,7 +89,7 @@
               drv:
               pkgs.runCommand "${drv.name}-in-dir" { } ''
                 mkdir -p $out
-                ln -s ${drv} $out/${drv.meta.dir}
+                ln -s ${drv} $out/${drv.meta.slug}
               ''
             ) (lib.attrValues allTalksAttrs);
           };
