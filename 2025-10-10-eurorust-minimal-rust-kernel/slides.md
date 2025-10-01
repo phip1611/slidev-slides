@@ -90,7 +90,7 @@ title: "$ whoami"
 
 ::right::
 
-<ul>
+<ul v-click>
   <li>
     <div style="display: inline-block; width: 7ch">GitHub</div>
     <a href="https://github.com/phip1611">@phip1611</a>
@@ -118,6 +118,8 @@ title: "$ whoami"
   Hobby Projects
 </h3>
 
+<v-click>
+
 - [github.com/rust-osdev](https://github.com/rust-osdev) \
   → `uefi`, `multiboot2`
 - Author of various smaller crates
@@ -125,16 +127,22 @@ title: "$ whoami"
   - `ttfb`
   - `spectrum-analyzer`
 
+</v-click>
+
 ::right::
 
-<h3 class="my-2 font-bold">
+<h3 v-click class="my-2 font-bold">
   Work Projects
 </h3>
+
+<v-click>
 
 - Cloud Hypervisor
 - `rust-vmm` ecosystem
 - Linux/KVM
 - NixOS/`nixpkgs`
+
+</v-click>
 
 ---
 title: "Agenda"
@@ -146,7 +154,7 @@ title: "Agenda"
   <li><pre>$ whoami</pre></li>
   <li>What (Not) To Expect</li>
   <li>Background
-    <ol>
+    <ol v-click>
       <li>What is a kernel?</li>
       <li>Early boot environment</li>
       <li>Accessing (virtual) hardware</li>
@@ -167,27 +175,35 @@ layout: "two-cols-header"
 
 ::left::
 
-
-<h3 class="my-2 font-bold">
+<h3 v-click class="my-2 font-bold">
   NAY 😞 (limited time)
 </h3>
+
+<v-click>
 
 - Processes / Threads
 - File system, network
 - Not even remotely a functional kernel (e.g., UNIX-like)
 
+</v-click>
 
 ::right::
 
-<h3 class="my-2 font-bold">
+<h3 v-click class="my-2 font-bold">
 YAY 🥳
 </h3>
+
+<v-click>
 
  - What it takes to get there
  - Productive setup &amp; best practices
  - Build basic kernel binary \
    → "Hello World" in VM
- - `let arch = Arch::X86;`
+ - `log::info!("works {}", "too")`
+- `let arch = Arch::X86;`
+- Print discovered PCI devices
+
+</v-click>
 
 ---
 title: "2. Background"
@@ -240,14 +256,14 @@ title: "2.3 Background: Accessing Hardware"
 
 ::left::
 
-<h3 class="my-2 font-bold">
+<h3 v-click class="my-2 font-bold">
   Memory-Mapped I/O (MMIO)
 </h3>
 
 
-<div v-click="1" color="orange" class="mt-2">No time for that today ... 😞</div>
+<div v-click color="orange" class="mt-2">No time for that today ... 😞</div>
 
-<div v-click="1" class="opacity-40" style="filter: blur(1px)">
+<div v-click class="opacity-40" style="filter: blur(1px)">
 
 - Physical memory addresses map
   - to RAM cells
@@ -261,11 +277,11 @@ title: "2.3 Background: Accessing Hardware"
 
 ::right::
 
-<h3 class="my-2 font-bold">
+<h3 v-click class="my-2 font-bold">
   Port I/O (PIO) <small>(Only on x86)</small>
 </h3>
 
-<div v-click="2">
+<v-click>
 
 - X86 has a Port I/O address space
 - “Write byte A to Port B”
@@ -273,7 +289,7 @@ title: "2.3 Background: Accessing Hardware"
 - Well-known locations + lookup structures
 - `in/out` instructions
 
-</div>
+</v-click>
 
 ---
 layout: "two-cols-header"
@@ -325,10 +341,11 @@ layout: "default"
 
 # {{ $frontmatter.title }}
 
-- We have to build a binary/executable (ELF) → Freestanding
+- Kernel: We need to build a "freestanding" binary/executable (ELF)
 - Crate attributes: `#![no_std]` and `#![no_main]`
-- Custom compiler target for 32-bit x86 code ("i686")
-- There is no libstd impl, just libcore *
+- There is no libstd impl, &ast;just libcore
+- **For our example**: Custom compiler target for 32-bit x86 code ("i686")
+
 
 &ast; cross-compiled
 
@@ -527,7 +544,7 @@ rustflags = []
 ::right::
 
 <div class="pl-1">
-  <h3 class="my-2 font-bold">
+  <h3 v-click="5" class="my-2 font-bold">
 ✅ Wrap Cargo Invocation (more flexible!)
   </h3>
 
@@ -537,7 +554,7 @@ rustflags = []
 
 </span>
 
-<v-click>
+<v-click step="5">
 
 ```bash {all|1|2|3-4|all}{lines: true}
 cargo build --release \
@@ -545,6 +562,7 @@ cargo build --release \
     -Z build-std=core,alloc,compiler_builtins \
     -Z build-std-features=compiler-builtins-mem
 ```
+
 </v-click>
 
 <span v-click="9">
@@ -567,7 +585,7 @@ layout: "default"
 - Check out my project **PhipsOS**, also on my GitHub:
 
 <div flex justify-end>
-  <QrCode value="https://github.com/phip1611/phips-os/tree/6efe6e5aee6dd7203a65a1b6e1fff78ed49e4ad8/ws"/>
+  <QrCode size="190" value="https://github.com/phip1611/phips-os/tree/6efe6e5aee6dd7203a65a1b6e1fff78ed49e4ad8/ws"/>
 </div>
 
 ---
