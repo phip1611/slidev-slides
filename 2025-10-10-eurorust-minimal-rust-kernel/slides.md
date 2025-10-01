@@ -53,9 +53,13 @@ a,a:active,a:visited {
 </div>
 
 <div v-click="5" position="absolute" top="1ch" left="1ch">
+  <div v-motion :initial="{ x: -80 }" :enter="{ x: 0, y: 0 }"
+  :click-5="{ x: 0, y: 20 }"
+  :leave="{ y: 0, x: 20 }">
   <img src="/images/rustacean-orig-noshadow.png" alt="Ferris (Rust Mascotte)"
   style="width: 200px; max-width: 20vw; height: auto; transform: rotate(-20deg)"
   />
+  </div>
 </div>
 
 <div v-if="$slidev.nav.clicks > 0"
@@ -154,7 +158,7 @@ title: "Agenda"
   <li><pre>$ whoami</pre></li>
   <li>What (Not) To Expect</li>
   <li>Background
-    <ol v-click>
+    <ol>
       <li>What is a kernel?</li>
       <li>Early boot environment</li>
       <li>Accessing (virtual) hardware</li>
@@ -554,7 +558,7 @@ rustflags = []
 
 </span>
 
-<v-click step="5">
+<div v-click="5">
 
 ```bash {all|1|2|3-4|all}{lines: true}
 cargo build --release \
@@ -563,7 +567,7 @@ cargo build --release \
     -Z build-std-features=compiler-builtins-mem
 ```
 
-</v-click>
+</div>
 
 <span v-click="9">
 
