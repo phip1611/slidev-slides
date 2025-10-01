@@ -36,8 +36,11 @@
           meta,
         }:
         pkgs.callPackage ./nix/build.nix {
-          inherit depHash meta;
-          pname = dir;
+          inherit depHash;
+          meta = meta // {
+            inherit dir;
+          };
+          pname = meta.slug;
           src = "${baseSrc}/${dir}";
         };
     in
@@ -69,17 +72,26 @@
           };
           buildProject' = buildProject pkgs baseSrc;
 
-          # All talks in a `slug => drv` attribute set.
-          allTalks = lib.listToAttrs (
+          # Generates an attribute set for all provided talks (slidev projects)
+          # in a `slug => drv` format. Each talk contains its files in flat
+          # form, i.e., without the dir.
+          allTalksAttrs = lib.listToAttrs (
             map (def: {
               name = "talk-${def.meta.slug}";
               value = buildProject' def;
             }) projectDefs
           );
 
-          allTalksCombined = pkgs.symlinkJoin {
-            name = "all-slides-combined";
-            paths = builtins.attrValues allTalks;
+          # Combined derivation where each talk is in a subdirectory.
+          allTalksCombinedDrv = pkgs.symlinkJoin {
+            name = "slides-combined";
+            paths = map (
+              drv:
+              pkgs.runCommand "${drv.name}-in-dir" { } ''
+                mkdir -p $out
+                ln -s ${drv} $out/${drv.meta.dir}
+              ''
+            ) (lib.attrValues allTalksAttrs);
           };
 
           runInstallAllScript = pkgs.writeShellScriptBin "run-install-all" ''
@@ -94,10 +106,10 @@
         in
         (
           {
-            combined = allTalksCombined;
-            default = allTalksCombined;
+            combined = allTalksCombinedDrv;
+            default = allTalksCombinedDrv;
           }
-          // allTalks
+          // allTalksAttrs
         )
       );
     };
