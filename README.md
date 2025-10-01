@@ -9,6 +9,6 @@ Common repository for my slides/presentations/talks using
 - `$ npm run dev` to serve slides locally
 - `$ npm run build` to build a static HTML deployment
 
-## Deployed Slides
+## Deployed Slides (Viewable Web App)
 
-- EuroRust 2025 Talk: TODO
+- EuroRust 2025 Talk: <https://eurorust-2025.slides.phip1611.dev/>
