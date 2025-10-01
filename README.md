@@ -22,4 +22,4 @@ For example:
 
 - EuroRust 2025 Talk: <https://eurorust-2025.slides.phip1611.dev/>
 
-Hosting done via my [my NixOS server](https://github.com/phip1611/nixos-configs/blob/fd849e21c35b3e4b8569bce87ab9a5e82f4afda1/hosts/asking-alexandria/web-services/dev.phip1611.slides/default.nix).
+Hosting done via [my NixOS server](https://github.com/phip1611/nixos-configs/blob/fd849e21c35b3e4b8569bce87ab9a5e82f4afda1/hosts/asking-alexandria/web-services/dev.phip1611.slides/default.nix).
