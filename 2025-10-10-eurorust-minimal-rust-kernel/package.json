@@ -5,8 +5,9 @@
   "scripts": {
     "build": "slidev build",
     "dev": "slidev --open",
+    "export": "slidev export",
     "fmt": "slidev format",
-    "export": "slidev export"
+    "slidev": "slidev"
   },
   "dependencies": {
     "@slidev/cli": "^52.2.4",

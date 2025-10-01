@@ -4,7 +4,7 @@
 author: Philipp Schuster <phip1611@gmail.com>
 info: |
   context: My talk at EuroRust 2025 in Paris
-title: A Minimal Rust Kernel - Printing to QEMU with <code>core::fmt</code>
+title: A Minimal Rust Kernel - Printing to QEMU with core::fmt
 
 # Generic Settings
 addons:
@@ -24,7 +24,7 @@ mdc: true
 selectable: true
 theme: default
 
-# For next slide
+# For next slide (cover slide)
 class: text-center
 layout: cover
 transition: slide-left
@@ -61,7 +61,7 @@ a,a:active,a:visited {
 <div v-if="$slidev.nav.clicks > 0"
   class="absolute bottom-10 left-10 bg-white p-4 rounded shadow" style="--un-shadow-color: #d61515;">
   <div v-if="$slidev.nav.clicks === 1">Thing that runs our kernel in a VM</div>
-  <div v-else-if="$slidev.nav.clicks === 2">platform-agnostic part of Rust <code>std</code></div>
+  <div v-else-if="$slidev.nav.clicks === 2">Platform-agnostic part of Rust <code>std</code></div>
   <div v-else-if="$slidev.nav.clicks === 3">Formatting API of <code>core</code></div>
   <div v-else-if="$slidev.nav.clicks === 4">Core software component of a OS</div>
   <div v-else-if="$slidev.nav.clicks === 5">Cool new language + ecosystem</div>
@@ -80,18 +80,13 @@ title: "$ whoami"
 
 ::left::
 
-<ul>
-  <li>Philipp Schuster, Dresden 🇩🇪🇪🇺</li>
-  <li>Software Engineer at Cyberus Technology
-    <ul>
-      <li>Virtualization, Linux/KVM, x86</li>
-      <li>Rust, Assembly, C/C++, Nix/NixOS</li>
-    </ul>
-  </li>
-  <li>Nix and NixOS enthusiast</li>
-  <li>Enjoy conferences and meetups</li>
-  <li>Organizer of Dresden Systems Meetup</li>
-</ul>
+- Philipp Schuster, Dresden 🇩🇪🇪🇺
+- Working at Cyberus Technology as Software Engineer
+  - Virtualization, Linux/KVM, x86
+  - Rust, Assembly, C/C++, Nix/NixOS
+- Nix and NixOS enthusiast
+- Enjoy conferences and meetups
+- Organizer of Dresden Systems Meetup
 
 ::right::
 
@@ -122,28 +117,24 @@ title: "$ whoami"
 <h3 class="my-2 font-bold">
   Hobby Projects
 </h3>
-<ul>
-  <li><a href="https://github.com/rust-osdev">github.com/rust-osdev</a>
-    <br>
-    → <code>uefi</code>,<code>multiboot2</code>
-  </li>
-  <li>Author of various smaller crates
-    <br>
-    → <code>tar-no-std</code>,<code>ttfb</code>,<code>spectrum-analyzer</code>
-  </li>
-</ul>
+
+- [github.com/rust-osdev](https://github.com/rust-osdev) \
+  → `uefi`, `multiboot2`
+- Author of various smaller crates
+  - `tar-no-std`
+  - `ttfb`
+  - `spectrum-analyzer`
 
 ::right::
 
 <h3 class="my-2 font-bold">
   Work Projects
 </h3>
-<ul>
-  <li>Cloud Hypervisor</li>
-  <li><code>rust-vmm</code> ecosystem</li>
-  <li>Linux/KVM</li>
-  <li>NixOS/<code>nixpkgs</code></li>
-</ul>
+
+- Cloud Hypervisor
+- `rust-vmm` ecosystem
+- Linux/KVM
+- NixOS/`nixpkgs`
 
 ---
 title: "Agenda"
@@ -180,11 +171,10 @@ layout: "two-cols-header"
 <h3 class="my-2 font-bold">
   NAY 😞 (limited time)
 </h3>
-<ul>
-  <li>Processes / Threads</li>
-  <li>File system, network</li>
-  <li>Not even remotely a functional kernel (e.g., UNIX-like)</li>
-</ul>
+
+- Processes / Threads
+- File system, network
+- Not even remotely a functional kernel (e.g., UNIX-like)
 
 
 ::right::
@@ -192,12 +182,13 @@ layout: "two-cols-header"
 <h3 class="my-2 font-bold">
 YAY 🥳
 </h3>
-<ul>
-  <li>What it takes to get there</li>
-  <li>Productive setup &amp; best practices</li>
-  <li>Build basic kernel binary<br>→ "Hello World" in VM</li>
-  <li><code>let arch = Arch::X86;</code></li>
-</ul>
+
+ - What it takes to get there
+ - Productive setup &amp; best practices
+ - Build basic kernel binary \
+   → "Hello World" in VM
+ - `let arch = Arch::X86;`
+
 
 
 ---
@@ -267,7 +258,7 @@ title: "2.3 Background: Accessing Hardware"
   - to any GPIO pin or whatnot ...
 - Memory Map + Well-known locations
   identify certain hardware
-- <code>mov src, dst</code> instructions
+- `mov src, dst` instructions
 
 </div>
 
@@ -283,7 +274,7 @@ title: "2.3 Background: Accessing Hardware"
 - “Write byte A to Port B”
 - Port may map to a device register
 - Well-known locations + lookup structures
-- <code>in/out</code> instructions
+- `in/out` instructions
 
 </div>
 
@@ -296,11 +287,13 @@ title: "2.4 Background: QEMU + Debugcon Device"
 
 ::left::
 
+<div class="pr-1">
+
 <h3 class="my-2 font-bold">
   QEMU Command Line
 </h3>
 
-```bash {1|1,2,4}{lines:true}
+```bash {all|1|4|2}{lines:true}
 qemu-system-i386 \
     -debugcon stdio \
     -display none \
@@ -312,15 +305,21 @@ qemu-system-i386 \
     -nodefaults
 ```
 
+</div>
+
 ::right::
+
+<div v-click class="pl-1">
 
 <h3 class="my-2 font-bold">
   Debugcon Device
 </h3>
 
-- Device on I/O Port <code>0xe9</code>
-- Every byte written to it is printed to the
-  specified location
+- Device on I/O Port `0xe9`
+- Every byte written to it is printed to the specified location
+- Technically used like a real device but only part of virtual QEMU hardware
+
+</div>
 
 ---
 title: "3. #![no_std] Kernel binary in rust (\"freestanding\")"
@@ -330,7 +329,7 @@ layout: "default"
 # {{ $frontmatter.title }}
 
 - We have to build a binary/executable (ELF) → Freestanding
-- Crate attributes: <code>#![no_std]</code> and <code>#![no_main]</code>
+- Crate attributes: `#![no_std]` and `#![no_main]`
 - Custom compiler target for 32-bit x86 code ("i686")
 - There is no libstd impl, just libcore *
 
@@ -343,9 +342,12 @@ layout: "default"
 
 # {{ $frontmatter.title }}
 
-- No <code>std::fs</code>, <code>std::net</code>, no <code>File::new()</code>
+- <span v-mark="{at: 1, type: 'underline', color: '#d61515'}">No</span> `std::fs`,
+  <span v-mark="{at: 2, type: 'underline', color: '#d61515'}">no</span> `File::new()`,
+  <span v-mark="{at: 3, type: 'underline', color: '#d61515'}">no</span> `std::net`,
+  <span v-mark="{at: 4, type: 'underline', color: '#d61515'}">no</span> `std::sync::Mutex`
 - There is no surrounding runtime, no Linux you can utilize
-- Your kernel IS your runtime
+- <span v-mark="{at: 5, type: 'underline', color: '#d61515'}">Your kernel IS your runtime</span>
 - Function calls require a stack, but we don’t have one
 - Our binary needs to start with a small assembly routine \
   → Set-up stack \
@@ -471,12 +473,12 @@ layout: "default"
 
 # {{ $frontmatter.title }}
 
-- <code>#![no_std]</code> for binary + all dependencies
+- `#![no_std]` for binary + all dependencies
 - Stack required to call Rust functions
 - Initially single-threaded
-- To just get started: 32-bit kernel playground is sufficient
-  <br>→ See my demo!
-- **Rust make things much easier than C! <code>libcore</code> just works!**
+- To just get started: 32-bit kernel playground is sufficient \
+  → See my demo!
+- **Rust make things much easier than C! `libcore` just works!**
 
 <div position="absolute" bottom="4ch" right="1ch">
   <img src="./images/rustacean-orig-noshadow.png" alt="Ferris (Rust Mascotte)"
@@ -499,9 +501,15 @@ zoom: 0.9
     ⚠️ Cargo-native configuration (Caveats!)
   </h3>
 
-→ <code>cargo test</code> **doesn't** just work
+<span v-click="4">
 
-```toml {all|3,7,11}{lines: true}
+→ `cargo test` **doesn't** just work
+
+</span>
+
+<v-click step="1">
+
+```toml {all|1|3,7,11|0}{lines: true}
 # file: .cargo/config.toml
 [unstable]
 build-std = [
@@ -516,6 +524,7 @@ target = "x86-unknown-none.json"
 rustflags = []
 ```
 
+</v-click>
 </div>
 
 ::right::
@@ -525,14 +534,27 @@ rustflags = []
 ✅ Wrap Cargo Invocation (more flexible!)
   </h3>
 
-→ <code>cargo test</code> **just works**
+<span v-click="9">
 
-```bash {all|2-4}{lines: true}
+→ `cargo test` **just works**
+
+</span>
+
+<v-click>
+
+```bash {all|1|2|3-4|all}{lines: true}
 cargo build --release \
     --target ./x86-unknown-none.json \
     -Z build-std=core,alloc,compiler_builtins \
     -Z build-std-features=compiler-builtins-mem
 ```
+</v-click>
+
+<span v-click="9">
+
+→ Recommendation: Wrap in Makefile or justfile
+
+</span>
 </div>
 
 ---
@@ -543,12 +565,13 @@ layout: "default"
 # {{ $frontmatter.title }}
 
 - kernel in 64-bit "long mode"
-- virtual memory: load kernel to <code>0xffff_ffff_8820_0000</code>
+- virtual memory: load kernel to `0xffff_ffff_8820_0000`
 - Boot Application Processors, bring them into 64-bit “long-mode”
+- Check out my project **PhipsOS**, also on my GitHub:
 
-
-- Check out my project **PhipsOS**, also on my GitHub: <QrCode value="https://github.com/phip1611/phips-os/tree/6efe6e5aee6dd7203a65a1b6e1fff78ed49e4ad8/ws"/>
-
+<div flex justify-end>
+  <QrCode value="https://github.com/phip1611/phips-os/tree/6efe6e5aee6dd7203a65a1b6e1fff78ed49e4ad8/ws"/>
+</div>
 
 ---
 title: "Thanks for Your Attention"
