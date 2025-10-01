@@ -11,11 +11,12 @@
   # Config
   pname,
   depHash,
+  meta,
   src,
 }:
 
 stdenv.mkDerivation (finalAttrs: {
-  inherit pname src;
+  inherit meta pname src;
   version = "0.0.0";
 
   nativeBuildInputs = [

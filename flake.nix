@@ -17,21 +17,38 @@
       projectDefs = [
         {
           dir = "2025-10-10-eurorust-minimal-rust-kernel";
+          # pnpm dependency hash
           depHash = "sha256-3983U/zwu7FpLTlhs+9fWKBGi0PtEGxPewRvAZQKiCw=";
+          meta = {
+            # URL-friendly short name.
+            slug = "eurorust-2025";
+            title = "A Minimal Rust Kernel - Printing to QEMU with core::fmt";
+          };
         }
       ];
+
+      # Builds a single slidev project.
+      buildProject =
+        pkgs: baseSrc:
+        {
+          dir,
+          depHash,
+          meta,
+        }:
+        pkgs.callPackage ./nix/build.nix {
+          inherit depHash meta;
+          pname = dir;
+          src = "${baseSrc}/${dir}";
+        };
     in
     {
       devShells = forAllSystems (pkgs: {
         default = pkgs.mkShell {
-          inputsFrom = [
-            self.packages.${pkgs.system}.runInstallAllScript
-          ];
+          inputsFrom = builtins.attrValues self.packages.${pkgs.system};
           packages = with pkgs; [
             nodejs
             pnpm
           ];
-          # Runs "pnpm" install in each package
           shellHook = ''
             echo "You may:"
             echo "- run \`$ npm run dev\` in an individual project to get started"
@@ -50,23 +67,21 @@
             root = ./.;
             fileset = lib.fileset.gitTracked ./.;
           };
-          combinedSlides = pkgs.symlinkJoin {
-            name = "all-slides";
-            paths =
-              let
-                buildProjectDef =
-                  { dir, depHash }:
-                  pkgs.callPackage ./nix/build.nix {
-                    inherit depHash;
-                    pname = dir;
-                    src = "${baseSrc}/${dir}";
-                  };
-              in
-              map buildProjectDef projectDefs;
+          buildProject' = buildProject pkgs baseSrc;
+
+          # All talks in a `slug => drv` attribute set.
+          allTalks = lib.listToAttrs (
+            map (def: {
+              name = "talk-${def.meta.slug}";
+              value = buildProject' def;
+            }) projectDefs
+          );
+
+          allTalksCombined = pkgs.symlinkJoin {
+            name = "all-slides-combined";
+            paths = builtins.attrValues allTalks;
           };
-        in
-        {
-          default = combinedSlides;
+
           runInstallAllScript = pkgs.writeShellScriptBin "run-install-all" ''
             echo "Running `pnpm install` on each package ..."
             find . -maxdepth 2 -name package.json -type f -print0 |
@@ -76,7 +91,14 @@
                 (cd "$dir" && pnpm install)
               done
           '';
-        }
+        in
+        (
+          {
+            combined = allTalksCombined;
+            default = allTalksCombined;
+          }
+          // allTalks
+        )
       );
     };
 }
