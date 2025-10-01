@@ -189,15 +189,12 @@ YAY 🥳
    → "Hello World" in VM
  - `let arch = Arch::X86;`
 
-
-
 ---
 title: "2. Background"
 layout: "default"
 ---
 
 # {{ $frontmatter.title }}
-
 
 ---
 title: "2.1 Background: What is a kernel?"
@@ -558,7 +555,7 @@ cargo build --release \
 </div>
 
 ---
-title: "5. Outlook: Towards a "Real" Kernel"
+title: "5. Outlook: Towards a \"Real\" Kernel"
 layout: "default"
 ---
 
