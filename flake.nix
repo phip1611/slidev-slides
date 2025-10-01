@@ -17,7 +17,7 @@
       projectDefs = [
         {
           dir = "2025-10-10-eurorust-minimal-rust-kernel";
-          depHash = "sha256-rtYi0q6BJ1HNZ4f0H2QIh5O3DBqPBCWpc2MDQHyvNF4=";
+          depHash = "sha256-3983U/zwu7FpLTlhs+9fWKBGi0PtEGxPewRvAZQKiCw=";
         }
       ];
     in
