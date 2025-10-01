@@ -10,12 +10,12 @@
 
   # Config
   pname,
-  hash,
+  depHash,
   src,
 }:
 
 stdenv.mkDerivation (finalAttrs: {
-  inherit hash pname src;
+  inherit pname src;
   version = "0.0.0";
 
   nativeBuildInputs = [
@@ -26,7 +26,7 @@ stdenv.mkDerivation (finalAttrs: {
   pnpmDeps = pnpm.fetchDeps {
     inherit (finalAttrs) pname version src;
     fetcherVersion = 2;
-    inherit hash;
+    hash = depHash;
   };
 
   buildPhase = ''
