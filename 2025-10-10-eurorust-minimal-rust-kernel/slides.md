@@ -60,7 +60,7 @@ a,a:active,a:visited {
 
 <div v-if="$slidev.nav.clicks > 0"
   class="absolute bottom-10 left-10 bg-white p-4 rounded shadow" style="--un-shadow-color: #d61515;">
-  <div v-if="$slidev.nav.clicks === 1">Thing that runs our kernel in VM</div>
+  <div v-if="$slidev.nav.clicks === 1">Thing that runs our kernel in a VM</div>
   <div v-else-if="$slidev.nav.clicks === 2">platform-agnostic part of Rust <code>std</code></div>
   <div v-else-if="$slidev.nav.clicks === 3">Formatting API of <code>core</code></div>
   <div v-else-if="$slidev.nav.clicks === 4">Core software component of a OS</div>
@@ -256,7 +256,10 @@ title: "2.3 Background: Accessing Hardware"
   Memory-Mapped I/O (MMIO)
 </h3>
 
-<div class="opacity-40" style="filter: blur(1px)">
+
+<div v-click="1" color="orange" class="mt-2">No time for that today ... 😞</div>
+
+<div v-click="1" class="opacity-40" style="filter: blur(1px)">
 
 - Physical memory addresses map
   - to RAM cells
@@ -268,19 +271,21 @@ title: "2.3 Background: Accessing Hardware"
 
 </div>
 
-<div v-click color="orange" class="mt-2">No time for that today ... 😞</div>
-
 ::right::
 
 <h3 class="my-2 font-bold">
   Port I/O (PIO) <small>(Only on x86)</small>
 </h3>
 
+<div v-click="2">
+
 - X86 has a Port I/O address space
 - “Write byte A to Port B”
 - Port may map to a device register
 - Well-known locations + lookup structures
 - <code>in/out</code> instructions
+
+</div>
 
 ---
 layout: "two-cols-header"
