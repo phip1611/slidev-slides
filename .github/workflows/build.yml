@@ -9,7 +9,9 @@ jobs:
     steps:
       - uses: actions/checkout@v5
       - uses: cachix/install-nix-action@v31
-      - run: nix build -L .
+      - run: nix flake check -L
+      - run: nix flake show -L
+      - run: nix build -L .#combined
       - name: Create ZIP
         run: |
           export ZIP="$PWD/slidev-slides.zip"
