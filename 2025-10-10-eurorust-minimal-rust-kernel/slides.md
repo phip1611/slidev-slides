@@ -14,14 +14,15 @@ canvasWidth: 780
 colorSchema: light
 drawings:
   persist: false
-mdc: true
-theme: default
 fonts:
   provider: google
   sans: Roboto
   # This way, we can import the font from Google and use it later for the h tags
   serif: Amatic SC
   mono: Roboto Mono
+mdc: true
+selectable: true
+theme: default
 
 # For next slide
 class: text-center
@@ -42,7 +43,6 @@ a,a:active,a:visited {
 <h1 style="font-size: 5rem !important">A Minimal <span v-mark="{at: 5, type: 'circle', color: '#d61515'}">Rust</span> <span v-mark="{at: 4, type: 'circle', color: '#d61515'}">Kernel</span></h1>
 
 ## Printing to <span v-mark="{at: 1, type: 'circle', color: '#d61515'}">QEMU</span> with <code><span v-mark="{at: 2, type: 'circle', color: '#d61515'}">core</span>::<span v-mark="{at: 3, type: 'circle', color: '#d61515'}">fmt</span></code>
-
 
 <div class="abs-br m-6 text-xl">
   Philipp Schuster, Paris, 2025-10-10
@@ -102,7 +102,7 @@ title: "$ whoami"
   </li>
   <li>
     <div style="display: inline-block; width: 7ch">Reddit</div>
-    <a href="https://reddit.com/phip1611">@phip1611</a>
+    <a href="https://reddit.com/u/phip1611">@phip1611</a>
   </li>
   <li>
     <div style="display: inline-block; width: 7ch">Blog</div>
@@ -348,21 +348,51 @@ layout: "default"
 
 ---
 title: "4. Code, Code, Code"
-layout: "default"
+layout: "two-cols-header"
 ---
 
-# TODO {{ $frontmatter.title }}
+# {{ $frontmatter.title }}
 
-TODO
+::left::
+
+<br>
+<br>
+
+<a href="http://github.com/phip1611/eurorust-2025-talk">github.com/phip1611/eurorust-2025-talk</a>
+
+::right::
+
+<div style="position:absolute; right: 5ch">
+  <QrCode
+  value="http://github.com/phip1611/eurorust-2025-talk" size="300"></QrCode>
+</div>
 
 ---
+title: "5. Learnings"
 layout: default
+---
+
+# {{ $frontmatter.title }}
+
+<br>
+<br>
+<br>
+
+<div class="flex justify-center items-center text-4xl">
+💡<br>🤓
+</div>
+
+---
+title: "5. Learnings: Connect core::fmt with Debugcon device"
+layout: two-cols-header
 zoom: 0.9
 ---
 
-<div style="display: flex; gap: 2rem;">
-<div style="flex: 1;">
+# {{ $frontmatter.title }}
 
+::left::
+
+<div class="pr-1">
 ````md magic-move
 ```rust {all|1|5}{lines:true}
 struct Debugcon;
@@ -403,10 +433,11 @@ impl Debugcon {
 ````
 </div>
 
+::right::
 
-<div style="flex: 1;">
+<div v-click="6" class="pl-1">
 ````md magic-move
-```rust {all|1,9|2,5}{lines:true}
+```rust {all|all|1,9|2,5}{lines:true}
 impl core::fmt::Write for Debugcon {
     fn write_str(&mut self, s: &str)
     -> fmt::Result {
@@ -426,6 +457,132 @@ impl core::fmt::Write for Debugcon {
 }
 ```
 ````
+</div>
+
+---
+title: "5. Learnings: Kernel binary / Freestanding binary"
+layout: "default"
+---
+
+# {{ $frontmatter.title }}
+
+- <code>#![no_std]</code> for binary + all dependencies
+- Stack required to call Rust functions
+- Initially single-threaded
+- To just get started: 32-bit kernel playground is sufficient
+  <br>→ See my demo!
+- **Rust make things much easier than C! <code>libcore</code> just works!**
+
+<div position="absolute" bottom="4ch" right="1ch">
+  <img src="./images/rustacean-orig-noshadow.png" alt="Ferris (Rust Mascotte)"
+  style="width: 200px; max-width: 20vw; height: auto; transform: rotate(-20deg)"
+  />
+</div>
+
+---
+title: "5. Best Practises & My Experience"
+layout: "two-cols-header"
+zoom: 0.9
+---
+
+# {{ $frontmatter.title }}
+
+::left::
+
+<div class="pr-1">
+  <h3 class="my-2 font-bold">
+    ⚠️ Cargo-native configuration (Caveats!)
+  </h3>
+
+→ <code>cargo test</code> **doesn't** just work
+
+```toml {all|3,7,11}{lines: true}
+# file: .cargo/config.toml
+[unstable]
+build-std = [
+  "core", "compiler_builtins",
+  "alloc"
+]
+build-std-features = [
+  "compiler-builtins-mem"
+]
+[build]
+target = "x86-unknown-none.json"
+rustflags = []
+```
 
 </div>
+
+::right::
+
+<div class="pl-1">
+  <h3 class="my-2 font-bold">
+✅ Wrap Cargo Invocation (more flexible!)
+  </h3>
+
+→ <code>cargo test</code> **just works**
+
+```bash {all|2-4}{lines: true}
+cargo build --release \
+    --target ./x86-unknown-none.json \
+    -Z build-std=core,alloc,compiler_builtins \
+    -Z build-std-features=compiler-builtins-mem
+```
+</div>
+
+---
+title: "5. Outlook: Towards a "Real" Kernel"
+layout: "default"
+---
+
+# {{ $frontmatter.title }}
+
+- kernel in 64-bit "long mode"
+- virtual memory: load kernel to <code>0xffff_ffff_8820_0000</code>
+- Boot Application Processors, bring them into 64-bit “long-mode”
+
+
+- Check out my project **PhipsOS**, also on my GitHub: <QrCode value="https://github.com/phip1611/phips-os/tree/6efe6e5aee6dd7203a65a1b6e1fff78ed49e4ad8/ws"/>
+
+
+---
+title: "Thanks for Your Attention"
+layout: "two-cols-header"
+---
+
+# {{ $frontmatter.title }}
+
+::left::
+
+<ul>
+  <li>Philipp Schuster - Dresden 🇩🇪🇪🇺</li>
+  <li>
+    <div style="display: inline-block; width: 7ch">GitHub</div>
+    <a href="https://github.com/phip1611">@phip1611</a>
+  </li>
+  <li>
+    <div style="display: inline-block; width: 7ch">Reddit</div>
+    <a href="https://reddit.com/u/phip1611">@phip1611</a>
+  </li>
+  <li>
+    <div style="display: inline-block; width: 7ch">Blog</div>
+    <a href="https://phip1611.de">phip1611.de</a>
+  </li>
+</ul>
+
+::right::
+
+<div class="grid grid-cols-2 gap-4 p-0">
+  <div class="px-4">
+    <h3 class="mb-2 font-bold">
+      Code
+    </h3>
+    <QrCode value="https://github.com/phip1611/eurorust-2025-talk" size="140"></QrCode>
+  </div>
+  <div class="px-4">
+    <h3 class="mb-2 font-bold">
+      Slides
+    </h3>
+    <QrCode value="https://github.com/phip1611/slidev-slides" size="140"></QrCode>
+  </div>
 </div>
