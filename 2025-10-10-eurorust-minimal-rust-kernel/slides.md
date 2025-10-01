@@ -58,6 +58,15 @@ a,a:active,a:visited {
   />
 </div>
 
+<div v-if="$slidev.nav.clicks > 0"
+  class="absolute bottom-10 left-10 bg-white p-4 rounded shadow" style="--un-shadow-color: #d61515;">
+  <div v-if="$slidev.nav.clicks === 1">Thing that runs our kernel in VM</div>
+  <div v-else-if="$slidev.nav.clicks === 2">platform-agnostic part of Rust <code>std</code></div>
+  <div v-else-if="$slidev.nav.clicks === 3">Formatting API of <code>core</code></div>
+  <div v-else-if="$slidev.nav.clicks === 4">Core software component of a OS</div>
+  <div v-else-if="$slidev.nav.clicks === 5">Cool new language + ecosystem</div>
+</div>
+
 <!--
 The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.html#notes)
 -->
