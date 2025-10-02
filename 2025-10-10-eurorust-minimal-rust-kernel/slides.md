@@ -56,7 +56,7 @@ a,a:active,a:visited {
   <div v-motion :initial="{ x: -80 }" :enter="{ x: 0, y: 0 }"
   :click-5="{ x: 0, y: 20 }"
   :leave="{ y: 0, x: 20 }">
-  <img src="/images/rustacean-orig-noshadow.png" alt="Ferris (Rust Mascotte)"
+  <img src="/images/rustacean-orig-noshadow.webp" alt="Ferris (Rust Mascotte)"
   style="width: 200px; max-width: 20vw; height: auto; transform: rotate(-20deg)"
   />
   </div>
@@ -219,7 +219,7 @@ layout: "default"
 ---
 title: "2.1 Background: What is a kernel?"
 layout: "image-left"
-image: /images/what-is-kernel.png
+image: /images/what-is-kernel.webp
 backgroundSize: 15em
 ---
 
@@ -499,7 +499,7 @@ layout: "default"
 - **Rust make things much easier than C! `libcore` just works!**
 
 <div position="absolute" bottom="4ch" right="1ch">
-  <img src="/images/rustacean-orig-noshadow.png" alt="Ferris (Rust Mascotte)"
+  <img src="/images/rustacean-orig-noshadow.webp" alt="Ferris (Rust Mascotte)"
   style="width: 200px; max-width: 20vw; height: auto; transform: rotate(-20deg)"
   />
 </div>
