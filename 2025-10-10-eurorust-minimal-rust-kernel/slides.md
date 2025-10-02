@@ -114,6 +114,8 @@ title: "$ whoami"
   </li>
 </ul>
 
+<SlideIndicator />
+
 ---
 layout: "two-cols-header"
 title: "$ whoami"
@@ -153,6 +155,8 @@ title: "$ whoami"
 
 </v-click>
 
+<SlideIndicator />
+
 ---
 title: "Agenda"
 ---
@@ -174,6 +178,8 @@ title: "Agenda"
   <li>Code, Demos, Examples</li>
   <li>Findings</li>
 </ol>
+
+<SlideIndicator />
 
 ---
 title: "1. What (Not) To Expect"
@@ -214,6 +220,8 @@ YAY 🥳
 
 </v-click>
 
+<SlideIndicator />
+
 ---
 title: "2. Background"
 layout: "default"
@@ -243,6 +251,8 @@ Runtime Environment<br/></span>
 
 <span  v-click="2">&ast; used in my demo</span>
 
+<SlideIndicator />
+
 ---
 title: "2.2 Background: Environment for Kernel"
 layout: "default"
@@ -255,6 +265,8 @@ layout: "default"
   - Code executes only on Bootstrap Processor (BSP)
   - Application Processors (AP) sleep
 - Memory map (from firmware) and well-known locations
+
+<SlideIndicator />
 
 ---
 layout: "two-cols-header"
@@ -300,6 +312,8 @@ title: "2.3 Background: Accessing Hardware"
 
 </v-click>
 
+<SlideIndicator />
+
 ---
 layout: "two-cols-header"
 title: "2.4 Background: QEMU + Debugcon Device"
@@ -343,6 +357,8 @@ qemu-system-i386 \
 
 </div>
 
+<SlideIndicator />
+
 ---
 title: "3. #![no_std] Kernel binary in rust (\"freestanding\")"
 layout: "default"
@@ -357,6 +373,8 @@ layout: "default"
 
 
 &ast; cross-compiled
+
+<SlideIndicator />
 
 ---
 title: "3. #![no_std] Kernel binary in rust (\"freestanding\")"
@@ -375,6 +393,8 @@ layout: "default"
 - Our binary needs to start with a small assembly routine \
   → Set-up stack \
   → Jump to Rust code
+
+<SlideIndicator />
 
 ---
 title: "4. Code, Code, Code"
@@ -397,6 +417,8 @@ layout: "two-cols-header"
   value="http://github.com/phip1611/eurorust-2025-talk" size="300"></QrCode>
 </div>
 
+<SlideIndicator />
+
 ---
 title: "5. Learnings"
 layout: default
@@ -411,6 +433,8 @@ layout: default
 <div class="flex justify-center items-center text-4xl">
 💡<br>🤓
 </div>
+
+<SlideIndicator />
 
 ---
 title: "5. Learnings: Connect core::fmt with Debugcon device"
@@ -489,6 +513,8 @@ impl core::fmt::Write for Debugcon {
 ````
 </div>
 
+<SlideIndicator />
+
 ---
 title: "5. Learnings: Kernel binary / Freestanding binary"
 layout: "default"
@@ -508,6 +534,8 @@ layout: "default"
   style="width: 200px; max-width: 20vw; height: auto; transform: rotate(-20deg)"
   />
 </div>
+
+<SlideIndicator />
 
 ---
 title: "5. Best Practises & My Experience"
@@ -531,6 +559,8 @@ zoom: 0.9
 </span>
 
 <v-click step="1">
+
+<SlideIndicator />
 
 ```toml {all|1|3,7,11|0}{lines: true}
 # file: .cargo/config.toml
@@ -581,6 +611,8 @@ cargo build --release \
 </span>
 </div>
 
+<SlideIndicator />
+
 ---
 title: "5. Outlook: Towards a \"Real\" Kernel"
 layout: "default"
@@ -596,6 +628,8 @@ layout: "default"
 <div flex justify-end>
   <QrCode size="190" value="https://github.com/phip1611/phips-os/tree/6efe6e5aee6dd7203a65a1b6e1fff78ed49e4ad8/ws"/>
 </div>
+
+<SlideIndicator />
 
 ---
 title: "Thanks for Your Attention"
