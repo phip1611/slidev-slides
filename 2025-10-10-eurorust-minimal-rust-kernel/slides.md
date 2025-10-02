@@ -46,11 +46,15 @@ a,a:active,a:visited {
 ## Printing to <span v-mark="{at: 1, type: 'circle', color: '#d61515'}">QEMU</span> with <code><span v-mark="{at: 2, type: 'circle', color: '#d61515'}">core</span>::<span v-mark="{at: 3, type: 'circle', color: '#d61515'}">fmt</span></code>
 
 <div class="abs-br m-6 text-xl">
-  Philipp Schuster, Paris, 2025-10-10
+  Philipp Schuster, Cyberus Technology
 </div>
 
 <div style="position: absolute; top: 0.2rem; right: 0.3em;">
   <code>#EuroRust</code>
+</div>
+
+<div style="position: absolute; top: 0.2rem; left: 0.3em;">
+  <code>Paris, 2025-10-10</code>
 </div>
 
 <div v-click="5" position="absolute" top="1ch" left="1ch">
