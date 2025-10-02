@@ -527,7 +527,7 @@ layout: "default"
 - Initially single-threaded
 - To just get started: 32-bit kernel playground is sufficient \
   → See my demo!
-- **Rust make things much easier than C! `libcore` just works!**
+- **Rust makes things much easier than C! `libcore` just works!**
 
 <div position="absolute" bottom="4ch" right="1ch">
   <img src="/images/rustacean-orig-noshadow.webp" alt="Ferris (Rust Mascotte)"
@@ -625,8 +625,8 @@ layout: "default"
 - Boot Application Processors, bring them into 64-bit “long-mode”
 - Check out my project **PhipsOS**, also on my GitHub:
 
-<div flex justify-end>
-  <QrCode size="190" value="https://github.com/phip1611/phips-os/tree/6efe6e5aee6dd7203a65a1b6e1fff78ed49e4ad8/ws"/>
+<div flex justify-end mr-5>
+  <QrCode size="180" value="https://github.com/phip1611/phips-os/tree/6efe6e5aee6dd7203a65a1b6e1fff78ed49e4ad8/ws"/>
 </div>
 
 <SlideIndicator />
@@ -658,17 +658,11 @@ layout: "two-cols-header"
 
 ::right::
 
-<div class="grid grid-cols-2 gap-4 p-0">
-  <div class="px-4">
-    <h3 class="mb-2 font-bold">
-      Code
-    </h3>
-    <QrCode value="https://github.com/phip1611/eurorust-2025-talk" size="140"></QrCode>
-  </div>
-  <div class="px-4">
-    <h3 class="mb-2 font-bold">
-      Slides
-    </h3>
-    <QrCode value="https://github.com/phip1611/slidev-slides" size="140"></QrCode>
-  </div>
-</div>
+<h3 class="mb-2 font-bold">
+  Code and Slides
+</h3>
+<QrCode value="https://github.com/phip1611/eurorust-2025-talk" size="180"></QrCode>
+<br>
+GitHub: phip1611/eurorust-2025-talk
+
+<SlideIndicator />
