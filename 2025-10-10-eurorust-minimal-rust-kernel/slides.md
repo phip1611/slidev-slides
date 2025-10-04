@@ -27,7 +27,7 @@ theme: default
 # For next slide (cover slide)
 class: text-center
 layout: cover
-transition: slide-left
+transition: undefined
 ---
 
 <style>
