@@ -15,11 +15,10 @@ colorSchema: light
 drawings:
   persist: false
 fonts:
-  provider: google
+  provider: none
   sans: Roboto
-  # This way, we can import the font from Google and use it later for the h tags
-  serif: Amatic SC
   mono: Roboto Mono
+  local: Amatic SC
 mdc: true
 selectable: true
 theme: default
@@ -29,17 +28,6 @@ class: text-center
 layout: cover
 transition: undefined
 ---
-
-<style>
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Amatic SC', sans-serif;
-  font-weight: 900;
-}
-
-a,a:active,a:visited {
-  color: #d61515;
-}
-</style>
 
 <h1 style="font-size: 5rem !important">A Minimal <span v-mark="{at: 5, type: 'circle', color: '#d61515'}">Rust</span> <span v-mark="{at: 4, type: 'circle', color: '#d61515'}">Kernel</span></h1>
 
