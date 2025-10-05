@@ -408,13 +408,13 @@ layout: "two-cols-header"
 <br>
 <br>
 
-<a href="http://github.com/phip1611/eurorust-2025-talk">github.com/phip1611/eurorust-2025-talk</a>
+<a href="http://github.com/phip1611/eurorust-2025-code">github.com/phip1611/eurorust-2025-talk</a>
 
 ::right::
 
 <div style="position:absolute; right: 5ch">
   <QrCode
-  value="http://github.com/phip1611/eurorust-2025-talk" size="300"></QrCode>
+  value="http://github.com/phip1611/eurorust-2025-code" size="300"></QrCode>
 </div>
 
 <SlideIndicator />
@@ -661,8 +661,8 @@ layout: "two-cols-header"
 <h3 class="mb-2 font-bold">
   Code and Slides
 </h3>
-<QrCode value="https://github.com/phip1611/eurorust-2025-talk" size="180"></QrCode>
+<QrCode value="https://github.com/phip1611/eurorust-2025-code" size="180"></QrCode>
 <br>
-GitHub: phip1611/eurorust-2025-talk
+GitHub: phip1611/eurorust-2025-code
 
 <SlideIndicator />
