@@ -120,6 +120,7 @@ title: "$ whoami"
 
 <SlideIndicator />
 
+
 ---
 layout: "two-cols-header"
 title: "$ whoami: Rust Experience"
@@ -129,7 +130,7 @@ title: "$ whoami: Rust Experience"
 
 ::left::
 
-<h3 class="my-2 font-bold">
+<h3 v-click class="my-2 font-bold">
   Hobby Projects
 </h3>
 
@@ -159,6 +160,7 @@ title: "$ whoami: Rust Experience"
 </v-clicks>
 
 <SlideIndicator />
+
 
 ---
 title: "Agenda"
@@ -191,10 +193,9 @@ layout: "default"
 
 <v-clicks>
 
-- One possible way to write a minimal kernel
-- Essential knowledge (as good as can do that in 30 minutes ...)
-- Minimal setup but sufficient to be a valid playground
-- Give you the chance to run the playground on your machine
+- One possible way to write a minimal kernel (for x86)
+- Essential knowledge (as good as one can do that in 30 minutes)
+- Minimal setup but sufficient for a playground
 
 </v-clicks>
 
@@ -235,12 +236,12 @@ YAY 🥳
 - Build basic kernel binary
 - "Hello World" in VM
 - `log::info!("works {}", "too")`
-- `let arch = Arch::X86;`
 - Print discovered PCI devices
 
 </v-clicks>
 
 <SlideIndicator />
+
 
 ---
 title: "2. Background"
@@ -251,8 +252,9 @@ layout: "default"
 
 <SlideIndicator />
 
+
 ---
-title: "2.1 Background: What is a kernel?"
+title: "2.1 What is a kernel?"
 layout: "default"
 ---
 
@@ -262,7 +264,7 @@ layout: "default"
   <div class="p-4">
     <img src="/images/what-is-kernel.webp"/>
   </div>
-  <div class="p-4">
+  <div class="p-4" text="center">
     <Arrow v-click="1" x1="280" y1="400" x2="280" y2="120" />
     <div bg="gray-200" p="4">
       <span v-click="5">Runtime Environment</span>
@@ -286,28 +288,30 @@ layout: "default"
 
 <SlideIndicator />
 
+
 ---
-title: "2.2 Background: Environment for Kernel"
+title: "2.2 Environment for Kernel"
 layout: "default"
 ---
 
 # {{ $frontmatter.title }}
 
-<v-clicks>
+<v-clicks depth="2">
 
 - Single-threaded
   - Code executes only on Bootstrap Processor (BSP)
   - Application Processors (AP) sleep \
     → "the other cores"
 - Some callable firmware functions
-- Memory map (from firmware) and well-known locations
+- More info in memory map and well-known locations
 </v-clicks>
 
 <SlideIndicator />
 
+
 ---
 layout: "two-cols-header"
-title: "2.3 Background: Accessing Hardware"
+title: "2.3 Accessing Hardware"
 ---
 
 # {{ $frontmatter.title }}
@@ -351,9 +355,10 @@ title: "2.3 Background: Accessing Hardware"
 
 <SlideIndicator />
 
+
 ---
 layout: "default"
-title: "2.4 Background: QEMU: Running kernel in a VM"
+title: "2.4 QEMU: Running kernel in a VM"
 ---
 
 # {{ $frontmatter.title }}
@@ -361,7 +366,8 @@ title: "2.4 Background: QEMU: Running kernel in a VM"
 <v-clicks>
 
 - QEMU will run our kernel in a VM
-- Easy output
+- Provides virtual hardware, similar to real hardware
+- Easy to capture output
 - Easy debugging
 - Our kernel is too basic for real hardware
 
@@ -369,9 +375,10 @@ title: "2.4 Background: QEMU: Running kernel in a VM"
 
 <SlideIndicator />
 
+
 ---
 layout: "two-cols-header"
-title: "2.4 Background: QEMU + Debugcon Device"
+title: "2.4 QEMU + Debugcon Device"
 ---
 
 # {{ $frontmatter.title }}
@@ -411,6 +418,7 @@ qemu-system-i386 \
 - Device on I/O Port `0xe9`
 - Device model in QEMU reacts to writes
 - Technically used like a real device but only part of virtual QEMU hardware
+- 🤫 <span v-after class="text-gray">Device also exists in Cloud Hypervisor since I added device model</span>
 
 </v-clicks>
 
@@ -419,6 +427,35 @@ qemu-system-i386 \
 </div>
 
 <SlideIndicator />
+
+
+---
+layout: "default"
+title: "2.5 Writing to the Debugcon Device"
+---
+
+# {{ $frontmatter.title }}
+
+```asm {1-2|3-4|6-7|8-9|7,9,11,12,14,15|1}{lines: true}
+# Code that prints "hi\n" to the debugcon device
+start:
+  # Write QEMU debugcon port '0xe9' to register 'dx'
+  mov  $0xe9, %dx
+
+  # Write character 'h' to register 'al'
+  mov  $'h', %al
+  # Write value in register 'al' to port in register 'dx'
+  out  %al, %dx
+
+  mov  $'i', %al
+  out  %al, %dx
+
+  mov  $'\n', %al
+  out  %al,  %dx
+```
+
+<SlideIndicator />
+
 
 ---
 title: "3. Kernel Binary in Rust"
@@ -429,9 +466,8 @@ layout: "default"
 
 <v-clicks>
 
-- `#![no_std]` aka. "freestanding" binary
-- Binary aka. Executable
-- File format: Executable and Linkable Format (ELF)
+- `#![no_std]` aka. "freestanding" binary (executable)
+  - File format: Executable and Linkable Format (ELF)
 - Crate attributes: `#![no_std]` and `#![no_main]`
 - There is no `std`, just `core`
 - **For our example**: Custom compiler target for 32-bit x86 code ("i686")
@@ -440,6 +476,7 @@ layout: "default"
 
 <SlideIndicator />
 
+
 ---
 title: "3. Kernel: Limitations & Caveats"
 layout: "default"
@@ -447,15 +484,18 @@ layout: "default"
 
 # {{ $frontmatter.title }}
 
-- Having no `std` means <span v-mark="{type: 'underline', color: '#d61515'}">no</span>
+<v-clicks>
+
+- Having no `std` means <strong>no</strong>
   - `std::fs` & `File::new()`,
   - `std::net`,
   - `std::sync::Mutex`
 - There is no surrounding runtime, no Linux you can utilize
 - <span v-mark="{type: 'underline', color: '#d61515'}">Your kernel IS your runtime</span>
 
-<SlideIndicator />
+</v-clicks>
 
+<SlideIndicator />
 
 ---
 title: "3. Kernel: Limitations & Caveats (Example)"
@@ -480,12 +520,27 @@ layout: "default"
     </v-clicks>
   </div>
   <div class="p-4">
-    <img src="/images/what-is-kernel.webp"/>
+
+<v-click at="1">
+
+```mermaid
+graph TD
+    High["Stack @ High memory address"]
+    Frame1["Stack frame A"]
+    Frame2["Stack frames ..."]
+    Low["Stack end @ Low address (eventually 💥 Stack overflow)"]
+
+    High --> Frame1 --> Frame2 --> Low
+```
+
+</v-click>
+
   </div>
 </div>
 
 
 <SlideIndicator />
+
 
 ---
 title: "4. Code, Code, Code"
@@ -510,6 +565,7 @@ layout: "two-cols-header"
 
 <SlideIndicator />
 
+
 ---
 title: "5. Learnings"
 layout: default
@@ -527,8 +583,9 @@ layout: default
 
 <SlideIndicator />
 
+
 ---
-title: "5. Learnings: Connect core::fmt with Debugcon device"
+title: "5. Connect core::fmt with Debugcon device"
 layout: two-cols-header
 zoom: 0.9
 ---
@@ -569,7 +626,7 @@ impl Debugcon {
     }}
 }
 ```
-```rust {8-11,14|7,15}{lines:true}
+```rust {8|8-11,14|7,15}{lines:true}
 struct Debugcon;
 
 impl Debugcon {
@@ -602,7 +659,7 @@ impl core::fmt::Write for Debugcon {
     }
 }
 ```
-```rust {4-6}{lines:true}
+```rust {2|4,6|4-6}{lines:true}
 impl core::fmt::Write for Debugcon {
     fn write_str(&mut self, s: &str)
     -> fmt::Result {
@@ -618,8 +675,9 @@ impl core::fmt::Write for Debugcon {
 
 <SlideIndicator />
 
+
 ---
-title: "5. Learnings: Kernel binary / Freestanding binary"
+title: "5. Kernel binary / Freestanding binary"
 layout: "default"
 ---
 
@@ -636,7 +694,7 @@ layout: "default"
 
 </v-clicks>
 
-<div position="absolute" bottom="4ch" right="1ch">
+<div v-click="5" position="absolute" bottom="4ch" right="1ch">
   <img src="/images/rustacean-orig-noshadow.webp" alt="Ferris (Rust Mascotte)"
   style="width: 200px; max-width: 20vw; height: auto; transform: rotate(-20deg)"
   />
@@ -644,8 +702,41 @@ layout: "default"
 
 <SlideIndicator />
 
+
 ---
-title: "6. Best Practises"
+title: "6. Best Practises & Outlook"
+layout: "default"
+---
+
+# {{ $frontmatter.title }}
+
+<SlideIndicator />
+
+
+---
+title: "6. Cargo Workspaces"
+layout: "default"
+---
+
+# {{ $frontmatter.title }}
+
+<v-clicks depth="2">
+
+- You can have a single Cargo workspace
+- `default-members` should <span v-mark="{at: 2, type: 'underline', color: '#d61515'}">excludes all workspace</span> members which
+  - Build non-host binaries (OS-specific bootloader, kernel)
+  - Pull in Rust runtime items
+    - `#[global_allocator]`
+    - `#[panic_handler]`
+- This way `cargo test` works
+
+</v-clicks>
+
+<SlideIndicator />
+
+
+---
+title: "6. Cargo/rustc Compiler Flags & Special Configuration"
 layout: "two-cols-header"
 zoom: 0.9
 ---
@@ -666,8 +757,6 @@ zoom: 0.9
 </span>
 
 <v-click step="1">
-
-<SlideIndicator />
 
 ```toml {all|1|3,7,11|0}{lines: true}
 # file: .cargo/config.toml
@@ -720,25 +809,9 @@ cargo build --release \
 
 <SlideIndicator />
 
----
-title: "6. Best Practises"
-layout: "default"
----
-
-# {{ $frontmatter.title }}
-
-- You can have a single Cargo workspace
-- `default-members` should excludes all workspace members that
-  - Build non-host binaries (OS-specific bootloader, kernel)
-  - Pull in Rust runtime items
-    - `#[global_allocator]`
-    - `#[panic_handler]`
-- This way, `cargo test` works
-
-<SlideIndicator />
 
 ---
-title: "5. Outlook: Towards a \"Real\" Kernel"
+title: "6. Outlook: Towards a \"Real\" Kernel"
 layout: "default"
 ---
 
@@ -754,6 +827,7 @@ layout: "default"
 </div>
 
 <SlideIndicator />
+
 
 ---
 title: "Thanks for Your Attention"
@@ -787,6 +861,7 @@ layout: "two-cols-header"
 </h3>
 <QrCode value="https://github.com/phip1611/eurorust-2025-code" size="180"></QrCode>
 <br>
-GitHub: phip1611/eurorust-2025-code
+
+[GitHub: phip1611/eurorust-2025-code](https://github.com/phip1611/eurorust-2025-code)
 
 <SlideIndicator />
