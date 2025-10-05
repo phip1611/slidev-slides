@@ -89,6 +89,8 @@ title: "$ whoami"
 
 ::left::
 
+<v-clicks depth="2">
+
 - Philipp Schuster, Dresden 🇩🇪🇪🇺
 - Working at Cyberus Technology as Software Engineer
   - Virtualization, Linux/KVM, x86
@@ -96,6 +98,8 @@ title: "$ whoami"
 - Nix and NixOS enthusiast
 - Enjoy conferences and meetups
 - Organizer of Dresden Systems Meetup
+
+</v-clicks>
 
 ::right::
 
@@ -118,7 +122,7 @@ title: "$ whoami"
 
 ---
 layout: "two-cols-header"
-title: "$ whoami"
+title: "$ whoami: Rust Experience"
 ---
 
 # {{ $frontmatter.title }}
@@ -129,16 +133,17 @@ title: "$ whoami"
   Hobby Projects
 </h3>
 
-<v-click>
+<v-clicks depth="1">
 
-- [github.com/rust-osdev](https://github.com/rust-osdev) \
-  → `uefi`, `multiboot2`
+- [github.com/rust-osdev](https://github.com/rust-osdev)
+  - `multiboot2`
+  - `uefi`
 - Author of various smaller crates
   - `tar-no-std`
   - `ttfb`
   - `spectrum-analyzer`
 
-</v-click>
+</v-clicks>
 
 ::right::
 
@@ -146,14 +151,12 @@ title: "$ whoami"
   Work Projects
 </h3>
 
-<v-click>
+<v-clicks>
 
 - Cloud Hypervisor
 - `rust-vmm` ecosystem
-- Linux/KVM
-- NixOS/`nixpkgs`
 
-</v-click>
+</v-clicks>
 
 <SlideIndicator />
 
@@ -163,21 +166,38 @@ title: "Agenda"
 
 # {{ $frontmatter.title }}
 
+<v-clicks>
+
 <ol start=0>
   <li><pre>$ whoami</pre></li>
   <li>What (Not) To Expect</li>
-  <li>Background
-    <ol>
-      <li>What is a kernel?</li>
-      <li>Early boot environment</li>
-      <li>Accessing (virtual) hardware</li>
-      <li>QEMU + Debugcon Device</li>
-    </ol>
-  </li>
-  <li>A <pre style="display: inline">#![no_std]</pre> Rust binary</li>
+  <li>Background</li>
+  <li>Kernel Binary in Rust</li>
   <li>Code, Demos, Examples</li>
   <li>Findings</li>
+  <li>Best Practises & Outlook</li>
 </ol>
+
+</v-clicks>
+
+<SlideIndicator />
+
+---
+title: "1. What (Not) To Expect"
+layout: "default"
+---
+
+# {{ $frontmatter.title }}
+
+<v-clicks>
+
+- One possible way to write a minimal kernel
+- Essential knowledge (as good as can do that in 30 minutes ...)
+- Minimal setup but sufficient to be a valid playground
+- Give you the chance to run the playground on your machine
+
+</v-clicks>
+
 
 <SlideIndicator />
 
@@ -194,13 +214,13 @@ layout: "two-cols-header"
   NAY 😞 (limited time)
 </h3>
 
-<v-click>
+<v-clicks>
 
 - Processes / Threads
 - File system, network
 - Not even remotely a functional kernel (e.g., UNIX-like)
 
-</v-click>
+</v-clicks>
 
 ::right::
 
@@ -208,17 +228,17 @@ layout: "two-cols-header"
 YAY 🥳
 </h3>
 
-<v-click>
+<v-clicks>
 
- - What it takes to get there
- - Productive setup &amp; best practices
- - Build basic kernel binary \
-   → "Hello World" in VM
- - `log::info!("works {}", "too")`
+- What it takes to get there
+- Productive setup &amp; best practices
+- Build basic kernel binary
+- "Hello World" in VM
+- `log::info!("works {}", "too")`
 - `let arch = Arch::X86;`
 - Print discovered PCI devices
 
-</v-click>
+</v-clicks>
 
 <SlideIndicator />
 
@@ -229,25 +249,38 @@ layout: "default"
 
 # {{ $frontmatter.title }}
 
+<SlideIndicator />
+
 ---
 title: "2.1 Background: What is a kernel?"
-layout: "image-left"
-image: /images/what-is-kernel.webp
-backgroundSize: 15em
+layout: "default"
 ---
 
 # {{ $frontmatter.title }}
 
-<span>
-<span v-click>Firmware (legacy BIOS* or UEFI)<br/></span>
-<span v-click="3">↓<br/>
-Bootloader<br/></span>
-<span v-click="4">↓<br/>
-Kernel<br/></span>
-<span v-click="5">↓<br/>
-Runtime Environment<br/></span>
-</span>
-<br/>
+<div grid="~ sm:cols-[1fr_2fr] cols-1 gap-4 min-h-screen">
+  <div class="p-4">
+    <img src="/images/what-is-kernel.webp"/>
+  </div>
+  <div class="p-4">
+    <Arrow v-click="1" x1="280" y1="400" x2="280" y2="120" />
+    <div bg="gray-200" p="4">
+      <span v-click="5">Runtime Environment</span>
+    </div>
+    <div bg="gray-300" p="4">
+      <span v-click="4"><span v-mark="{at: 6, type: 'circle', color: '#d61515'}">Kernel</span></span>
+    </div>
+    <div bg="gray-200" height="22px" p="4">
+      <span v-click="3">Bootloader</span>
+    </div>
+    <div bg="gray-300" p="4">
+      <span v-click="2">Firmware</span>
+    </div>
+    <div bg="gray-200" p="4">
+      <span v-click="1">Hardware</span>
+    </div>
+  </div>
+</div>
 
 <span  v-click="2">&ast; used in my demo</span>
 
@@ -260,11 +293,15 @@ layout: "default"
 
 # {{ $frontmatter.title }}
 
-- Some callable firmware function
+<v-clicks>
+
 - Single-threaded
   - Code executes only on Bootstrap Processor (BSP)
-  - Application Processors (AP) sleep
+  - Application Processors (AP) sleep \
+    → "the other cores"
+- Some callable firmware functions
 - Memory map (from firmware) and well-known locations
+</v-clicks>
 
 <SlideIndicator />
 
@@ -302,7 +339,7 @@ title: "2.3 Background: Accessing Hardware"
   Port I/O (PIO) <small>(Only on x86)</small>
 </h3>
 
-<v-click>
+<v-clicks>
 
 - X86 has a Port I/O address space
 - “Write byte A to Port B”
@@ -310,7 +347,25 @@ title: "2.3 Background: Accessing Hardware"
 - Well-known locations + lookup structures
 - `in/out` instructions
 
-</v-click>
+</v-clicks>
+
+<SlideIndicator />
+
+---
+layout: "default"
+title: "2.4 Background: QEMU: Running kernel in a VM"
+---
+
+# {{ $frontmatter.title }}
+
+<v-clicks>
+
+- QEMU will run our kernel in a VM
+- Easy output
+- Easy debugging
+- Our kernel is too basic for real hardware
+
+</v-clicks>
 
 <SlideIndicator />
 
@@ -345,54 +400,90 @@ qemu-system-i386 \
 
 ::right::
 
-<div v-click class="pl-1">
+<div class="pl-1">
 
-<h3 class="my-2 font-bold">
+<h3 v-click class="my-2 font-bold">
   Debugcon Device
 </h3>
 
+<v-clicks>
+
 - Device on I/O Port `0xe9`
-- Every byte written to it is printed to the specified location
+- Device model in QEMU reacts to writes
 - Technically used like a real device but only part of virtual QEMU hardware
+
+</v-clicks>
+
+<Arrow v-click="6" x1="413" y1="186" x2="245" y2="178" />
 
 </div>
 
 <SlideIndicator />
 
 ---
-title: "3. #![no_std] Kernel binary in rust (\"freestanding\")"
+title: "3. Kernel Binary in Rust"
 layout: "default"
 ---
 
 # {{ $frontmatter.title }}
 
-- Kernel: We need to build a "freestanding" binary/executable (ELF)
+<v-clicks>
+
+- `#![no_std]` aka. "freestanding" binary
+- Binary aka. Executable
+- File format: Executable and Linkable Format (ELF)
 - Crate attributes: `#![no_std]` and `#![no_main]`
-- There is no libstd impl, &ast;just libcore
+- There is no `std`, just `core`
 - **For our example**: Custom compiler target for 32-bit x86 code ("i686")
 
-
-&ast; cross-compiled
+</v-clicks>
 
 <SlideIndicator />
 
 ---
-title: "3. #![no_std] Kernel binary in rust (\"freestanding\")"
+title: "3. Kernel: Limitations & Caveats"
 layout: "default"
 ---
 
 # {{ $frontmatter.title }}
 
-- <span v-mark="{at: 1, type: 'underline', color: '#d61515'}">No</span> `std::fs`,
-  <span v-mark="{at: 2, type: 'underline', color: '#d61515'}">no</span> `File::new()`,
-  <span v-mark="{at: 3, type: 'underline', color: '#d61515'}">no</span> `std::net`,
-  <span v-mark="{at: 4, type: 'underline', color: '#d61515'}">no</span> `std::sync::Mutex`
+- Having no `std` means <span v-mark="{type: 'underline', color: '#d61515'}">no</span>
+  - `std::fs` & `File::new()`,
+  - `std::net`,
+  - `std::sync::Mutex`
 - There is no surrounding runtime, no Linux you can utilize
-- <span v-mark="{at: 5, type: 'underline', color: '#d61515'}">Your kernel IS your runtime</span>
-- Function calls require a stack, but we don’t have one
-- Our binary needs to start with a small assembly routine \
-  → Set-up stack \
-  → Jump to Rust code
+- <span v-mark="{type: 'underline', color: '#d61515'}">Your kernel IS your runtime</span>
+
+<SlideIndicator />
+
+
+---
+title: "3. Kernel: Limitations & Caveats (Example)"
+layout: "default"
+---
+
+# {{ $frontmatter.title }}
+
+
+<div grid="~ sm:cols-[2fr_1fr] cols-1 gap-4 min-h-screen">
+  <div class="p-4">
+      <v-clicks depth="2">
+        <ul>
+          <li>Function calls require a stack; needs setup</li>
+          <li>Our kernel needs a small assembly routine
+          <ul>
+            <li>Set-up stack</li>
+            <li>Jump to Rust code</li>
+          </ul>
+          </li>
+        </ul>
+    </v-clicks>
+  </div>
+  <div class="p-4">
+    <img src="/images/what-is-kernel.webp"/>
+  </div>
+</div>
+
 
 <SlideIndicator />
 
@@ -448,7 +539,7 @@ zoom: 0.9
 
 <div class="pr-1">
 ````md magic-move
-```rust {all|1|5}{lines:true}
+```rust {0|1|5}{lines:true}
 struct Debugcon;
 
 impl Debugcon {
@@ -464,6 +555,18 @@ impl Debugcon {
     const IO_PORT: u16 = 0xe9;
 
     fn write_byte(byte: u8) {}
+}
+```
+```rust {8}{lines:true}
+struct Debugcon;
+
+impl Debugcon {
+    /// I/O port of QEMUs debugcon device
+    const IO_PORT: u16 = 0xe9;
+
+    fn write_byte(byte: u8) { unsafe {
+        core::arch::asm!()
+    }}
 }
 ```
 ```rust {8-11,14|7,15}{lines:true}
@@ -489,9 +592,9 @@ impl Debugcon {
 
 ::right::
 
-<div v-click="6" class="pl-1">
+<div v-click="7" class="pl-1">
 ````md magic-move
-```rust {all|all|1,9|2,5}{lines:true}
+```rust {0|1,9|2,5}{lines:true}
 impl core::fmt::Write for Debugcon {
     fn write_str(&mut self, s: &str)
     -> fmt::Result {
@@ -522,12 +625,16 @@ layout: "default"
 
 # {{ $frontmatter.title }}
 
-- `#![no_std]` for binary + all dependencies
+<v-clicks>
+
+- `#![no_std]` for binary & all dependencies
 - Stack required to call Rust functions
 - Initially single-threaded
 - To just get started: 32-bit kernel playground is sufficient \
   → See my demo!
-- **Rust makes things much easier than C! `libcore` just works!**
+- **Rust makes things much easier than C! `core` just works!**
+
+</v-clicks>
 
 <div position="absolute" bottom="4ch" right="1ch">
   <img src="/images/rustacean-orig-noshadow.webp" alt="Ferris (Rust Mascotte)"
@@ -538,7 +645,7 @@ layout: "default"
 <SlideIndicator />
 
 ---
-title: "5. Best Practises & My Experience"
+title: "6. Best Practises"
 layout: "two-cols-header"
 zoom: 0.9
 ---
@@ -610,6 +717,23 @@ cargo build --release \
 
 </span>
 </div>
+
+<SlideIndicator />
+
+---
+title: "6. Best Practises"
+layout: "default"
+---
+
+# {{ $frontmatter.title }}
+
+- You can have a single Cargo workspace
+- `default-members` should excludes all workspace members that
+  - Build non-host binaries (OS-specific bootloader, kernel)
+  - Pull in Rust runtime items
+    - `#[global_allocator]`
+    - `#[panic_handler]`
+- This way, `cargo test` works
 
 <SlideIndicator />
 
