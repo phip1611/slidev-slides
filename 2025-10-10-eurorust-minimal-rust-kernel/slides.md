@@ -181,7 +181,7 @@ layout: "default"
 
 <v-clicks>
 
-- One possible way to write a minimal kernel (for x86)
+- One possible way to write a minimal kernel (for 32-bit x86)
 - Essential knowledge (as good as one can do that in 30 minutes)
 - Minimal setup but sufficient for a playground
 
@@ -479,7 +479,7 @@ layout: "default"
   - `std::net`,
   - `std::sync::Mutex`
 - There is no surrounding runtime, no Linux you can utilize
-- <span v-mark="{type: 'underline', color: '#d61515'}">Your kernel IS your runtime</span>
+- Your kernel <strong>is</strong> your runtime
 
 </v-clicks>
 
@@ -513,10 +513,10 @@ layout: "default"
 
 ```mermaid
 graph TD
-    High["Stack @ High memory address"]
+    High["High memory address"]
     Frame1["Stack frame A"]
     Frame2["Stack frames ..."]
-    Low["Stack end @ Low address (eventually 💥 Stack overflow)"]
+    Low["Low memory address (eventually 💥 Stack overflow)"]
 
     High --> Frame1 --> Frame2 --> Low
 ```
@@ -528,7 +528,6 @@ graph TD
 
 
 <SlideIndicator />
-
 
 ---
 title: "4. Code, Code, Code"
@@ -746,7 +745,7 @@ zoom: 0.9
 
 <v-click step="1">
 
-```toml {all|1|3,7,11|0}{lines: true}
+```toml {0|1|3,7,11|0}{lines: true}
 # file: .cargo/config.toml
 [unstable]
 build-std = [
@@ -797,7 +796,6 @@ cargo build --release \
 
 <SlideIndicator />
 
-
 ---
 title: "6. Outlook: Towards a \"Real\" Kernel"
 layout: "default"
@@ -807,7 +805,7 @@ layout: "default"
 
 - kernel in 64-bit "long mode"
 - virtual memory: load kernel to `0xffff_ffff_8820_0000`
-- Boot Application Processors, bring them into 64-bit “long-mode”
+- Wake up other cores
 - Check out my project **PhipsOS**, also on my GitHub:
 
 <div flex justify-end mr-5>
@@ -815,7 +813,6 @@ layout: "default"
 </div>
 
 <SlideIndicator />
-
 
 ---
 title: "Thanks for Your Attention"
