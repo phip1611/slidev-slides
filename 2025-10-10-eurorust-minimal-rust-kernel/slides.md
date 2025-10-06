@@ -447,6 +447,23 @@ start:
 <SlideIndicator />
 
 ---
+title: "2. Summary"
+layout: "default"
+---
+
+# {{ $frontmatter.title }}
+
+<v-clicks>
+
+- QEMU runs kernel in a virtual machine
+- Kernel writes bytes (ASCII) to debugcon device
+  - I/O port `0xe9`
+
+</v-clicks>
+
+<SlideIndicator />
+
+---
 title: "3. Kernel Binary in Rust"
 layout: "default"
 ---
@@ -465,7 +482,6 @@ layout: "default"
 
 <SlideIndicator />
 
-
 ---
 title: "3. Kernel: Limitations & Caveats"
 layout: "default"
@@ -480,14 +496,16 @@ layout: "default"
   - `std::net`,
   - `std::sync::Mutex`
 - There is no surrounding runtime, no Linux you can utilize
+- `std` is supposed to run in userspace utilizing a kernel + runtime
 - Your kernel <strong>is</strong> your runtime
 
 </v-clicks>
 
 <SlideIndicator />
 
+
 ---
-title: "3. Kernel: Limitations & Caveats (Example)"
+title: "3. Kernel: Limitations & Caveats (Our Example)"
 layout: "default"
 ---
 
@@ -502,9 +520,25 @@ layout: "default"
 
 </v-clicks>
 
+<SlideIndicator />
 
+---
+title: "3. Summary"
+layout: "default"
+---
+
+# {{ $frontmatter.title }}
+
+<v-clicks>
+
+- No `std`, just `core`
+- Custom compiler target: 32-bit x86 code
+- Kernel starts with assembly, then jumps to Rust code
+
+</v-clicks>
 
 <SlideIndicator />
+
 
 ---
 title: "4. Code, Code, Code"
@@ -668,6 +702,25 @@ layout: "default"
 
 
 ---
+title: "5. Summary"
+layout: "default"
+---
+
+# {{ $frontmatter.title }}
+
+<v-clicks depth="2">
+
+- Single-threader kernel, just `core`, 32-bit x86 code
+- Abstraction for the debugcon device
+  - Glued together with `core::fmt`
+- Once stack is set up, we can call any Rust function
+
+</v-clicks>
+
+<SlideIndicator />
+
+
+---
 title: "6. Best Practises & Outlook"
 layout: "default"
 ---
@@ -688,10 +741,10 @@ layout: "default"
 
 - You can have a single Cargo workspace
 - `default-members` should <span v-mark="{at: 2, type: 'underline', color: '#d61515'}">excludes all workspace</span> members which
-  - Build non-host binaries (OS-specific bootloader, kernel)
   - Pull in Rust runtime items
     - `#[global_allocator]`
     - `#[panic_handler]`
+  - Build non-host binaries (OS-specific bootloader, kernel)
 - This way `cargo test` works
 
 </v-clicks>
@@ -794,6 +847,23 @@ layout: "default"
 </div>
 
 <SlideIndicator />
+
+
+---
+title: "6. Summary"
+layout: "default"
+---
+
+# {{ $frontmatter.title }}
+
+<v-clicks depth="2">
+
+- Care is needed to enable `cargo test` in a workspace
+
+</v-clicks>
+
+<SlideIndicator />
+
 
 ---
 title: "Thanks for Your Attention"
