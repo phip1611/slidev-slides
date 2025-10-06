@@ -184,6 +184,7 @@ layout: "default"
 - One possible way to write a minimal kernel (for 32-bit x86)
 - Essential knowledge (as good as one can do that in 30 minutes)
 - Minimal setup but sufficient for a playground
+- Best practices for your own project
 
 </v-clicks>
 
@@ -288,8 +289,7 @@ layout: "default"
 
 - Single-threaded
   - Code executes only on Bootstrap Processor (BSP)
-  - Application Processors (AP) sleep \
-    → "the other cores"
+  - Other cores are asleep ("Application Processors" (AP))
 - Some callable firmware functions
 - More info in memory map and well-known locations
 </v-clicks>
@@ -442,8 +442,9 @@ start:
   out  %al,  %dx
 ```
 
-<SlideIndicator />
+<small>You are seeing GNU Assembler Syntax (GAS) with the AT&T Syntax Flavor.</small>
 
+<SlideIndicator />
 
 ---
 title: "3. Kernel Binary in Rust"
@@ -472,7 +473,7 @@ layout: "default"
 
 # {{ $frontmatter.title }}
 
-<v-clicks>
+<v-clicks depth="2">
 
 - Having no `std` means <strong>no</strong>
   - `std::fs` & `File::new()`,
@@ -492,39 +493,15 @@ layout: "default"
 
 # {{ $frontmatter.title }}
 
+<v-clicks depth="2">
 
-<div grid="~ sm:cols-[2fr_1fr] cols-1 gap-4 min-h-screen">
-  <div class="p-4">
-      <v-clicks depth="2">
-        <ul>
-          <li>Function calls require a stack; needs setup</li>
-          <li>Our kernel needs a small assembly routine
-          <ul>
-            <li>Set-up stack</li>
-            <li>Jump to Rust code</li>
-          </ul>
-          </li>
-        </ul>
-    </v-clicks>
-  </div>
-  <div class="p-4">
+- Function calls require a stack
+- Our kernel needs a small assembly routine
+  - Set-up stack
+  - Jump to Rust code
 
-<v-click at="1">
+</v-clicks>
 
-```mermaid
-graph TD
-    High["High memory address"]
-    Frame1["Stack frame A"]
-    Frame2["Stack frames ..."]
-    Low["Low memory address (eventually 💥 Stack overflow)"]
-
-    High --> Frame1 --> Frame2 --> Low
-```
-
-</v-click>
-
-  </div>
-</div>
 
 
 <SlideIndicator />
