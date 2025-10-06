@@ -780,12 +780,16 @@ layout: "default"
 
 # {{ $frontmatter.title }}
 
+<v-clicks>
+
 - kernel in 64-bit "long mode"
 - virtual memory: load kernel to `0xffff_ffff_8820_0000`
 - Wake up other cores
 - Check out my project **PhipsOS**, also on my GitHub:
 
-<div flex justify-end mr-5>
+</v-clicks>
+
+<div v-click="4" flex justify-end mr-5>
   <QrCode size="180" value="https://github.com/phip1611/phips-os/tree/6efe6e5aee6dd7203a65a1b6e1fff78ed49e4ad8/ws"/>
 </div>
 
