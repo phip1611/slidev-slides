@@ -3,7 +3,7 @@
 # Meta
 author: Philipp Schuster <phip1611@gmail.com>
 info: |
-  context: My talk at EuroRust 2025 in Paris
+  My talk at EuroRust 2025 in Paris
 title: A Minimal Rust Kernel - Printing to QEMU with core::fmt
 
 # Generic Settings
