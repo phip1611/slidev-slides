@@ -64,10 +64,6 @@ transition: undefined
   <div v-else-if="$slidev.nav.clicks === 5">Cool new language + ecosystem</div>
 </div>
 
-<!--
-The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.html#notes)
--->
-
 ---
 layout: "two-cols-header"
 title: "$ whoami"
@@ -379,7 +375,7 @@ title: "2.4 QEMU + Debugcon Device"
   QEMU Command Line
 </h3>
 
-```bash {all|1|4|2}{lines:true}
+```bash {0|1|4|2}{lines:true}
 qemu-system-i386 \
     -debugcon stdio \
     -display none \
@@ -415,7 +411,6 @@ qemu-system-i386 \
 </div>
 
 <SlideIndicator />
-
 
 ---
 layout: "default"
@@ -492,17 +487,20 @@ layout: "default"
 <v-clicks depth="2">
 
 - Having no `std` means <strong>no</strong>
-  - `std::fs` & `File::new()`,
-  - `std::net`,
+  - `std::fs` & `File::new()`
+  - `std::net`
   - `std::sync::Mutex`
-- There is no surrounding runtime, no Linux you can utilize
-- `std` is supposed to run in userspace utilizing a kernel + runtime
+- There is no surrounding runtime
+  - No Linux you can utilize
 - Your kernel <strong>is</strong> your runtime
 
 </v-clicks>
 
 <SlideIndicator />
 
+<!--
+Say: `std` is supposed to run in userspace utilizing a kernel + runtime
+-->
 
 ---
 title: "3. Kernel: Limitations & Caveats (Our Example)"
@@ -710,15 +708,14 @@ layout: "default"
 
 <v-clicks depth="2">
 
-- Single-threader kernel, just `core`, 32-bit x86 code
-- Abstraction for the debugcon device
+- Single-threade kernel, just `core`, 32-bit x86 code
+- Abstraction for debugcon device
   - Glued together with `core::fmt`
 - Once stack is set up, we can call any Rust function
 
 </v-clicks>
 
 <SlideIndicator />
-
 
 ---
 title: "6. Best Practises & Outlook"
@@ -819,7 +816,7 @@ cargo build --release \
 
 <span v-click="9">
 
-→ Recommendation: Wrap in Makefile or justfile
+→ Recommendation: Wrap in Makefile/shell script
 
 </span>
 </div>
@@ -835,8 +832,8 @@ layout: "default"
 
 <v-clicks>
 
-- kernel in 64-bit "long mode"
-- virtual memory: load kernel to `0xffff_ffff_8820_0000`
+- Kernel in 64-bit "long mode"
+- Virtual memory: load kernel to `0xffff_ffff_8820_0000`
 - Wake up other cores
 - Check out my project **PhipsOS**, also on my GitHub:
 
@@ -848,7 +845,6 @@ layout: "default"
 
 <SlideIndicator />
 
-
 ---
 title: "6. Summary"
 layout: "default"
@@ -858,12 +854,11 @@ layout: "default"
 
 <v-clicks depth="2">
 
-- Care is needed to enable `cargo test` in a workspace
+- Enabling `cargo test` in a workspace requires attention
 
 </v-clicks>
 
 <SlideIndicator />
-
 
 ---
 title: "Thanks for Your Attention"
