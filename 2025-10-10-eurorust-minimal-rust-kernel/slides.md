@@ -50,7 +50,7 @@ transition: undefined
   :click-5="{ x: 0, y: 20 }"
   :leave="{ y: 0, x: 20 }">
   <img src="/images/rustacean-orig-noshadow.webp" alt="Ferris (Rust Mascotte)"
-  style="width: 200px; max-width: 20vw; height: auto; transform: rotate(-20deg)"
+  style="width: 200px; height: auto; transform: rotate(-20deg)"
   />
   </div>
 </div>
@@ -703,13 +703,12 @@ layout: "default"
   <div v-motion v-click="5"  :initial="{ x: 200, y: 200 }" :enter="{ x: -50, y: -20 }"
   :leave="{ y: 20, x: 20 }">
   <img src="/images/rustacean-orig-noshadow.webp" alt="Ferris (Rust Mascotte)"
-  style="width: 200px; max-width: 20vw; height: auto; transform: rotate(-20deg)"
+  style="width: 200px; height: auto; transform: rotate(-20deg)"
   />
 </div>
 </div>
 
 <SlideIndicator />
-
 
 ---
 title: "5. Summary"
