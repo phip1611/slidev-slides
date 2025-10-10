@@ -693,7 +693,7 @@ layout: "default"
 - `#![no_std]` for binary & all dependencies
 - Stack required to call Rust functions
 - Initially single-threaded
-- To just get started: 32-bit kernel playground is sufficient \
+- To just get started: 32-bit x86 kernel playground is sufficient* \
   → See my demo!
 - **Rust makes things much easier than C! `core` just works!**
 
@@ -706,6 +706,12 @@ layout: "default"
   style="width: 200px; height: auto; transform: rotate(-20deg)"
   />
 </div>
+</div>
+
+<div v-click="4" position="absolute" left="3ch" bottom="3ch" width="200px" text-sm>
+
+&ast; assuming you are on a x86 machine
+
 </div>
 
 <SlideIndicator />
@@ -865,7 +871,7 @@ layout: "default"
 
 <v-clicks depth="2">
 
-- Enabling `cargo test` in a workspace requires attention
+- Enabling `cargo test` for a workspace requires some extra care
 
 </v-clicks>
 
