@@ -700,9 +700,12 @@ layout: "default"
 </v-clicks>
 
 <div v-click="5" position="absolute" bottom="4ch" right="1ch">
+  <div v-motion v-click="5"  :initial="{ x: 200, y: 200 }" :enter="{ x: -50, y: -20 }"
+  :leave="{ y: 20, x: 20 }">
   <img src="/images/rustacean-orig-noshadow.webp" alt="Ferris (Rust Mascotte)"
   style="width: 200px; max-width: 20vw; height: auto; transform: rotate(-20deg)"
   />
+</div>
 </div>
 
 <SlideIndicator />
@@ -717,7 +720,7 @@ layout: "default"
 
 <v-clicks depth="2">
 
-- Single-threade kernel, just `core`, 32-bit x86 code
+- Single-threaded kernel, just `core`, 32-bit x86 code
 - Abstraction for debugcon device
   - Glued together with `core::fmt` via `Write` trait
 - Once stack is set up, we can call Rust functions
