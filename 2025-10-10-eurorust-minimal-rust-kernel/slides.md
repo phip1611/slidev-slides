@@ -136,9 +136,11 @@ title: "$ whoami: Rust Experience"
   Work Projects
 </h3>
 
-<v-clicks>
+<v-clicks depth="2">
 
 - Cloud Hypervisor
+  - Virtual Machine Monitor (VMM) written in Rust
+  - Utilizes Linux/KVM for virtualization
 - `rust-vmm` ecosystem
 
 </v-clicks>
@@ -531,7 +533,7 @@ layout: "default"
 
 - No `std`, just `core`
 - Custom compiler target: 32-bit x86 code
-- Kernel starts with assembly, then jumps to Rust code
+- Kernel starts with code written in assembly, then jumps to Rust code
 
 </v-clicks>
 
@@ -551,6 +553,13 @@ layout: "two-cols-header"
 <br>
 
 <a href="http://github.com/phip1611/eurorust-2025-code">github.com/phip1611/eurorust-2025-talk</a>
+
+
+<div position="absolute" left="3ch" bottom="3ch" width="200px" text-sm>
+
+  [Backup Recording](https://youtu.be/yi1OgM6nYOE)
+
+</div>
 
 ::right::
 
@@ -710,8 +719,8 @@ layout: "default"
 
 - Single-threade kernel, just `core`, 32-bit x86 code
 - Abstraction for debugcon device
-  - Glued together with `core::fmt`
-- Once stack is set up, we can call any Rust function
+  - Glued together with `core::fmt` via `Write` trait
+- Once stack is set up, we can call Rust functions
 
 </v-clicks>
 
