@@ -144,8 +144,6 @@ doubled.value = 2
 
 <arrow v-click="[4, 5]" x1="350" y1="310" x2="195" y2="342" color="#953" width="2" arrowSize="1" />
 
-<!-- This allow you to embed external code blocks -->
-<<< @/snippets/external.ts#snippet
 
 <!-- Footer -->
 
@@ -582,11 +580,6 @@ Double-click on the draggable elements to edit their positions.
 ```
 
 <v-drag-arrow pos="67,452,253,46" two-way op70 />
-
----
-src: ./pages/imported-slides.md
-hide: false
----
 
 ---
 
