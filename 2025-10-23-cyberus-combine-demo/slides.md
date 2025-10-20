@@ -28,7 +28,9 @@ transition: slide-up
 
 A cool new way to generate slides.
 
-## Cyberus Combine, 2025-10-23
+## Cyberus Combine, 2025-10-23<br>A brief 60-Minute Introduction 😉
+
+<!-- ^insider joke -->
 
 <div @click="$slidev.nav.next" class="mt-12 py-1" hover:bg="white op-10">
   Press Space for next page <carbon:arrow-right />
