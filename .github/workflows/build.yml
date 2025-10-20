@@ -11,10 +11,13 @@ jobs:
       - uses: cachix/install-nix-action@v31
       - run: nix flake check -L
       - run: nix flake show -L
+      # We first build the combined version to parallelize the build of all.
+      # Next, we check for the individual attributes.
+      - run: nix build -L .#combined
       - run: nix build -L .#talk-eurorust-2025
       - run: nix build -L .#talk-cyberus-combine-2025-10
-      - run: nix build -L .#combined
-      - run: nix build -L .#default
+      - run: nix build -L .#talk-jug-saxony-loader-uefi-rs-2025-11
+      - run: nix build -L .#default # same as combined
       - name: Create ZIP
         run: |
           export ZIP="$PWD/slidev-slides.zip"
