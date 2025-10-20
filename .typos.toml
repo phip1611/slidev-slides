@@ -1,0 +1,17 @@
+# Configuration for typos: <https://github.com/crate-ci/typos>)
+
+[files]
+extend-exclude = [
+  # Generated sources
+]
+
+[default]
+extend-ignore-identifiers-re = [
+  "PNG"
+]
+
+[default.extend-words]
+
+
+[default.extend-identifiers]
+
