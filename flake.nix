@@ -28,6 +28,14 @@
             title = "A Minimal Rust Kernel - Printing to QEMU with core::fmt";
           };
         }
+        {
+          src = ./2025-10-23-cyberus-combine-demo;
+          depHash = "sha256-gYRqj036MSUw+Uag9+fwXwW64gcy9gw51BCW/gxNHjI=";
+          meta = {
+            slug = "cyberus-combine-2025-10";
+            title = "Slidev demo for Cyberus Combine";
+          };
+        }
       ];
 
       # Builds a single slidev project.

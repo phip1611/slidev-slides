@@ -12,6 +12,7 @@ jobs:
       - run: nix flake check -L
       - run: nix flake show -L
       - run: nix build -L .#talk-eurorust-2025
+      - run: nix build -L .#talk-cyberus-combine-2025-10
       - run: nix build -L .#combined
       - run: nix build -L .#default
       - name: Create ZIP
