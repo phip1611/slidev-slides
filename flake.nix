@@ -29,7 +29,7 @@
           };
         }
         {
-          src = ./2025-10-23-cyberus-combine-demo;
+          src = ./2025-10-cyberus-combine-demo;
           depHash = "sha256-gYRqj036MSUw+Uag9+fwXwW64gcy9gw51BCW/gxNHjI=";
           meta = {
             slug = "cyberus-combine-2025-10";

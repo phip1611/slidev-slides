@@ -3,8 +3,8 @@
 # Meta
 author: Philipp Schuster <phip1611@gmail.com>
 info: |
-  Slidev demo for Cyberus Combine.
-title: Welcome to Slidev
+  Slidev demo for Cyberus Combine Q4/25.
+title: Slidev demo for Cyberus Combine Q4/25
 
 # Generic Settings
 addons:
@@ -28,7 +28,7 @@ transition: slide-up
 
 A cool new way to generate slides.
 
-## Cyberus Combine, 2025-10-23<br>A brief 60-Minute Introduction 😉
+## Cyberus Combine, 2025-10-29<br>A brief 60-Minute Introduction 😉
 
 <!-- ^insider joke -->
 
