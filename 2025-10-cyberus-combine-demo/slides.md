@@ -141,7 +141,7 @@ title: What is Slidev? Awesome tooling!
 <v-clicks depth="2">
 
 - Combines modern state-of-the-art web tooling to create slides
-  - UnoCSS, Vite, NodeJS, Vue
+  - UnoCSS, Vite, NodeJS, Vue, Markdown with MDC
 - Suited for simple presentations ... but also
 - Much more powerful than PowerPoint (interactive, live 3D rendering on GPU, ...)
   - [Showcase 1](https://kareimgazer.github.io/py-intro/)
@@ -196,13 +196,13 @@ title: To get Started (From Scratch)
   - Layouts, Components, Themes, Configuration
 - Read UnoCSS documentation
 - Basic Markdown skills
-- Vue web components using
+- Vue for web components
 
 </v-clicks>
 
 
 ---
-title: To get Started (With Future Cyberus Template)
+title: To get Started
 ---
 
 # {{ $frontmatter.title }}
@@ -210,8 +210,9 @@ title: To get Started (With Future Cyberus Template)
 <v-clicks depth="2">
 
 - Assuming Luke and I create a template in a Hackathon<br>(or whoever is familiar with Vue, UnoCSS, etc.)
-- Documentation will be inside there and most things should be achievable
-  using just Markdown while still looking fantastic
+- Documentation will be inside template
+- Most things should be achievable using just Markdown
+- Looking fantastic
 
 </v-clicks>
 
@@ -226,7 +227,7 @@ layout: two-cols-header
 
 <QrCode size="180" value="https://cyberus-combine-2025-10.slides.phip1611.dev"/>
 
-<https://cyberus-combine-2025-10.slides.phip1611.de>
+<https://cyberus-combine-2025-10.slides.phip1611.dev>
 
 ::right::
 
