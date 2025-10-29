@@ -55,6 +55,9 @@ layout: quote
 
 In case you are new to Cyberus, this was an inside joke
 
+<SlideIndicator/>
+
+
 ---
 title: Why am I showing you Slidev?
 ---
@@ -118,6 +121,9 @@ impl Debugcon {
 
 </v-click>
 
+<SlideIndicator/>
+
+
 ---
 title: What is Slidev? Awesome tooling!
 ---
@@ -147,6 +153,9 @@ Learn more: https://sli.dev/features/slide-scope-style
 Here is another comment.
 -->
 
+<SlideIndicator/>
+
+
 ---
 title: What is Slidev? Awesome tooling!
 ---
@@ -163,6 +172,9 @@ title: What is Slidev? Awesome tooling!
   - [Showcase 2](https://talk-2025-09-23-prag-vue.vercel.app/)
 
 </v-clicks>
+
+<SlideIndicator/>
+
 
 ---
 title: Why Should We Care?
@@ -183,6 +195,9 @@ title: Why Should We Care?
 
 </v-clicks>
 
+<SlideIndicator/>
+
+
 ---
 title: Who Can/Could Use Slidev?
 ---
@@ -197,6 +212,8 @@ Being able to create nice slides:
 | Light/Medium Web Dev Experience                     | 🤔                  | 😊                    |
 | Advanced Web Dev Experience                         | 😊                  | 🥳                    |
 
+<SlideIndicator/>
+
 
 ---
 title: To get Started (From Scratch)
@@ -207,13 +224,15 @@ title: To get Started (From Scratch)
 <v-clicks depth="2">
 
 - Basic HTML & CSS Knowledge
-- Read Slidev documentation
+- Read [sli.dev](https://sli.dev/) documentation
   - Layouts, Components, Themes, Configuration
 - Read UnoCSS documentation
 - Basic Markdown skills
 - Vue for web components
 
 </v-clicks>
+
+<SlideIndicator/>
 
 
 ---
@@ -231,8 +250,11 @@ title: To get Started
 
 </v-clicks>
 
+<SlideIndicator/>
+
+
 ---
-title: Try it Out / Look at the Slides
+title: Try it Out / Check out Showcases
 layout: two-cols-header
 ---
 
