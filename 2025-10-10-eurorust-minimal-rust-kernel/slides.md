@@ -565,7 +565,7 @@ layout: "two-cols-header"
 
 <div style="position:absolute; right: 5ch">
   <QrCode
-  value="http://github.com/phip1611/eurorust-2025-code" size="300"></QrCode>
+  value="http://github.com/phip1611/eurorust-2025-code" :size="300"></QrCode>
 </div>
 
 <SlideIndicator />
@@ -857,7 +857,7 @@ layout: "default"
 </v-clicks>
 
 <div v-click="4" flex justify-end mr-5>
-  <QrCode size="180" value="https://github.com/phip1611/phips-os/tree/6efe6e5aee6dd7203a65a1b6e1fff78ed49e4ad8/ws"/>
+  <QrCode :size="180" value="https://github.com/phip1611/phips-os/tree/6efe6e5aee6dd7203a65a1b6e1fff78ed49e4ad8/ws"/>
 </div>
 
 <SlideIndicator />
@@ -907,7 +907,7 @@ layout: "two-cols-header"
 <h3 class="mb-2 font-bold">
   Code and Slides
 </h3>
-<QrCode value="https://github.com/phip1611/eurorust-2025-code" size="180"></QrCode>
+<QrCode value="https://github.com/phip1611/eurorust-2025-code" :size="180"></QrCode>
 <br>
 
 [GitHub: phip1611/eurorust-2025-code](https://github.com/phip1611/eurorust-2025-code)
