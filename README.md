@@ -6,8 +6,9 @@ Common repository for my slides/presentations/talks using
 ## Open (Live Dev Server) or Build (HTML Deployment)
 
 - `$ cd <talk>`
-- `$ npm run dev` to serve slides locally
-- `$ npm run build` to build a static HTML deployment
+- Optional/once: `$ pnpm install`
+- `$ pnpm run dev` to serve slides locally
+- `$ pnpm run build` to build a static HTML deployment
 
 ### Nix: Static HTML Build
 
