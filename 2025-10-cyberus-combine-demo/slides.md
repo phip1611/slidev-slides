@@ -28,7 +28,7 @@ transition: slide-up
 
 A cool new way to generate slides.
 
-## Cyberus Combine, 2025-10-29<br>A brief 60-Minute Introduction 😉
+<h2>Cyberus Combine, 2025-10-29<br><span v-click>A brief 60-Minute Introduction</span><br><span v-click>Squeezed into the next 5 minutes</span> <span v-click>😉</span></h2>
 
 <!-- ^insider joke -->
 
@@ -49,7 +49,7 @@ title: Why am I showing you this?
 <v-clicks>
 
 - Let's assume I want to show some code in a talk
-- Ignore the specifics, just pretend this is <span v-mark.underline="3">groundbreaking</span> <span v-mark.circle="4">new stuff</span>:
+- Ignore the specifics, just pretend this is <span v-mark.underline="3">groundbreaking</span> new stuff:
 
 </v-clicks>
 
@@ -145,7 +145,7 @@ title: What is Slidev? Awesome tooling!
 - Suited for simple presentations ... but also
 - Much more powerful than PowerPoint (interactive, live 3D rendering on GPU, ...)
   - [Showcase 1](https://kareimgazer.github.io/py-intro/)
-  - [Showcase 2](https://talk-2025-09-23-prag-vue.vercel.app/4?clicks=4)
+  - [Showcase 2](https://talk-2025-09-23-prag-vue.vercel.app/)
 
 </v-clicks>
 
