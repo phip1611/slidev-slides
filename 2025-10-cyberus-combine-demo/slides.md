@@ -28,9 +28,9 @@ transition: slide-up
 
 A cool new way to generate slides.
 
-<h2>Cyberus Combine, 2025-10-29<br><span v-click>A brief 60-Minute Introduction</span><br><span v-click>Squeezed into the next 5 minutes</span> <span v-click>😉</span></h2>
+<h2>Cyberus Combine, 2025-10-29<br><span v-click>A brief 60-Minute Introduction</span><br><span v-click>Squeezed into the next 5 minutes</span></h2>
 
-<!-- ^insider joke -->
+<!-- ^inside joke -->
 
 <div @click="$slidev.nav.next" class="mt-12 py-1" hover:bg="white op-10">
   Press Space for next page <carbon:arrow-right />
@@ -41,7 +41,22 @@ The last comment block of each slide will be treated as slide notes. It will be 
 -->
 
 ---
-title: Why am I showing you this?
+layout: image
+image: /images/fasten-seatbelt.png
+backgroundSize: contain
+---
+
+---
+title: Disclaimer
+layout: quote
+---
+
+# {{ $frontmatter.title }}
+
+In case you are new to Cyberus, this was an inside joke
+
+---
+title: Why am I showing you Slidev?
 ---
 
 # {{ $frontmatter.title }}
@@ -150,7 +165,7 @@ title: What is Slidev? Awesome tooling!
 </v-clicks>
 
 ---
-title: Why should We Care?
+title: Why Should We Care?
 ---
 
 # {{ $frontmatter.title }}
