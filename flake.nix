@@ -65,6 +65,8 @@
             pnpm
           ];
           shellHook = ''
+            export NPM_CONFIG_STORE_DIR="$PWD/.pnpm-store"
+
             echo "You may:"
             echo "- run \`$ nix run .#runInstallAllScript\` to install pnpm dependencies in all projects"
             echo "- run \`$ pnpm run dev\` in an *individual project* to get started (pnpm, not npm!)"
