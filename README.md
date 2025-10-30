@@ -24,7 +24,7 @@ run the `slidev` utility. Without that, you **will not** be able to use all the
 magic including live reload of the spawned dev server, the on-page editor, etc.
 
 _Hint: `npm` would also work as replacement for `pnpm`, but in this project I
-decided to use `pnpm`. `deno` might also work as `nodejs` replacement.).
+decided to use `pnpm`. `deno` might also work as `nodejs` replacement.)._
 
 The Nix build provided by this project's Flake is only suited for static
 deployments, not for local development!
