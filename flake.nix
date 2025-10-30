@@ -68,7 +68,7 @@
             export NPM_CONFIG_STORE_DIR="$PWD/.pnpm-store"
 
             echo "You may:"
-            echo "- run \`$ nix run .#runInstallAllScript\` to install pnpm dependencies in all projects"
+            echo "- run \`$ nix run .#installAllPnpmDeps\` to install pnpm dependencies in all projects"
             echo "- run \`$ pnpm run dev\` in an *individual project* to get started (pnpm, not npm!)"
           '';
         };
@@ -104,7 +104,7 @@
             ) (lib.attrValues allTalksAttrs);
           };
 
-          runInstallAllScript = pkgs.writeShellScriptBin "run-install-all" ''
+          installAllPnpmDeps = pkgs.writeShellScriptBin "install-app-pnpm-deps" ''
             echo "Running `pnpm install` on each package ..."
             find . -maxdepth 2 -name package.json -type f -print0 |
               while IFS= read -r -d "" pkg; do
@@ -116,6 +116,7 @@
         in
         (
           {
+            inherit installAllPnpmDeps;
             combined = allTalksCombinedDrv;
             default = allTalksCombinedDrv;
           }
