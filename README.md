@@ -23,6 +23,8 @@ To locally build and serve the slides, you need `nodejs` and `pnpm`. They will
 run the `slidev` utility. Without that, you **will not** be able to use all the
 magic including live reload of the spawned dev server, the on-page editor, etc.
 
+_Hint: The Nix shell gives you everything you need._
+
 _Hint: `npm` would also work as replacement for `pnpm`, but in this project I
 decided to use `pnpm`. `deno` might also work as `nodejs` replacement.)._
 
@@ -32,6 +34,7 @@ deployments, not for local development!
 ### Local Development
 
 - `$ cd <talk>`
+- Optional/once: Enter the Nix shell
 - Optional/once: `$ pnpm install`
 - `$ pnpm run dev` to develop and serve slides locally
 - `$ pnpm run build` to build a static HTML deployment
