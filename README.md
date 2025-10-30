@@ -47,5 +47,6 @@ a specific talk. The result is a static build of HTML, CSS, JS, and specified
 public resources (images, fonts).
 
 You may locally serve that using \
-`$ nix run nixpkgs#simple-http-server -- --index -- $(nix build --print-out-paths .#talk-<name>)`
+`$ nix run nixpkgs#simple-http-server -- --index -- $(nix build --print-out-paths .#talk-<name>)` \
+but I strongly suggest to use the local non-Nix workflow for that.
 
