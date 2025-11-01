@@ -22,7 +22,7 @@ jobs:
           zip -r "${ZIP}" .
           cd -
       - name: Upload ZIP with Slides
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: Slidev Slides (ZIP)
           path: |
