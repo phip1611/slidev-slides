@@ -36,6 +36,14 @@
             title = "Slidev demo for Cyberus Combine";
           };
         }
+        {
+          src = ./2025-11-jug-saxony-writing-an-os-loader-in-rust;
+          depHash = "sha256-gYRqj036MSUw+Uag9+fwXwW64gcy9gw51BCW/gxNHjI=";
+          meta = {
+            slug = "jug-saxony-loader-uefi-rs-2025-11";
+            title = "Writing an OS-Loader in Rust with uefi-rs";
+          };
+        }
       ];
 
       # Builds a single slidev project.
