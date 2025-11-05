@@ -112,7 +112,7 @@
             ) (lib.attrValues allTalksAttrs);
           };
 
-          installAllPnpmDeps = pkgs.writeShellScriptBin "install-app-pnpm-deps" ''
+          installAllPnpmDeps = pkgs.writeShellScriptBin "install-all-pnpm-deps" ''
             echo "Running `pnpm install` on each package ..."
             find . -maxdepth 2 -name package.json -type f -print0 |
               while IFS= read -r -d "" pkg; do

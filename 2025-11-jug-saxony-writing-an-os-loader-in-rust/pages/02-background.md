@@ -437,16 +437,16 @@ layout: default
 
 <v-clicks depth="2">
 
-- Writing our own (portable) OS-loader
+- Writing your own (portable) OS-loader is easy
 - Defined executable file format 🎉 (somewhat similar to `.exe`)
-  - Subset of PE32+ file format (Windows' .exe format)
+  - Subset of PE32+ file format (Windows' `.exe` format)
   - By default, loaded from `<drive>\EFI\BOOT\BOOTX64.EFI` (FAT partition)
 - We can use extended functionality with UEFI protocols
   - `EFI_GRAPHICS_OUTPUT_PROTOCOL`: No extra GPU driver needed
   - `EFI_PXE_BASE_CODE_PROTOCOL`: No extra TCP + PXE driver needed
   - `EFI_SIMPLE_FILE_SYSTEM_PROTOCOL`: No extra NVMe or FAT driver needed
-- Makes loading your kernel and further files very easy
-- OS-loader typically exits boot services; kernel has own drivers (PCIe, NVMe)
+- OS-loader typically exits boot services
+- Kernel has its own drivers (PCIe, NVMe)
 
 </v-clicks>
 
