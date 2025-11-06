@@ -6,7 +6,7 @@ background: ./images/cover.png
 
 # Writing an OS-Loader in Rust with uefi-rs
 
-<div position="absolute" left="2ch" bottom="2ch" text="sm">JUG Saxony e.v. Event Series @ TU Dresden, APB &mdash; 2025-11-06</div>
+<div position="absolute" left="2ch" bottom="2ch" text="sm">JUG Saxony e.V. Event Series @ TU Dresden, APB &mdash; 2025-11-06</div>
 <div position="absolute" right="2ch" bottom="2ch" text="sm">Philipp Schuster, Cyberus Technology</div>
 
 ---

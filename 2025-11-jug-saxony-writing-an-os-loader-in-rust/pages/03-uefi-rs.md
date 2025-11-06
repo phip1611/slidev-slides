@@ -28,7 +28,7 @@ layout: default
 
 <v-clicks depth="2">
 
-- `rustc` can compile EFI applications →  compiler target `x86_64-unknown-none`
+- `rustc` can compile EFI applications →  compiler target `x86_64-unknown-uefi`
 - Library helps writing EFI applications
 - Helps loading a kernel
 - Selected highlights
