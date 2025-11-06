@@ -101,9 +101,6 @@ Working with Rust since 2019.
   - `multiboot2`
   - <code v-mark.circle.red="4">uefi</code>
 - Author of various smaller crates
-  - `tar-no-std`
-  - `ttfb`
-  - `spectrum-analyzer`
 
 </v-clicks>
 
@@ -116,7 +113,6 @@ Working with Rust since 2019.
 <v-clicks depth="2">
 
 - [Cloud Hypervisor](https://github.com/cloud-hypervisor/cloud-hypervisor)
-  - Virtual Machine Monitor (VMM)
 - `rust-vmm` ecosystem
 
 </v-clicks>
@@ -157,8 +153,8 @@ layout: default
 - Independent, profitable
 - World-class expertise in x86 and virtualization
 - Main products
-  - Cyberus Hypervisor <small>(Cloud Hypervisor + Linux/KVM + Service & Expertise + BSI)</small>
-  - CtrlOS <small>(NixOS LTS)</small>
+  - Cyberus Hypervisor <small>(Cloud Hypervisor + Linux/KVM + Service & Expertise)</small>
+  - CTRL-OS <small>(NixOS LTS + Embedded System Building Blocks)</small>
 
 </v-clicks>
 
@@ -176,6 +172,8 @@ layout: default
   - Public European cloud developed with SAP ("Apeiro") \
     Cyberus is responsible for virtualization layer <span text-gray>← My work</span>
   - Soon BSI*-accredited virtualization stack with open-source software
+    - Cloud Hypervisor/KVM will be accredited
+
 
 </v-clicks>
 
@@ -194,7 +192,7 @@ layout: default
 - 2021-05 -- 2022-05: Student software engineer \
   Diplomarbeit (Master's Thesis)
 - 2022-06 -- present: Full time software engineer
-- Everything that is "low in the stack"
+- Everything "low in the stack"
   - Rust, C/C++, Assembly, ...
   - libvirt, Linux kernel, GRUB, UEFI/edk2...
 - Nix, NixOS, and nixpkgs
@@ -239,7 +237,7 @@ layout: default
 - What is Firmware?
 - UEFI: Context + Concepts
 - Rust library ("crate") `uefi-rs`
-- Examples UEFI OS-loader* + <span v-mark.circle.red="6">code</span>
+- Code & Demo: Example UEFI OS-loader
 
 </v-clicks>
 
@@ -258,8 +256,8 @@ Why does one need to understand the firmware?
 <v-clicks depth="2">
 
 - Fully bootstrapped system (Desktop environment, sound, ...)
-- Kernel running in 64-bit mode ("long mode")
-- Firmware (UEFI) loads our kernel \
+- Kernel running in 64-bit mode
+- Firmware (UEFI) eventually leads to our kernel being loaded \
   → We need to understand UEFI
 
 </v-clicks>

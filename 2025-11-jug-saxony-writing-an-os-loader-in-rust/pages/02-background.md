@@ -26,7 +26,7 @@ layout: default
     <span v-click="3"><span v-mark="{at: 6, type: 'underline', color: '#d61515'}">Bootloader / OS-Loader</span></span>
   </div>
   <div bg="red-100" p="4">
-    <span v-click="2">Firmware (UEFI)</span>
+    <span v-click="2">Firmware (e.g., UEFI)</span>
   </div>
   <div bg="red-200" p="4">
     <span v-click="1">Hardware</span>
@@ -35,7 +35,6 @@ layout: default
 
 
 <SlideIndicator />
-
 
 ---
 layout: default
@@ -48,7 +47,7 @@ layout: default
 - **CPU**: Central Processing Unit, computing resource:\
   Everyday language: refers to whole package or computing resource
 - **Package/Socket/Processor***: The thing mounted onto the mainboard
-- **Die**: Holds cores, caches, and additional logic (I/O, L3 cache)
+- <span class="text-gray-400">**Die**: Holds cores, caches, and additional logic (I/O, L3 cache)</span>
 - **Core**: Independent execution engine (L1, L2 caches)
 - **(Logical) CPU**:
   - Software-visible computing resource within a core
@@ -63,7 +62,6 @@ layout: default
 
 <SlideIndicator />
 
-
 ---
 layout: default
 ---
@@ -75,7 +73,8 @@ layout: default
 - 16-bit ("real mode")
 - 32-bit protected mode, without paging
 - 32-bit protected mode, with paging
-- 64-bit with 32-bit opcodes ("compatibility IA-32e mode")
+- 64-bit with 32-bit opcodes ("compatibility IA-32e mode") \
+  → Allows 32-bit software in an 64-bit operating system
 - **64-bit mode** ("64-bit IA-32e mode"<sub>Intel</sub>, "long mode"<sub>AMD</sub>)
 
 </v-clicks>
@@ -90,8 +89,8 @@ layout: default
 
 <v-clicks depth="2">
 
+- Platform/SoC: Processor + Chipset
 - Mainboard: Processor + Chipset + additional stuff (ports, power units)
-- Platform: Processor + Chipset
 - Chipset
   - Necessary logical functionality for CPU to work
   - Built into your mainboard
@@ -104,7 +103,6 @@ layout: default
 </v-clicks>
 
 <SlideIndicator />
-
 
 ---
 layout: default
@@ -201,13 +199,14 @@ layout: default
 - Software that is not installable in the classic way
 - On-board in a simple chip with simple interface (just raw bytes)
 - Technically "just normal" software
-- Examples: Legacy BIOS ("IBM PC"), Coreboot, UEFI
+- Examples:
+  - Interfaces: Legacy BIOS ("IBM PC"), UEFI
+  - Implementation: SeaBIOS, Coreboot, EDK2
 - From CPU perspective: doesn't know firmware variant
 
 </v-clicks>
 
 <SlideIndicator />
-
 
 ---
 layout: default
@@ -304,7 +303,7 @@ layout: default
 - Gives us a defined machine state
 - 64-bit mode, yay!
 - Only one CPU <small>("Bootstrap Processor" (BSP))</small>
-- Others are ready to be wakened <small>("Application Processors" (APs))</small>
+- Others are ready to be woken up <small>("Application Processors" (APs))</small>
 - Can load EFI images (binaries, executables)
   - Similar to starting an `.exe` on Windows
   - Stack is provided
