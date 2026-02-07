@@ -65,22 +65,28 @@
         };
     in
     {
-      devShells = forAllSystems (pkgs: {
-        default = pkgs.mkShell {
-          inputsFrom = builtins.attrValues self.packages.${pkgs.system};
-          packages = with pkgs; [
-            nodejs
-            pnpm
-          ];
-          shellHook = ''
-            export NPM_CONFIG_STORE_DIR="$PWD/.pnpm-store"
+      devShells = forAllSystems (
+        pkgs:
+        let
+          inherit (pkgs.stdenv.hostPlatform) system;
+        in
+        {
+          default = pkgs.mkShell {
+            inputsFrom = builtins.attrValues self.packages.${system};
+            packages = with pkgs; [
+              nodejs
+              pnpm
+            ];
+            shellHook = ''
+              export NPM_CONFIG_STORE_DIR="$PWD/.pnpm-store"
 
-            echo "You may:"
-            echo "- run \`$ nix run .#installAllPnpmDeps\` to install pnpm dependencies in all projects"
-            echo "- run \`$ pnpm run dev\` in an *individual project* to get started (pnpm, not npm!)"
-          '';
-        };
-      });
+              echo "You may:"
+              echo "- run \`$ nix run .#installAllPnpmDeps\` to install pnpm dependencies in all projects"
+              echo "- run \`$ pnpm run dev\` in an *individual project* to get started (pnpm, not npm!)"
+            '';
+          };
+        }
+      );
 
       formatter = forAllSystems (pkgs: pkgs.nixfmt-tree);
 

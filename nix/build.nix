@@ -5,8 +5,10 @@
   stdenv,
 
   # Packages
+  fetchPnpmDeps,
   nodejs,
   pnpm,
+  pnpmConfigHook,
 
   # Config
   pname,
@@ -21,10 +23,11 @@ stdenv.mkDerivation (finalAttrs: {
 
   nativeBuildInputs = [
     nodejs
-    pnpm.configHook
+    pnpm
+    pnpmConfigHook
   ];
 
-  pnpmDeps = pnpm.fetchDeps {
+  pnpmDeps = fetchPnpmDeps {
     inherit (finalAttrs) pname version src;
     fetcherVersion = 2;
     hash = depHash;
