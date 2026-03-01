@@ -25,7 +25,7 @@ jobs:
           zip -r "${ZIP}" .
           cd -
       - name: Upload ZIP with Slides
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: Slidev Slides (ZIP)
           path: |
