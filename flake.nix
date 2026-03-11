@@ -44,6 +44,14 @@
             title = "Writing an OS-Loader in Rust with uefi-rs";
           };
         }
+        {
+          src = ./2026-03-cyberus-tech-talk-the-art-of-serial;
+          depHash = "sha256-sCCcFG6d2mYbKVkyqmy5vFBq6KF3+rBhcmVcbvAIaGc=";
+          meta = {
+            slug = "cyberus-tech-talk-the-art-of-serial";
+            title = "The (U)Art of Serial - A 16550 Deep Dive";
+          };
+        }
       ];
 
       # Builds a single slidev project.
