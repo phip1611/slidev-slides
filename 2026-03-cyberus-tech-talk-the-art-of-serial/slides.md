@@ -31,12 +31,32 @@ transition: slide-up
 ---
 
 ---
+src: ./pages/00-cyberus-tech-talk-series.md
+hide: false
+---
+
+---
 src: ./pages/01-introduction.md
 hide: false
 ---
 
 ---
 src: ./pages/02-background.md
+hide: false
+---
+
+---
+src: ./pages/03-project.md
+hide: false
+---
+
+---
+src: ./pages/04-uart-16550-crate.md
+hide: false
+---
+
+---
+src: ./pages/05-summary.md
 hide: false
 ---
 
