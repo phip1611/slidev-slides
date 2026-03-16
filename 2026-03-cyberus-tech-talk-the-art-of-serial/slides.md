@@ -31,6 +31,11 @@ transition: slide-up
 ---
 
 ---
+src: ./pages/00-cyberus-tech-talk-series.md
+hide: false
+---
+
+---
 src: ./pages/01-introduction.md
 hide: false
 ---
