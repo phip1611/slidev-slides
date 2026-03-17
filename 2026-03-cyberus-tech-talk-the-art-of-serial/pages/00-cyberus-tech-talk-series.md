@@ -1,6 +1,7 @@
 ---
 class: text-center
 layout: cover
+background: ./images/pre_cover.png
 ---
 
 # Cyberus Tech Talk Series

@@ -13,14 +13,15 @@ background: ./images/cover.png
   Philipp Schuster
 </div>
 
+
 ---
 layout: default
 ---
 
 # 1. Introduction
 
-
 <SlideIndicator />
+
 
 ---
 layout: default
@@ -29,14 +30,20 @@ transition: undefined
 
 # How Did We Get Here?
 
-- Christmas 2025, my nephews got a new PC (updated mainboard)
+<v-clicks>
+
+- Christmas 2025: my nephews got a new PC (updated mainboard)
 - That mainboard has a COM1 / serial port
 - I always wanted to get some hands-on experience with a physical serial port
 
-TODO photo com1 port
+</v-clicks>
 
+<img v-click="2" src="../public/images/com1_port_mainboard.jpg" width="380"  />
+
+<Arrow v-click="2" :x1="530" :y1="390" :x2="260" :y2="390" color="red" />
 
 <SlideIndicator />
+
 
 ---
 layout: default
@@ -45,13 +52,17 @@ transition: slide-up
 
 # How Did We Get Here?
 
-- Might be a cool demo to show my nephews what cool low-level stuff we at work
-  can do
-- I had a project "Zwischen den Jahren" \
-  The time between Christmas and New Year's Eve)
+<v-clicks>
 
+- Might be a cool demo to show my nephews some of the low-level things we get to
+  do at work
+- I wanted to work on some project "Zwischen den Jahren" \
+  (The time between Christmas and New Year's Eve)
+
+</v-clicks>
 
 <SlideIndicator />
+
 
 ---
 layout: default
@@ -59,17 +70,23 @@ layout: default
 
 # What I had At Home
 
+<v-clicks>
+
 - A x86 desktop PC with a COM1 port on its mainboard
-- A COM1 pin-out to RS-232 cable
-- A USB serial cable to RS-232
+- A COM1 pin-out to DE-9 (RS-232) cable
+- A USB serial cable to DE-9 (RS-232)
 - An Idea!
 
+</v-clicks>
+
 <SlideIndicator />
+
 
 ---
 layout: image
 image: ./images/cover_blur1.png
 ---
+
 
 ---
 layout: default
@@ -81,36 +98,43 @@ layout: default
 
 - A chat application
 - Computer is primary chat participant (`LOCAL`)
-- Remote connected via serial is remote chat participant (`REMOTE`)
+- Remote connected via serial is other chat participant (`REMOTE`)
 - Let's bring some more OS development into the game
   - Don't use Windows or an existing Linux distribution on the PC
-  - Write my own mini OS using `uefi-rs`* and Rust
+  - Write my own mini OS using `uefi-rs`* and Rust: \
+    Write to the serial device from there
 
 </v-clicks>
 
 <div v-click="6" position="absolute" left="2ch" bottom="2ch" text="sm">
-*High-level from a low-level perspective. Not Python- or Java-like high-level.
+* Rust-library to interface UEFI.
 </div>
 
 <SlideIndicator />
+
 
 ---
 layout: default
 ---
 
-# The Struggles
+# Outlook: The Struggles
 
 _(Accumulated During My Work on This)_
 
 <v-clicks depth="2">
 
-- I had two male RS-232 cables --> didn't match
+- I had two male RS-232 cables → didn't match
 - UEFI console took control over `serial` device from me
 - `uart_16550` crate didn't work on real hardware
 - Handling line breaks, clearing the terminal, redrawing the screen, ...
 - ...
 
 </v-clicks>
+
+<div v-click="5" text="center" class="text-6xl">
+  🤯
+</div>
+<span></span>
 
 <SlideIndicator />
 
