@@ -28,6 +28,26 @@ layout: default
 transition: undefined
 ---
 
+# What to Expect?
+
+<v-clicks>
+
+- A story about a personal project
+- What I've learned about serial / UART 16550 and also Terminals
+- Interesting and fun challenges
+- Nothing fundamentally new
+- Selected code snippets
+
+</v-clicks>
+
+<SlideIndicator />
+
+
+---
+layout: default
+transition: undefined
+---
+
 # How Did We Get Here?
 
 <v-clicks>

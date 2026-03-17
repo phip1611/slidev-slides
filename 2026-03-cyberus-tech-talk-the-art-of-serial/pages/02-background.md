@@ -254,7 +254,7 @@ layout: default
 
 <v-clicks depth="2">
 
-- Very simple to use
+- Simple to use
 - No complex device discovery (PCIe, USB)
 - No network packet handling (no TCP/IP)
 - A few instructions for minimal setup (driver in a few lines of code)
