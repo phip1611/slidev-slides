@@ -38,9 +38,9 @@ transition: undefined
 
 </v-clicks>
 
-<img v-click="2" src="../public/images/com1_port_mainboard.jpg" width="380"  />
+<img v-click="2" src="/images/com1_port_mainboard.jpg" width="380"  />
 
-<Arrow v-click="2" :x1="530" :y1="390" :x2="260" :y2="390" color="red" />
+<Arrow v-click="2" :x1="530" :y1="390" :x2="260" :y2="360" color="red" />
 
 <SlideIndicator />
 
@@ -54,8 +54,7 @@ transition: slide-up
 
 <v-clicks>
 
-- Might be a cool demo to show my nephews some of the low-level things we get to
-  do at work
+- Might be a cool demo to show my nephews some low-level hardware magic
 - I wanted to work on some project "Zwischen den Jahren" \
   (The time between Christmas and New Year's Eve)
 

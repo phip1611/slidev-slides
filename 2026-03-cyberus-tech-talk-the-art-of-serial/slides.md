@@ -45,3 +45,9 @@ src: ./pages/02-background.md
 hide: false
 ---
 
+
+---
+src: ./pages/03-project.md
+hide: false
+---
+

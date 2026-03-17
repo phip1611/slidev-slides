@@ -97,7 +97,7 @@ layout: default
 - Sender and receiver must agree on
   - Transmission settings, e.g., `8-N-1`
   - Baud rate
-- There is no feature negation
+- There is no feature negotiation
 
 </v-clicks>
 
@@ -174,7 +174,7 @@ transition: undefined
 
 - **Data Set Ready (DSR)**: \
   Remote is powered on and ready
-- **Clear To Send (CSR)**: \
+- **Clear To Send (CTS)**: \
   Remote is ready to receive
 
 </v-clicks>
@@ -196,7 +196,7 @@ transition: slide-up
 
 <v-clicks depth="2">
 
-- One receive and one send lane: RX, TX
+- One receive and one send line: RX, TX
   - RX
   - TX
 - <strong>Null-modem mode</strong> (direct point to point): RX↔TX, TX↔RX
@@ -219,13 +219,22 @@ transition: slide-up
 
 # Typical Use Case
 
+<v-clicks depth="3">
+
 - Terminal connected to a machine <strong>via serial device</strong>
   - Text-based user interface (TUI) to see output and to enter commands
-  - Special character sequences (non-informative text) have special meaning
+  - Special character sequences* (non-informative text) have special meaning
     - Bold
     - Move Cursor
     - Set Background
 - Null-modem mode: point-to-point connection
+
+</v-clicks>
+
+<!-- footnote -->
+<div v-click="3" position="absolute" left="2ch" bottom="2ch" text="sm">
+* ANSI escape sequences; typically following VT-102 standard
+</div>
 
 <SlideIndicator />
 
@@ -245,7 +254,7 @@ layout: default
 
 <v-clicks depth="2">
 
-- Very simpel to use
+- Very simple to use
 - No complex device discovery (PCIe, USB)
 - No network packet handling (no TCP/IP)
 - A few instructions for minimal setup (driver in a few lines of code)
@@ -265,13 +274,13 @@ layout: default
 
 # 2. Background: Summary
 
-<v-clicks depth="2">
+<v-clicks depth="3">
 
-- Very simpel to use for developers
-  - Easy to write a driver
+- Very simple to use for developers
+  - Easy to write a device driver
   - Easy to connect a terminal
-    - in a VM with Cloud Hypervisor or QEMU
-    - or on real hardware via a USB serial cable
+    - To a VM driven by Cloud Hypervisor or QEMU
+    - On real hardware via a USB serial cable
 - Effectively limited to point-to-point connections (Null-modem mode)
 - Nothing for consumers these days, but for developers
 
