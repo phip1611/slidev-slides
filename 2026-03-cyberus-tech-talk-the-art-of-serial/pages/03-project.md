@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# 2. The Project
+# 3. The Project
 
 
 <SlideIndicator />
@@ -20,6 +20,8 @@ layout: default
   - `LOCAL`: My computer (UEFI application executed by UEFI firmware)
     - UEFI console reads input from USB keyboard
     - UEFI console prints characters to my monitor
+    - Read data from serial device
+    - Controlled output on `REMOTE`
   - `REMOTE`: My laptop connected via serial (running normal NixOS)
 
 </v-clicks>
@@ -65,10 +67,10 @@ layout: default
 
 <v-clicks depth="3">
 
-- Handling text in terminal handling was surprisingly challenging
+- Handling text in terminal was surprisingly challenging
   - Control characters: Newlines
-    - UEFI console input: `\r`
-    - Terminal input: backspace key: `\r`
+    - UEFI console input: enter key: `\r`
+    - Terminal input: enter key: `\r`
     - Default newline character in UNIX, Linux, Rust strings: `\n`
   - Control Characters: Backspace (Revert Last Keystroke):
     - UEFI console input: backspace key: `0x8 / <BS>`
@@ -97,13 +99,13 @@ layout: default
 
 ````md magic-move
 ```rust {0|1}{lines:true}
-fn normalize_backspaces(&self, string: String) -> String {}
+fn normalize_backspaces(string: String) -> String {}
 ```
 ```rust {0|4|5-6|8|9}{lines:true}
 const BACKSPACE: char = '\x08';
 const DELETE: char = '\x7f';
 
-fn normalize_backspaces(&self, string: String) -> String {
+fn normalize_backspaces(string: String) -> String {
     // move cursor left, overwrite with `<SPACE>`, move cursor left
     let bs_sequence = format!("{BACKSPACE} {BACKSPACE}");
     string
@@ -222,6 +224,7 @@ transition: slide-up
 
 ---
 layout: none
+transition: undefined
 ---
 
 <img src="/images/hardware-adapters-close-up.png" />
@@ -229,47 +232,3 @@ layout: none
 <Arrow v-click :x1="100" :y1="100" :x2="250" :y2="185" color="red" />
 <Arrow v-click :x1="400" :y1="230" :x2="250" :y2="300" color="red" />
 <Arrow v-click :x1="400" :y1="100" :x2="550" :y2="230" color="red" />
-
-
----
-layout: default
----
-
-# Recap
-
-<v-clicks depth="2">
-
-- Fun project and I've learned a lot
-- Many side-quests along the way
-- Learning about the UART 16550 internals + writing a driver was the most fun
-- Implementing a serial driver for UEFI and using that on my desktop PC was quite fun as well
-- Figuring out how to handle strings and special control chars with terminals
-  was the least pleasant thing
-  - when to preserve which control character in
-    the string
-  - when to replace it, ...
-
-</v-clicks>
-
-
----
-layout: default
----
-
-# Recap
-
-<v-clicks>
-
-- Rewrite of `uart_16550` crate: \
-  <https://github.com/rust-osdev/uart_16550/pull/41>
-- UEFI Serial Chat project:
-  - Incomplete and a few subtle bugs
-  - Not the best code - but it works!
-  - https://github.com/phip1611/uefi-serial-chat
-
-
-</v-clicks>
-
-
-
-<SlideIndicator />
