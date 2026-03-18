@@ -41,7 +41,7 @@ layout: default
 
 - On behalf of Markus Napierkowski, our tech talk series organizer ...
 - I'm happy to introduce you to today's speaker, which is ...
-- ... Me
+- ... Me 🤓 🎉
 
 </v-clicks>
 

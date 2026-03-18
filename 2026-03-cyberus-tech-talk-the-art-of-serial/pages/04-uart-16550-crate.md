@@ -8,15 +8,14 @@ layout: default
 
 - Original crate didn't work on real hardware at first
 - Figured out: It hardcoded the baud rate to `38400`
-- I found the code to be not that pleasant to extend
-- Created my own version
+- I found the code somewhat difficult to extend
+- Created my own library
 - Reached out to upstream to replace the original crate with my rewrite
 - They were really happy about this
 
 </v-clicks>
 
 <SlideIndicator />
-
 
 ---
 layout: default
@@ -104,7 +103,7 @@ pub fn init(&mut self, config: Config) -> Result<(), InitError> {
     /* ... */
 }
 ```
-```c {0|5|6|7|8|9|10|11|12}{lines: true}
+```c {0|3|5|6|7|8|9|10|11|12}{lines: true}
 #define PORT 0x3f8       // COM1
 
 // Without nice abstractions, stripped-down C version

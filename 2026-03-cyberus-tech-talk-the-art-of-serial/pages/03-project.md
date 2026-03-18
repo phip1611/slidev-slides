@@ -69,17 +69,15 @@ layout: default
 - I've created my own mini operating system as UEFI application
 - Started by running that in a VM
 - Run everything on real hardware: ⚡ 💣
+- Bought more hardware ...
 - I've written a new rust library for interfacing UART 16550 devices
   - Complete rewrite of the popular `uart_16550` crate
 - Implemented `EFI_SERIAL_IO_PROTOCOL` backed by my UART 16550 driver
   - Necessary UEFI glue code
-- Bought more hardware ...
 
 </v-clicks>
 
 <SlideIndicator />
-
-
 
 ---
 layout: default
@@ -166,7 +164,7 @@ layout: default
 
 ```rust {0|1|8,10|9|2|4|5|6-7}{lines:true}
 let serial_handles: Vec<Handle> = find_serial_handles()?;
-// Disconnect any serial handle from the console device:
+// Disconnect any serial handle from the UEFI console controller:
 //
 // - UEFI console won't read its input from that device
 // - UEFI console won't write to the screen AND the serial device
@@ -180,7 +178,6 @@ for handle in &serial_handles {
 </v-click>
 
 <SlideIndicator />
-
 
 ---
 layout: default
@@ -205,8 +202,125 @@ layout: default
 </div>
 
 
-<SlideIndicator />
 
+---
+layout: default
+---
+
+# The Chat Loop
+
+
+````md magic-move
+```rust {0|1|7|15}{lines: true}
+pub fn start_chat(handles: &[Handle]) -> anyhow::Result<()> {
+    let mut console_backend = ConsoleBackend::new()?;
+    let handle = actions::select_serial_handle(&mut console_backend, handles)?;
+
+    let mut serial_backend = SerialBackend::new(handle)?;
+
+    /* Welcome Message */
+
+    /* user name selection */
+
+    let mut message_queue = VecDeque::new();
+    let mut need_redraw_message_history = true;
+
+    // Actual chat
+    loop { }
+
+    Ok(())
+}
+```
+```rust {0|4-8}{lines: true}
+pub fn start_chat(handles: &[Handle]) -> anyhow::Result<()> {
+    /* ... */
+    // Welcome message
+    {
+        actions::broadcast(
+            "Welcome to UEFI Serial Chat\n",
+            &mut [&mut console_backend, &mut serial_backend],
+        )?;
+    }
+    /* ... */
+
+    Ok(())
+}
+```
+```rust {0|4-7|9-11}{lines: true}
+pub fn start_chat(handles: &[Handle]) -> anyhow::Result<()> {
+    /* ... */
+    loop {
+        if need_redraw_message_history {
+            console_backend.clear_screen()?;
+            serial_backend.clear_screen()?;
+        }
+
+        while message_queue.len() > 10 {
+            message_queue.pop_front();
+        }
+    }
+    Ok(())
+}
+```
+```rust {0|5,13|6-12|15-17}{lines: true}
+pub fn start_chat(handles: &[Handle]) -> anyhow::Result<()> {
+    /* ... */
+    loop {
+        /* ... */
+        if need_redraw_message_history {
+            for (participant, msg) in &message_queue {
+                /* ... */
+                actions::broadcast(
+                    &format!("[{username}]: {msg}\n"),
+                    &mut [&mut console_backend, &mut serial_backend],
+                )?;
+            }
+        }
+
+        if need_redraw_message_history {
+            need_redraw_message_history = false;
+        }
+        /* ... */
+    }
+    Ok(())
+}
+```
+```rust {0|5|7}{lines: true}
+pub fn start_chat(handles: &[Handle]) -> anyhow::Result<()> {
+    /* ... */
+    loop {
+        /* ... */
+        let input = console_backend.poll()?.to_string();
+        /* ... */
+        let input = serial_backend.poll()?.to_string();
+        /* ... */
+
+        /* ... */
+    }
+    Ok(())
+}
+```
+```rust {0|5-8|10-13}{lines: true}
+pub fn start_chat(handles: &[Handle]) -> anyhow::Result<()> {
+    /* ... */
+    loop {
+        /* ... */
+        if let Some(line) = console_backend.read_line() {
+            message_queue.push_back((ChatParticipant::Local, line));
+            need_redraw_message_history = true;
+        }
+
+        if let Some(line) = serial_backend.read_line() {
+            message_queue.push_back((ChatParticipant::Remote, line));
+            need_redraw_message_history = true;
+        }
+    }
+    Ok(())
+}
+```
+````
+
+<SlideIndicator />
 
 ---
 layout: default
@@ -246,7 +360,6 @@ transition: slide-up
 
 ---
 layout: none
-transition: undefined
 ---
 
 <img src="/images/hardware-adapters-close-up.png" />

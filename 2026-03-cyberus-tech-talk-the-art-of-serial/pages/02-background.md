@@ -96,6 +96,8 @@ layout: default
 - Sender and receiver must agree on
   - Transmission settings, e.g., `8-N-1`
   - Baud rate
+  - You need a Null-modem in between: \
+    More in a few moments
 - There is no feature negotiation or probing
 
 </v-clicks>
@@ -131,6 +133,7 @@ layout: default
 
 - Buffering / Queues
 - Interrupts
+- Baud rate
 
 </v-clicks>
 
@@ -145,14 +148,14 @@ transition: undefined
 
 <div class="flex flex-col items-center">
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/RS-232_DE-9_Connector_Pinouts.png/960px-RS-232_DE-9_Connector_Pinouts.png"
-       width="450px" />
+       width="550px" />
 </div>
 
 ::left::
 
 <v-clicks>
 
-#### Sender
+#### Sender (Out)
 
 - **Data Terminal Ready (DTR)**: \
   We are powered on and ready
@@ -165,7 +168,7 @@ transition: undefined
 
 <v-clicks>
 
-#### Receiver
+#### Receiver (In)
 
 - **Data Set Ready (DSR)**: \
   Remote is powered on and ready
@@ -174,11 +177,11 @@ transition: undefined
 
 </v-clicks>
 
-<Arrow v-click :x1="350" :y1="265" :x2="295" :y2="185" color="red" />
-<Arrow v-click="5" :x1="350" :y1="265" :x2="535" :y2="205" color="red" />
+<Arrow v-click :x1="350" :y1="265" :x2="270" :y2="190" color="red" />
+<Arrow v-click="5" :x1="350" :y1="265" :x2="570" :y2="225" color="red" />
 
-<Arrow v-click :x1="350" :y1="280" :x2="260" :y2="200" color="green" />
-<Arrow v-click="6" :x1="350" :y1="280" :x2="515" :y2="205" color="green" />
+<Arrow v-click :x1="350" :y1="280" :x2="230" :y2="225" color="green" />
+<Arrow v-click="6" :x1="350" :y1="280" :x2="545" :y2="225" color="green" />
 
 <SlideIndicator />
 
@@ -191,23 +194,23 @@ transition: slide-up
 
 <div class="flex flex-col items-center mb-2">
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/RS-232_DE-9_Connector_Pinouts.png/960px-RS-232_DE-9_Connector_Pinouts.png"
-       width="450px" />
+       width="550px" />
 </div>
 
 <v-clicks depth="2">
 
 - One receive and one send line: RX, TX
-  - RX
-  - TX
+  - RX -> TX
+  - TX -> TX
 - <strong>Null-modem mode</strong> (direct point to point): RX↔TX, TX↔RX, RTS↔CTS, ... 
 
 </v-clicks>
 
-<Arrow v-click="[2,3]" :x1="350" :y1="265" :x2="250" :y2="185" color="red" />
-<Arrow v-click="3" :x1="380" :y1="265" :x2="280" :y2="185" color="green" />
+<Arrow v-click="[2,3]" :x1="350" :y1="265" :x2="220" :y2="195" color="red" />
+<Arrow v-click="[2,3]" :x1="350" :y1="265" :x2="555" :y2="195" color="red" />
 
-<Arrow v-click="[2,3]" :x1="350" :y1="265" :x2="505" :y2="185" color="red" />
-<Arrow v-click="3" :x1="380" :y1="265" :x2="535" :y2="185" color="green" />
+<Arrow v-click="3" :x1="380" :y1="265" :x2="240" :y2="195" color="green" />
+<Arrow v-click="3" :x1="380" :y1="265" :x2="535" :y2="195" color="green" />
 
 <SlideIndicator />
 
@@ -276,15 +279,13 @@ layout: default
 
 - Referring to _**the**_ serial device is a simplification
 - Using _**the**_ serial device translates to:
-  - Using **the** (one) UART 16550 which transmits data byte by byte
-  - Internally, it translate the data bit-by-bit (serial): \
-    Influences name, but transparent to application
-  - This UART typically exists once in the mainboard / chipset
+  - Using **the** (one) UART 16550 which transmits data byte by byte: \
+    This UART typically exists once on the mainboard / chipset
+  - <span text="gray-400">Internally, it translate the data bit-by-bit (serial): \
+    Influences name, but transparent to application</span>
   - Uses RS-232 to transport the data over a physical wire with DE-9 connectors
-  - Uses `8-N-1` transmission settings + 115200 baud
-  - Uses a single point-to-point connection
-  - Connect a terminal via the serial line (to fetch text logs)
-- _Using **the** serial device_ is conceptually like saying _Using **the** network device_
+  - Using `8-N-1` transmission settings + 115200 baud
+  - Using a single point-to-point connection, e.g., terminal
 
 </v-clicks>
 
@@ -296,6 +297,7 @@ layout: default
 
 - A simple almost zero-configuration communication channel where you can receive
   and transmit bytes (i.e., text/ASCII) very easily
+- Sharp edges for end-users but convenient for developers
 
 </v-clicks>
 
