@@ -24,9 +24,7 @@ layout: default
 <v-clicks depth="2">
 
 - Referring to _**the**_ serial device is a simplification
-- _Using a serial device_ is conceptually like saying _Using a network device_
-- Typically one serial device connected to one endpoint: \
-  Point-to-Point model (e.g., keyboard, printer, a terminal)
+- Typically Point-to-Point model (e.g., keyboard, printer, a terminal)
 - Exposed as serial "port"; also called COM ports (COM1, COM2, ...)
 - Typically `COM1` port at x86 I/O port `0x3f8`
 
@@ -50,6 +48,7 @@ layout: default
 - From mainboard/chipset perspective:
   - Microcontroller
   - Wired to x86 I/O ports
+  - Transmits bytes bit-by-bit (serial transmission)
 
 </v-clicks>
 
@@ -112,12 +111,12 @@ layout: default
 
 <v-clicks depth="2">
 
-- Sender: OS: Writes data to `UART`'s data<sub>in</sub> register
-- Sender: UART: Reads byte from data<sub>in</sub> register
+- Sender: OS: Writes data to `UART`'s data<sub>out</sub> register
+- Sender: UART: Reads byte from data<sub>out</sub> register
 - Sender: UART: Translates that into analog electrical signals following RS-232
-- Receiver: UART: Recreates bytes from received bits
-- Receiver: UART: Puts byte into data<sub>out</sub> register
-- Receiver: OS: Read byte from data<sub>out</sub> register
+- Receiver: UART: Recreates byte from received bits
+- Receiver: UART: Puts byte into data<sub>in</sub> register
+- Receiver: OS: Read byte from data<sub>in</sub> register
 
 </v-clicks>
 
@@ -266,6 +265,37 @@ layout: default
 
 <SlideIndicator />
 
+
+---
+layout: default
+---
+
+# What is the Serial Device?
+
+<v-clicks depth="3">
+
+- Referring to _**the**_ serial device is a simplification
+- Using _**the**_ serial device translates to:
+  - Using **the** (one) UART 16550 which transmits the data bit-by-bit (serial)
+  - This UART typically exists once in the mainboard / chipset
+  - Uses RS-232 to transport the data over a physical wire with DE-9 connectors
+  - Uses `8-N-1` transmission settings
+  - Uses a baud rate of 115200
+  - Uses a single point-to-point connection
+  - Connect a terminal via the serial line (to fetch text logs)
+- _Using **the** serial device_ is conceptually like saying _Using **the** network device_
+
+</v-clicks>
+---
+
+# What is the Serial Device?
+
+<v-clicks depth="3">
+
+- A simple almost zero-configuration communication channel where you can receive
+  and transmit bytes (i.e., text/ASCII) very easily
+
+</v-clicks>
 
 
 ---

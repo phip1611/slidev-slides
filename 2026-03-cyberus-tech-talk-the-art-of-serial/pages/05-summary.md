@@ -9,7 +9,8 @@ layout: default
 - Fun project and I've learned a lot
 - Many side-quests along the way
 - Learning about the UART 16550 internals + writing a driver was the most fun
-- Implementing a serial driver for UEFI and using that on my desktop PC was quite fun as well
+- Using that from my own `EFI_SERIAL_IO_PROTOCOL` implementation
+  using that on my desktop PC was quite fun as well
 - Figuring out how to handle strings and special control chars with terminals
   was the least pleasant thing
   - when to preserve which control character in

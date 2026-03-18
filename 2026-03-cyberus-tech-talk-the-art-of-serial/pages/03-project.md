@@ -22,9 +22,39 @@ layout: default
     - UEFI console prints characters to my monitor
     - Read data from serial device
     - Controlled output on `REMOTE`
-  - `REMOTE`: My laptop connected via serial (running normal NixOS)
+  - `REMOTE`: My laptop connected via USB serial (running normal NixOS)
 
 </v-clicks>
+
+---
+layout: none
+---
+
+<img src="/images/demo_setup.png" />
+
+
+<Arrow v-click :x1="550" :y1="280" :x2="610" :y2="180" color="red" />
+<Arrow v-click="1" :x1="550" :y1="280" :x2="540" :y2="100" color="red" />
+
+<Arrow v-click :x1="500" :y1="280" :x2="410" :y2="345" color="red" />
+
+<Arrow v-click :x1="480" :y1="265" :x2="280" :y2="125" color="red" />
+
+<Arrow v-click :x1="350" :y1="280" :x2="180" :y2="240" color="red" />
+<Arrow v-click="4" :x1="350" :y1="280" :x2="280" :y2="430" color="red" />
+
+
+---
+layout: default
+---
+
+# Quick Demo (Recording: Running in VM)
+
+<SlidevVideo v-click autoplay controls>
+  <!-- Anything that can go in an HTML video element. -->
+  <source src="/videos/screencast_demo.webm" type="video/webm" />
+</SlidevVideo>
+
 
 ---
 layout: default
@@ -39,24 +69,14 @@ layout: default
 - Run everything on real hardware: ⚡ 💣
 - I've written a new rust library for interfacing UART 16550 devices
   - Complete rewrite of the popular `uart_16550` crate
-  - Implemented `EFI_SERIAL_IO_PROTOCOL` backed by my driver
-  - Bought more hardware ...
+- Implemented `EFI_SERIAL_IO_PROTOCOL` backed by my UART 16550 driver
+  - Necessary UEFI glue code
+- Bought more hardware ...
 
 </v-clicks>
 
 <SlideIndicator />
 
-
----
-layout: default
----
-
-# Quick Demo (Recording: Running in VM)
-
-<SlidevVideo v-click autoplay controls>
-  <!-- Anything that can go in an HTML video element. -->
-  <source src="/videos/screencast_demo.webm" type="video/webm" />
-</SlidevVideo>
 
 
 ---

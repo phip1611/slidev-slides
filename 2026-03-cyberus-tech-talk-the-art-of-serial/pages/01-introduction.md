@@ -142,7 +142,7 @@ _(Accumulated During My Work on This)_
 
 <v-clicks depth="2">
 
-- I had two male RS-232 cables → didn't match
+- I had two male DE-9/RS-232 cables → didn't match
 - UEFI console took control over `serial` device from me
 - `uart_16550` crate didn't work on real hardware
 - Handling line breaks, clearing the terminal, redrawing the screen, ...
