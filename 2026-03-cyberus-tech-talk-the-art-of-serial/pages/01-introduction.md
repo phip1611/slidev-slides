@@ -34,6 +34,7 @@ transition: undefined
 
 - A story about a personal project
 - What I've learned about serial / UART 16550 and also Terminals
+- What _the_ serial device is 
 - Interesting and fun challenges
 - Nothing fundamentally new
 - Selected code snippets
@@ -41,7 +42,6 @@ transition: undefined
 </v-clicks>
 
 <SlideIndicator />
-
 
 ---
 layout: default
@@ -115,13 +115,13 @@ layout: default
 
 <v-clicks depth="2">
 
-- A chat application
+- A **chat application**
 - Computer is primary chat participant (`LOCAL`)
 - Remote connected via serial is other chat participant (`REMOTE`)
 - Let's bring some more OS development into the game
   - Don't use Windows or an existing Linux distribution on the PC
   - Write my own mini OS using `uefi-rs`* and Rust: \
-    Write to the serial device from there
+    Use my own device driver
 
 </v-clicks>
 
@@ -130,7 +130,6 @@ layout: default
 </div>
 
 <SlideIndicator />
-
 
 ---
 layout: default
@@ -145,7 +144,7 @@ _(Accumulated During My Work on This)_
 - I had two male DE-9/RS-232 cables → didn't match
 - UEFI console took control over `serial` device from me
 - `uart_16550` crate didn't work on real hardware
-- Handling line breaks, clearing the terminal, redrawing the screen, ...
+- Handling line breaks, clearing the terminal, redrawing the screen, backspace ...
 - ...
 
 </v-clicks>
@@ -156,4 +155,3 @@ _(Accumulated During My Work on This)_
 <span></span>
 
 <SlideIndicator />
-

@@ -21,8 +21,10 @@ layout: default
     - UEFI console reads input from USB keyboard
     - UEFI console prints characters to my monitor
     - Read data from serial device
-    - Controlled output on `REMOTE`
   - `REMOTE`: My laptop connected via USB serial (running normal NixOS)
+    - Just sends text input
+    - Output controlled my `REMOTE` (master)
+    - Displays whole TUI received from `REMOTE`
 
 </v-clicks>
 

@@ -23,7 +23,8 @@ layout: default
 
 <v-clicks depth="2">
 
-- Referring to _**the**_ serial device is a simplification
+- Referring to _**the**_ serial device is a simplification: \
+  More at the end of this chapter
 - Typically Point-to-Point model (e.g., keyboard, printer, a terminal)
 - Exposed as serial "port"; also called COM ports (COM1, COM2, ...)
 - Typically `COM1` port at x86 I/O port `0x3f8`
@@ -31,7 +32,6 @@ layout: default
 </v-clicks>
 
 <SlideIndicator />
-
 
 ---
 layout: default
@@ -62,11 +62,11 @@ layout: default
 
 <v-clicks depth="2">
 
-- Implemented via a `UART`* microcontroller (typically a _16550_): \
+- Implemented via a `UART`* microcontroller (typically _16550-compatible_): \
   Sends and receives data bit-by-bit over/from the wire (_serial transmission_)
-- UART microcontroller is built into the mainboard (the chipset)
+- UART functionality is built into the mainboard (or the chipset)
 - Using RS-232** for transmission\
-  (DE-9 connector, simple wire with one lane per PIN in connector)
+  (DE-9 connector, simple wire with nine lanes/types of information)
 - Common case: `8-N-1` transmission with 115200 Baud \
   (8 data bits, no parity bit, 1 stop bit)
 
@@ -92,16 +92,15 @@ layout: default
 
 <v-clicks depth="2">
 
-- Receiver UART microcontroller must be compatible with RS-232 signals
+- Both UARTs must be compatible with RS-232 
 - Sender and receiver must agree on
   - Transmission settings, e.g., `8-N-1`
   - Baud rate
-- There is no feature negotiation
+- There is no feature negotiation or probing
 
 </v-clicks>
 
 <SlideIndicator />
-
 
 ---
 layout: default
@@ -111,17 +110,16 @@ layout: default
 
 <v-clicks depth="2">
 
-- Sender: OS: Writes data to `UART`'s data<sub>out</sub> register
-- Sender: UART: Reads byte from data<sub>out</sub> register
-- Sender: UART: Translates that into analog electrical signals following RS-232
+- Sender: OS: Writes byte to `UART`'s data<sub>in</sub> register
+- Sender: UART: Reads byte from data<sub>in</sub> register
+- Sender: UART: Transfers each bit with analog electrical signals following RS-232
 - Receiver: UART: Recreates byte from received bits
-- Receiver: UART: Puts byte into data<sub>in</sub> register
-- Receiver: OS: Read byte from data<sub>in</sub> register
+- Receiver: UART: Puts byte into data<sub>out</sub> register
+- Receiver: OS: Read byte from data<sub>out</sub> register
 
 </v-clicks>
 
 <SlideIndicator />
-
 
 ---
 layout: default
@@ -133,12 +131,10 @@ layout: default
 
 - Buffering / Queues
 - Interrupts
-- Configuration
 
 </v-clicks>
 
 <SlideIndicator />
-
 
 ---
 layout: two-cols-header
@@ -154,9 +150,9 @@ transition: undefined
 
 ::left::
 
-#### Sender
-
 <v-clicks>
+
+#### Sender
 
 - **Data Terminal Ready (DTR)**: \
   We are powered on and ready
@@ -167,9 +163,9 @@ transition: undefined
 
 ::right::
 
-#### Receiver
-
 <v-clicks>
+
+#### Receiver
 
 - **Data Set Ready (DSR)**: \
   Remote is powered on and ready
@@ -178,8 +174,13 @@ transition: undefined
 
 </v-clicks>
 
-<SlideIndicator />
+<Arrow v-click :x1="350" :y1="265" :x2="295" :y2="185" color="red" />
+<Arrow v-click="5" :x1="350" :y1="265" :x2="535" :y2="205" color="red" />
 
+<Arrow v-click :x1="350" :y1="280" :x2="260" :y2="200" color="green" />
+<Arrow v-click="6" :x1="350" :y1="280" :x2="515" :y2="205" color="green" />
+
+<SlideIndicator />
 
 ---
 layout: default
@@ -198,18 +199,17 @@ transition: slide-up
 - One receive and one send line: RX, TX
   - RX
   - TX
-- <strong>Null-modem mode</strong> (direct point to point): RX↔TX, TX↔RX
+- <strong>Null-modem mode</strong> (direct point to point): RX↔TX, TX↔RX, RTS↔CTS, ... 
 
 </v-clicks>
 
 <Arrow v-click="[2,3]" :x1="350" :y1="265" :x2="250" :y2="185" color="red" />
-<Arrow v-click="3" :x1="380" :y1="265" :x2="280" :y2="185" color="red" />
+<Arrow v-click="3" :x1="380" :y1="265" :x2="280" :y2="185" color="green" />
 
-<Arrow v-click="[2,3]" :x1="350" :y1="265" :x2="505" :y2="185" color="blue" />
-<Arrow v-click="3" :x1="380" :y1="265" :x2="535" :y2="185" color="blue" />
+<Arrow v-click="[2,3]" :x1="350" :y1="265" :x2="505" :y2="185" color="red" />
+<Arrow v-click="3" :x1="380" :y1="265" :x2="535" :y2="185" color="green" />
 
 <SlideIndicator />
-
 
 ---
 layout: default
@@ -276,19 +276,21 @@ layout: default
 
 - Referring to _**the**_ serial device is a simplification
 - Using _**the**_ serial device translates to:
-  - Using **the** (one) UART 16550 which transmits the data bit-by-bit (serial)
+  - Using **the** (one) UART 16550 which transmits data byte by byte
+  - Internally, it translate the data bit-by-bit (serial): \
+    Influences name, but transparent to application
   - This UART typically exists once in the mainboard / chipset
   - Uses RS-232 to transport the data over a physical wire with DE-9 connectors
-  - Uses `8-N-1` transmission settings
-  - Uses a baud rate of 115200
+  - Uses `8-N-1` transmission settings + 115200 baud
   - Uses a single point-to-point connection
   - Connect a terminal via the serial line (to fetch text logs)
 - _Using **the** serial device_ is conceptually like saying _Using **the** network device_
 
 </v-clicks>
+
 ---
 
-# What is the Serial Device?
+# What is the Serial Device? In a Nutshell
 
 <v-clicks depth="3">
 
@@ -296,7 +298,6 @@ layout: default
   and transmit bytes (i.e., text/ASCII) very easily
 
 </v-clicks>
-
 
 ---
 layout: default
