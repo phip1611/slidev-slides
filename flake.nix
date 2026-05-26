@@ -2,7 +2,7 @@
   description = "My Slidev slides";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
   };
 
   outputs =
@@ -22,7 +22,7 @@
       projectDefs = [
         {
           src = ./2025-10-10-eurorust-minimal-rust-kernel;
-          depHash = "sha256-BDTNVEW4zOJcjfTyAsml+kNiWSHaNVMOx3VCJF44Iv8=";
+          depHash = "sha256-SRoSSyYsmcYjVhpT8wfty2v5qtd4fb7OR+Y/Ezq4U8M=";
           meta = {
             slug = "eurorust-2025";
             title = "A Minimal Rust Kernel - Printing to QEMU with core::fmt";
@@ -30,7 +30,7 @@
         }
         {
           src = ./2025-10-cyberus-combine-demo;
-          depHash = "sha256-mwYrRLQ5X2sNf8goSNWyYVUtdFvKXAIDjcBhXpUW3YM=";
+          depHash = "sha256-Ckc+GmLpeDuuh2IZu8l2Cj9QOloTpNt5CSJ63UF9RUQ=";
           meta = {
             slug = "cyberus-combine-2025-10";
             title = "Slidev demo for Cyberus Combine";
@@ -38,7 +38,7 @@
         }
         {
           src = ./2025-11-jug-saxony-writing-an-os-loader-in-rust;
-          depHash = "sha256-mwYrRLQ5X2sNf8goSNWyYVUtdFvKXAIDjcBhXpUW3YM=";
+          depHash = "sha256-Ckc+GmLpeDuuh2IZu8l2Cj9QOloTpNt5CSJ63UF9RUQ=";
           meta = {
             slug = "jug-saxony-loader-uefi-rs-2025-11";
             title = "Writing an OS-Loader in Rust with uefi-rs";
@@ -46,7 +46,7 @@
         }
         {
           src = ./2026-03-cyberus-tech-talk-the-art-of-serial;
-          depHash = "sha256-kXiaTgu754NFRvJ2ziJDtfsFo3EjSXU/mK0mTE6F1b8=";
+          depHash = "sha256-qLuC+ms0Sh0a6lCN4Jck0FjY4KphwFXYe7jitPWIimg=";
           meta = {
             slug = "cyberus-tech-talk-the-art-of-serial";
             title = "The (U)Art of Serial - A 16550 Deep Dive";
