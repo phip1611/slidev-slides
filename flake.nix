@@ -52,6 +52,14 @@
             title = "The (U)Art of Serial - A 16550 Deep Dive";
           };
         }
+        {
+          src = ./2026-06-rust-for-osdev-at-rust-dresden;
+          depHash = "sha256-Eb+E3ZL0OANi3DKZsUrw7vkfycXSnjcv77c9r4Aaw04=";
+          meta = {
+            slug = "rust-for-os-development";
+            title = "Rust for OS Development";
+          };
+        }
       ];
 
       # Builds a single slidev project.
