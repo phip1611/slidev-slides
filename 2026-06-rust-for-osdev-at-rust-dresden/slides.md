@@ -35,6 +35,11 @@ hide: false
 ---
 
 ---
-src: ./pages/02-background.md
+src: ./pages/02-rust.md
+hide: false
+---
+
+---
+src: ./pages/03-summary.md
 hide: false
 ---
