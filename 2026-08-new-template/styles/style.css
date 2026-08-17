@@ -1,0 +1,301 @@
+:root {
+  font-size: 14px;
+  --paper: #fff;
+  --ink: #242126;
+  --muted: #706b6d;
+  --line: #e6e1df;
+  --red: #8a0404;
+  --red-dark: #610303;
+  --code: #242329;
+  --code-muted: #aaa4ad;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.slidev-layout {
+  background: var(--paper);
+  padding: 2.9rem 3.6rem 2.7rem;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--red);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+}
+
+h1 {
+  font-size: 2.3rem;
+  line-height: 1.05;
+  margin-bottom: 1.7rem;
+}
+
+h2 {
+  font-size: 1.45rem;
+}
+
+p,
+li {
+  line-height: 1.42;
+}
+
+a {
+  color: var(--red);
+}
+
+code,
+pre,
+kbd {
+  font-family: 'Source Code Pro', monospace;
+}
+
+:not(pre) > code {
+  background: #f4eeee;
+  border-radius: 0.25rem;
+  color: var(--red-dark);
+  padding: 0.08em 0.25em;
+}
+
+pre,
+.slidev-code-wrapper {
+  background: var(--code) !important;
+  border: 1px solid #39353e;
+  border-radius: 0.65rem;
+  box-shadow: 0 0.8rem 2rem rgb(39 26 31 / 12%);
+  font-size: 0.72rem;
+  line-height: 1.45;
+  padding: 1.1rem 1.25rem !important;
+}
+
+.slidev-code code {
+  color: #f4efe7;
+}
+
+.slidev-layout ul {
+  padding-left: 1.1em;
+}
+
+.slidev-layout li::marker {
+  color: var(--red);
+}
+
+.slidev-layout img {
+  background: #fafafa;
+  border: 1px solid var(--line);
+  border-radius: 0.55rem;
+  display: block;
+  max-height: 23rem;
+  max-width: 100%;
+}
+
+.cover-layout {
+  background: var(--red-dark);
+  color: #fff9f0;
+  padding: 5.2rem 5.5rem;
+  position: relative;
+}
+
+.cover-layout::after {
+  border: 1px solid rgb(255 255 255 / 25%);
+  border-radius: 50%;
+  content: '';
+  height: 28rem;
+  position: absolute;
+  right: -6rem;
+  top: -8rem;
+  width: 28rem;
+}
+
+.cover-layout h1,
+.cover-layout h2 {
+  color: #fff9f0;
+  max-width: 13ch;
+}
+
+.cover-layout h1 {
+  font-size: 4.2rem;
+  line-height: 0.96;
+}
+
+.cover-content,
+.cover-meta {
+  position: relative;
+  z-index: 1;
+}
+
+.cover-meta {
+  align-items: end;
+  bottom: 2.4rem;
+  display: grid;
+  font-size: 0.72rem;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  left: 5.5rem;
+  line-height: 1.25;
+  position: absolute;
+  right: 5.5rem;
+}
+
+.cover-meta-right {
+  text-align: right;
+}
+
+.chapter-layout {
+  background: var(--red);
+  color: #fff9f0;
+  padding: 5.4rem 5.5rem;
+}
+
+.chapter-layout h1,
+.chapter-layout h2 {
+  color: #fff9f0;
+}
+
+.chapter-layout::after {
+  border: 1px solid rgb(255 249 240 / 30%);
+  content: '';
+  height: 10rem;
+  position: absolute;
+  right: 5.5rem;
+  top: 5.5rem;
+  transform: rotate(45deg);
+  width: 10rem;
+}
+
+.two-cols-header {
+  column-gap: 2rem;
+  row-gap: 1rem;
+}
+
+.two-cols-header pre,
+.two-cols-header .slidev-code-wrapper {
+  font-size: 0.66rem;
+  padding: 0.75rem 0.9rem !important;
+}
+
+.about-me {
+  align-items: center;
+  display: grid;
+  gap: 1.8rem;
+  grid-template-columns: minmax(10rem, 0.72fr) minmax(0, 1.55fr);
+  min-height: 14.5rem;
+}
+
+.about-me-profile {
+  align-items: center;
+  align-self: stretch;
+  border-right: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: 1.8rem;
+  text-align: center;
+}
+
+.about-me-portrait {
+  align-items: center;
+  background: #fff;
+  border: 0.12rem solid var(--red);
+  border-radius: 50%;
+  box-shadow: 0 0 0 0.28rem #f4eeee;
+  display: flex;
+  height: 10.1rem;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0.45rem;
+  width: 10.1rem;
+}
+
+.about-me-photo {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 50%;
+  height: 100%;
+  max-height: none !important;
+  object-fit: cover;
+  width: 100%;
+}
+
+.about-me-caption {
+  display: grid;
+  gap: 0.16rem;
+  margin-top: 0.85rem;
+}
+
+.about-me-caption strong {
+  color: var(--ink);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.about-me-caption span {
+  color: var(--muted);
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.about-me-links {
+  align-self: stretch;
+  display: grid;
+  gap: 0.2rem;
+  margin-top: 0.75rem;
+  text-align: left;
+}
+
+.about-me-links a {
+  align-items: center;
+  display: flex;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.62rem;
+  gap: 0.35rem;
+  border-bottom: 0 !important;
+  text-decoration: none;
+}
+
+.about-me-links svg {
+  flex: none;
+  height: 0.9rem;
+  width: 0.9rem;
+}
+
+.about-me-details {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.about-me-item {
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 5.8rem minmax(0, 1fr);
+  padding: 0.5rem 0;
+}
+
+.about-me-item > span {
+  color: var(--red);
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.about-me-item p {
+  color: var(--ink);
+  font-size: 0.84rem;
+  margin: 0;
+}
+
+.about-me-item code {
+  font-size: 0.7rem;
+}

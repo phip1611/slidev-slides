@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">A small layered systems diagram</title>
+  <desc id="desc">Three burgundy, amber, and charcoal layers connected by arrows.</desc>
+  <rect width="1200" height="700" fill="#f7f3ec"/>
+  <g font-family="IBM Plex Sans, sans-serif" font-size="34" font-weight="600">
+    <rect x="120" y="90" width="960" height="130" rx="18" fill="#7f1d35"/>
+    <text x="600" y="170" fill="#fff9f0" text-anchor="middle">Presentation layer</text>
+    <rect x="120" y="285" width="960" height="130" rx="18" fill="#d89835"/>
+    <text x="600" y="365" fill="#4d1526" text-anchor="middle">Template primitives</text>
+    <rect x="120" y="480" width="960" height="130" rx="18" fill="#242329"/>
+    <text x="600" y="560" fill="#fff9f0" text-anchor="middle">Local, predictable tooling</text>
+  </g>
+  <g fill="none" stroke="#4d1526" stroke-width="8" stroke-linecap="round">
+    <path d="M600 220v55"/><path d="m578 254 22 22 22-22"/>
+    <path d="M600 415v55"/><path d="m578 449 22 22 22-22"/>
+  </g>
+</svg>

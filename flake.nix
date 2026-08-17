@@ -60,6 +60,14 @@
             title = "Rust for OS Development";
           };
         }
+        {
+          src = ./2026-08-new-template;
+          depHash = "sha256-obeNuzyX5o3pbA2XfirUtULfDMhPA1iWfs+UgPS/ceU=";
+          meta = {
+            slug = "new-template";
+            title = "New Slidev Template Playground";
+          };
+        }
       ];
 
       # Builds a single slidev project.
