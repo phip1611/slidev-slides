@@ -61,6 +61,14 @@
           };
         }
         {
+          src = ./2026-08-cyberus-combine;
+          depHash = "sha256-NfmrVMnBYUvvw3c6kRkikVZbjkZ7hHvzL+4l/YwuohE=";
+          meta = {
+            slug = "2026-08-cyberus-combine";
+            title = "Cyberus Combine: How to become a better speaker";
+          };
+        }
+        {
           src = ./2026-08-new-template;
           depHash = "sha256-obeNuzyX5o3pbA2XfirUtULfDMhPA1iWfs+UgPS/ceU=";
           meta = {
