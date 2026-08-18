@@ -151,3 +151,7 @@ Great presentation: great **content** + great **delivery**
 ---
 
 # Thank You
+
+- It will take some time
+- I am still just applying a friction of what I could improve
+- I think it is worth it, for everyone, always
