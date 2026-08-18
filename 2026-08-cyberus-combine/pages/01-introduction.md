@@ -15,39 +15,48 @@ layout: statement
 </div>
 
 ---
----
 
-# Why should You Care?
+# Why Should You Care?
 
-Great presentation: great **content** + great **delivery**
+Great presentation: great **content** + fantastic **delivery**
 
 <table>
 <thead>
   <tr v-click>
     <th><strong>Content</strong></th>
+    <th></th>
     <th><strong>Delivery</strong></th>
+    <th></th>
     <th><strong>Perceived Competence*</strong></th>
   </tr>
 </thead>
 <tbody>
   <tr v-click>
     <td>❌</td>
+    <td>+</td>
     <td>❌</td>
+    <td>=</td>
     <td>❌ <small>(just don't)</small></td>
   </tr>
   <tr v-click>
     <td>✅</td>
+    <td>+</td>
     <td>❌</td>
+    <td>=</td>
     <td>❌ / ⚠️</td>
   </tr>
   <tr v-click>
     <td>⚠️</td>
+    <td>+</td>
     <td>✅</td>
+    <td>=</td>
     <td>✅ <small>(fake it till you make it!)</small></td>
   </tr>
   <tr v-click>
     <td>❌</td>
+    <td>+</td>
     <td>✅</td>
+    <td>=</td>
     <td>⚠️ / ✅ <small>(depends)</small></td>
   </tr>
 </tbody>
@@ -92,34 +101,17 @@ Great presentation: great **content** + great **delivery**
 </v-clicks>
 
 ---
----
 
-# Room for Improvements All of us Have
+# Room for Improvements All of Us Have
 
 <v-clicks depth="2">
 
 - Monotone voice
-- "Umm" / "Ähhm"
-- Being afraid to pause!
+- "Umm" / "Ähhm" - Don't be afraid to pause!
 - We don't vary enough with: volume, tonality, speed, pitch
 - "It feels unnatural / this is not my voice"
-  - Technically our voices can do much more than we think, we just never learned
-    to ...
-  - Use certain unfamiliar dimensions of it,
-  - Be comfortable with it
-
-</v-clicks>
-
----
----
-
-# Specific Steps
-
-<v-clicks depth="2">
-
-- No more "Umm" / "Ähhm"
-- Don't be afraid to pause
-- Vary: volume, tonality, speed, pitch
+  - We just never learned to use certain unfamiliar dimensions of it,
+  - .. and to be comfortable with it
 - Give a talk (5 min) and record yourself:
   - Rewatch it without sound and analyze
   - Just listen to it and analyze
@@ -144,14 +136,6 @@ Great presentation: great **content** + great **delivery**
   - 30 Minute Video: \
     "How to Speak Better Than 99% of People (Complete Framework)" \
     <https://www.youtube.com/watch?v=FsxorSNJBaA>
+- It will take some time - but it is worth it.
 
 </v-clicks>
-
----
----
-
-# Thank You
-
-- It will take some time
-- I am still just applying a friction of what I could improve
-- I think it is worth it, for everyone, always
