@@ -32,32 +32,32 @@ Great presentation: great **content** + fantastic **delivery**
 </thead>
 <tbody>
   <tr v-click>
-    <td>❌</td>
+    <td>🔴</td>
     <td>+</td>
-    <td>❌</td>
+    <td>🔴</td>
     <td>=</td>
-    <td>❌ <small>(just don't)</small></td>
+    <td>🔴</td>
   </tr>
   <tr v-click>
-    <td>✅</td>
+    <td>🟢</td>
     <td>+</td>
-    <td>❌</td>
+    <td>🔴</td>
     <td>=</td>
-    <td>❌ / ⚠️</td>
+    <td>🟡</td>
   </tr>
   <tr v-click>
-    <td>⚠️</td>
+    <td>🟡</td>
     <td>+</td>
-    <td>✅</td>
+    <td>🟢</td>
     <td>=</td>
-    <td>✅ <small>(fake it till you make it!)</small></td>
+    <td>🟢</td>
   </tr>
   <tr v-click>
-    <td>❌</td>
+    <td>🔴</td>
     <td>+</td>
-    <td>✅</td>
+    <td>🟢</td>
     <td>=</td>
-    <td>⚠️ / ✅ <small>(depends)</small></td>
+    <td>🟡 / 🟢 <small>(depends)</small></td>
   </tr>
 </tbody>
 </table>
