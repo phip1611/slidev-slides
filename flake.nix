@@ -22,7 +22,7 @@
       projectDefs = [
         {
           src = ./2025-10-10-eurorust-minimal-rust-kernel;
-          depHash = "sha256-SRoSSyYsmcYjVhpT8wfty2v5qtd4fb7OR+Y/Ezq4U8M=";
+          depHash = "sha256-9YEeyExg955BWLVFSDgdjbf3ByypAiW8GyUtUZ1d7Nc=";
           meta = {
             slug = "eurorust-2025";
             title = "A Minimal Rust Kernel - Printing to QEMU with core::fmt";
@@ -30,7 +30,7 @@
         }
         {
           src = ./2025-10-cyberus-combine-demo;
-          depHash = "sha256-Ckc+GmLpeDuuh2IZu8l2Cj9QOloTpNt5CSJ63UF9RUQ=";
+          depHash = "sha256-Pb8W/WLM9JnSSzxqTru+rMPgC2nsWon86AYOyIoj9fM=";
           meta = {
             slug = "cyberus-combine-2025-10";
             title = "Slidev demo for Cyberus Combine";
@@ -38,7 +38,7 @@
         }
         {
           src = ./2025-11-jug-saxony-writing-an-os-loader-in-rust;
-          depHash = "sha256-Ckc+GmLpeDuuh2IZu8l2Cj9QOloTpNt5CSJ63UF9RUQ=";
+          depHash = "sha256-Pb8W/WLM9JnSSzxqTru+rMPgC2nsWon86AYOyIoj9fM=";
           meta = {
             slug = "jug-saxony-loader-uefi-rs-2025-11";
             title = "Writing an OS-Loader in Rust with uefi-rs";
@@ -46,7 +46,7 @@
         }
         {
           src = ./2026-03-cyberus-tech-talk-the-art-of-serial;
-          depHash = "sha256-qLuC+ms0Sh0a6lCN4Jck0FjY4KphwFXYe7jitPWIimg=";
+          depHash = "sha256-Rs1NH1QQ//Kz8C7Z9UB366LyZDmXvLfYtyv81I0SFnU=";
           meta = {
             slug = "cyberus-tech-talk-the-art-of-serial";
             title = "The (U)Art of Serial - A 16550 Deep Dive";
@@ -54,7 +54,7 @@
         }
         {
           src = ./2026-06-rust-for-osdev-at-rust-dresden;
-          depHash = "sha256-Eb+E3ZL0OANi3DKZsUrw7vkfycXSnjcv77c9r4Aaw04=";
+          depHash = "sha256-Q46KviUOKfxdvDz42Retqyqy2ofjruM3mO0ixRqySvA=";
           meta = {
             slug = "rust-for-os-development";
             title = "Rust for OS Development";
@@ -62,7 +62,7 @@
         }
         {
           src = ./2026-08-cyberus-combine;
-          depHash = "sha256-NfmrVMnBYUvvw3c6kRkikVZbjkZ7hHvzL+4l/YwuohE=";
+          depHash = "sha256-dzHPZK2oMEcdabAi1nM3gNvDygKs/0eVnBOI8BcongE=";
           meta = {
             slug = "2026-08-cyberus-combine";
             title = "Cyberus Combine: How to become a better speaker";
@@ -70,7 +70,7 @@
         }
         {
           src = ./2026-08-new-template;
-          depHash = "sha256-obeNuzyX5o3pbA2XfirUtULfDMhPA1iWfs+UgPS/ceU=";
+          depHash = "sha256-nnBkhbiSlYVmMq2NDhyenNkpuahRBZb77404FerOMFA=";
           meta = {
             slug = "new-template";
             title = "New Slidev Template Playground";
@@ -83,7 +83,7 @@
         pkgs:
         {
           src,
-          depHash,
+          depHash ? pkgs.lib.fakeHash,
           meta,
         }:
         pkgs.callPackage ./nix/build.nix {
