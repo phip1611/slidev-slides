@@ -1,0 +1,27 @@
+Create an SVG for a technical talk: "Containers vs. VMs: who enforces isolation?"
+
+- 16:9 canvas (1200×675), white background, content fills it with only a
+  slight margin.
+- Two side-by-side panels on the same baseline:
+  - Containers: 2 containers (dashed amber outline), each with an App, on a
+    "Shared host kernel – enforces isolation" bar, on Hardware.
+  - Virtual machines: 2 taller VMs (thick solid green outline), each with an
+    App and a Guest kernel, on a "Hypervisor – enforces stronger isolation,
+    with hardware support" bar, on Hardware.
+- App boxes are the same size on both sides. The second container and the
+  second VM hold three smaller app boxes instead of one, to show that a
+  container or VM can carry several apps.
+- Everything the customer takes care of (Apps, guest kernels) is blue on both
+  sides, with a small legend.
+- Captions: "Lightweight: just the app" / "Heavier: app + its own kernel".
+- Clean and minimal, CSS classes in <style>.
+- Deck style (must match the talk's CSS tokens exactly):
+  - Fonts: text is 'IBM Plex Sans', sans-serif; monospace/code is
+    'Source Code Pro', monospace. No Inter, no JetBrains Mono.
+  - Diagram title: fill #8a0404 (deck heading red), font-weight 600,
+    letter-spacing -0.035em.
+  - Body text: fill #242126 (ink). Secondary/caption text: fill #706b6d
+    (muted). Neutral hairlines/box borders: #e6e1df.
+  - Background: #ffffff.
+  - Accent colours stay semantic (see above) and are only used for the
+    diagram's own boxes, never for the title or body text.

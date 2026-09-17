@@ -1,7 +1,7 @@
 ---
-author: Philipp Schuster <phip1611@gmail.com>
-info: A pattern catalog for a new local Slidev template.
-title: New Slidev Template Playground
+author: Philipp Schuster <philipp.schuster@cyberus-technology.de>
+title: Virtualization Made in Saxony - What Is a Virtual Machine?
+info: "From Java Code to the Hypervisor: A Look Behind the Scenes"
 
 addons: []
 aspectRatio: 16/9
@@ -21,5 +21,20 @@ transition: slide-up
 ---
 
 ---
+src: ./pages/00-why-you-should-care.md
+---
+---
 src: ./pages/01-introduction.md
+---
+---
+src: ./pages/02-virtualization-made-in-saxony.md
+---
+---
+src: ./pages/03-background.md
+---
+---
+src: ./pages/04-cloud-hypervisor.md
+---
+---
+src: ./pages/05-digital-sovereignty.md
 ---

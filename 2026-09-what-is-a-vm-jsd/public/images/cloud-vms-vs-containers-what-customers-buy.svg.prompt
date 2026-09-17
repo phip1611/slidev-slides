@@ -1,0 +1,34 @@
+Create an SVG diagram for a technical talk: "What customers buy vs. where it actually runs".
+
+- 16:9 canvas (1200×675), white background, content fills it with only a
+  slight margin.
+- Top row: 3 customer pills. A buys a VM; B and C buy containers.
+- Below: one physical host operated by the cloud provider containing:
+  - A VM rented directly by A. Show the concrete stack inside: nginx,
+    postgres, JRE running a spring-boot service, on A's own guest kernel.
+    A's colour box wraps the whole inside of that VM, kernel included, to
+    make clear A owns the complete VM and can modify the kernel.
+  - A dashed "Container platform" area that rents one VM per customer and
+    sells containers inside them: B's VM with 2 generic containers, C's VM
+    with 3 containers that run the same stack as A's VM, but one service per
+    container: nginx, postgres, JRE with a spring-boot service. Each platform
+    VM has a container runtime and its own guest kernel.
+    Never two customers in one VM.
+  - Bottom layers across all VMs: host kernel + KVM (one VMM process per VM,
+    e.g. Cloud Hypervisor), then hardware.
+- Straight arrows from each customer to their VM; labels must not overlap
+  arrows. One colour per customer.
+- One-line footer: container customers never see a VM, yet each gets one (in a
+  typical setup); the VM boundary separates customers.
+- Style: clean, light, CSS classes in <style>, green for VMs, purple for the
+  virtualization layer.
+- Deck style (must match the talk's CSS tokens exactly):
+  - Fonts: text is 'IBM Plex Sans', sans-serif; monospace/code is
+    'Source Code Pro', monospace. No Inter, no JetBrains Mono.
+  - Diagram title: fill #8a0404 (deck heading red), font-weight 600,
+    letter-spacing -0.035em.
+  - Body text: fill #242126 (ink). Secondary/caption text: fill #706b6d
+    (muted). Neutral hairlines/box borders: #e6e1df.
+  - Background: #ffffff.
+  - Accent colours stay semantic (see above) and are only used for the
+    diagram's own boxes, never for the title or body text.

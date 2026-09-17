@@ -1,0 +1,25 @@
+Create an SVG diagram for a technical talk: "One VM = one Cloud Hypervisor
+process, one vCPU = one host thread".
+
+- 16:9 canvas (1200×675), white background, content fills it with only a
+  slight margin.
+- Left: one cloud-hypervisor process (host user space) with threads: vmm,
+  http-server, virtio-* device threads, then vcpu0–vcpu3 highlighted.
+- Middle: KVM (host kernel, /dev/kvm).
+- Right: one guest VM showing "nproc → 4" and CPU 0–3.
+- Straight arrows from each vCPU thread through KVM (label "ioctl(KVM_RUN)")
+  to the matching guest CPU, in aligned rows.
+- Focus on one process and one VM; indicate more with faded, dashed copies
+  stacked behind each, plus "… one process per VM" / "… more VMs".
+- Style: clean, light, CSS classes in <style>; blue for the process, purple
+  for KVM, green for the VM, amber for vCPUs.
+- Deck style (must match the talk's CSS tokens exactly):
+  - Fonts: text is 'IBM Plex Sans', sans-serif; monospace/code is
+    'Source Code Pro', monospace. No Inter, no JetBrains Mono.
+  - Diagram title: fill #8a0404 (deck heading red), font-weight 600,
+    letter-spacing -0.035em.
+  - Body text: fill #242126 (ink). Secondary/caption text: fill #706b6d
+    (muted). Neutral hairlines/box borders: #e6e1df.
+  - Background: #ffffff.
+  - Accent colours stay semantic (see above) and are only used for the
+    diagram's own boxes, never for the title or body text.

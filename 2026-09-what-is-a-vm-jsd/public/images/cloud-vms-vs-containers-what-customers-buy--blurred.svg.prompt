@@ -1,0 +1,13 @@
+Variant of cloud-vms-vs-containers-what-customers-buy.svg (see
+cloud-vms-vs-containers-what-customers-buy.svg.prompt for the base figure).
+
+Identical figure, but everything is blurred and dimmed except:
+- the JRE workloads (the "JRE: spring-boot service" row in A's VM and the
+  "JRE: spring-boot" container in C's platform VM),
+- the VM boxes themselves (green rectangles incl. their labels),
+- the hardware layer,
+- the diagram title.
+
+Implemented with an SVG feGaussianBlur filter (stdDeviation 3) plus
+opacity 0.5 on every non-focused element, keeping the original document order
+so the sharp elements stay on top of their blurred surroundings.

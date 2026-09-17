@@ -299,3 +299,13 @@ pre,
 .about-me-item code {
   font-size: 0.7rem;
 }
+
+img.corner-logo {
+  background: none;
+  border: unset;
+  position: absolute;
+  right: 3.6rem;
+  top: 2.2rem;
+  width: 16rem;
+  z-index: 5;
+}

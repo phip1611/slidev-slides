@@ -22,8 +22,9 @@ function updateHeading() {
 }
 
 const chapter = computed(() => {
+  const DEFAULT_CHAPTER: string = '';
   const match = heading.value.match(/^(\d+)(?:\.\d+)?[.·\s]/)
-  return match ? `Chapter ${match[1].padStart(2, '0')}` : 'Playground'
+  return match ? `Chapter ${match[1].padStart(2, '0')}` : DEFAULT_CHAPTER
 })
 
 watch(currentPage, () => nextTick(updateHeading), { flush: 'post' })
