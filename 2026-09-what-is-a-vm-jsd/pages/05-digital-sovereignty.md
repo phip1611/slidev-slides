@@ -89,7 +89,6 @@ Review comments & TODOs:
 - [ ] Ich bin oft auf Cyberus zurück gekommen, evtl weniger
 - [ ] Bei allen großen Figures: schritt-für-schritt?
 - [ ] Auf Folien weniger Text
-- [ ] Why you should care: detail slides weg, nur sprechen
 - [ ] 1.2 My way into the low level world: folie nicht zeigen, einfach reden
 - [ ] 3.10: overview figure: ganz schön overkill, habe schon so oft darüber gesprochen.
   Grafik entweder woanders nutzen (am Anfang) oder ganz weglassen
