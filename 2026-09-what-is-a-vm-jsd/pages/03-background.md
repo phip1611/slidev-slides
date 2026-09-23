@@ -81,7 +81,6 @@ Why VMs when we have Containers?!
 ---
 layout: image
 image: /images/containers-vs-vms-isolation-security-boundary.svg
-class: no-chrome
 ---
 
 ---
@@ -96,14 +95,12 @@ When to use what?
 layout: image
 image: /images/cloud-vms-vs-containers-what-customers-buy.svg
 transition: undefined
-class: no-chrome
 ---
 
 ---
 layout: image
 image: /images/cloud-vms-vs-containers-what-customers-buy--blurred.svg
 transition: slide-up
-class: no-chrome
 ---
 
 ---
@@ -145,7 +142,6 @@ From the perspective of the host platform (hypervisor).
 ---
 layout: image
 image: /images/from-host-vmm-process-to-vm-guest.svg
-class: no-chrome
 ---
 
 ---
@@ -211,7 +207,6 @@ Simplified.
 ---
 layout: image
 image: /images/vmm-provides-virtual-device.svg
-class: no-chrome
 ---
 
 
