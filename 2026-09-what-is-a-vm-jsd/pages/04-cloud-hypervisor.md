@@ -16,11 +16,10 @@ layout: default
   runs on top of the **KVM hypervisor**_ - Naming is complicated 🤷‍♀️
 - Modern VMM written in Rust modern Cloud workloads
   - Almost no legacy devices,
-    64-bit only, paravirtualized virtio-based devices
-  - No display/graphics model, only basic virtual hardware (unlike QEMU or
-    VirtualBox)
+    64-bit only, virtio-based devices
+  - No display/graphics model, only basic virtual hardware
+  - Live migration
 - ~150.000 SLOC (including tests, scripts, etc.)
-- Still feature-rich
 - Started 2019 in Intel, now mainly driven by Microsoft, Meta, Crusoe, Cyberus
   Technology
 

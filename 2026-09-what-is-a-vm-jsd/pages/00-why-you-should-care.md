@@ -49,7 +49,7 @@ layout: default
   - used to do Angular frontend and Spring backend
   - visit JUG Saxony Day regularly for almost a decade now
   - transitioned into the low-level world in 2020/2021
-- Present you the (not-so-dark) dark arts of low-level engineering
+- Present you the (not so) dark arts of low-level engineering
 
 </v-clicks>
 

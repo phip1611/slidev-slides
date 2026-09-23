@@ -58,9 +58,9 @@ Selected items.
   - For cloud and embedded use cases
   - **BSI-accredited ("Zulassung") for _VS-NfD_ and _NATO Restricted_** 🎉 \
     <small>(Since September 15th 2026 - [BSI Website](https://www.bsi.bund.de/DE/Themen/Oeffentliche-Verwaltung/Zulassung/Liste-zugelassener-Produkte/liste-zugelassener-produkte_node.html))</small>
-  - The only hypervisor in Germany that has that!
+  - The only virtualization stack in Germany
+- Enabling European solutions for sovereign clouds
+- We deliver components to integrators
 - We are building an open-source based cloud platform with SAP ([Apeiro / CobaltCore](https://apeirora.eu/content/projects/))
-- With our technology: No need for big US-based hyperscalers
-- We deliver core components, not an integrated solution
 
 </v-clicks>

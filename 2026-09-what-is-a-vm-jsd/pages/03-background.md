@@ -14,15 +14,11 @@ Many different wordings out there. I prefer these fine-grained definitions:
 
 <v-clicks depth="2">
 
-- Generic:
-  - **Hypervisor**: Privileged software component running in kernel-space
-  - **Virtual Machine Monitor (VMM)**: Unprivileged software component \
-    (a regular user-space application)
-  - **Virtualization Stack**: Hypervisor + VMM \[+ Management Software\]
-- Specific:
-  - **Linux/KVM**: The hypervisor inside the Linux kernel.
-  - **Cloud Hypervisor (CH)**: A Rust-written VMM utilizing Linux/KVM as hypervisor \
-    (Naming things is hard! 🫨)
+- **Hypervisor**: Privileged software component running in kernel-space \
+  (e.g. Linux/KVM)
+- **Virtual Machine Monitor (VMM)**: Unprivileged software component \
+  (like a regular user-space application, e.g. _Cloud Hypervisor_)
+- **Virtualization Stack**: Hypervisor + VMM \[+ Management Software\]
 - **Guest**: Software running in a VM (OS + user applications), e.g. Windows or Debian
 
 </v-clicks>
@@ -305,5 +301,4 @@ layout: default
 ---
 layout: image
 image: /images/terminology-who-is-who.svg
-class: no-chrome
 ---
