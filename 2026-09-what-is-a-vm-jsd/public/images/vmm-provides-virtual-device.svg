@@ -42,33 +42,26 @@
   <rect width="1200" height="675" fill="#ffffff"/>
 
   <text class="title" x="60" y="60">The VMM provides the virtual hardware - the guest just uses it</text>
-  <text class="sub"   x="60" y="86" font-size="14">Example: a virtual disk - a virtio-blk PCI device</text>
+  <text class="sub"   x="60" y="86" font-size="14">Example: two virtual disks</text>
 
   <!-- ===== VMM ===== -->
   <rect class="ch" x="60" y="130" width="450" height="420" rx="14"/>
   <text class="h"   x="84" y="164" fill="#2a56b8">VMM (cloud-hypervisor)</text>
   <text class="sub" x="84" y="184">a normal program on the host</text>
 
-  <rect class="bus" x="90" y="205" width="390" height="145" rx="10"/>
-  <text class="h"   x="110" y="232" style="font-size:15px" fill="#2a56b8">Virtual PCI bus</text>
-  <text class="sub" x="110" y="250">the VMM emulates the bus and its devices</text>
+  <rect class="dev" x="90" y="210" width="390" height="64" rx="10"/>
+  <text class="h"   x="110" y="238">Virtual disk 1</text>
+  <text class="sub" x="110" y="260">a few hundred lines of code in the VMM</text>
 
-  <rect class="dev" x="104" y="262" width="362" height="42" rx="8"/>
-  <text class="mono" x="118" y="288">00:04.0</text>
-  <text class="t"    x="196" y="288">virtio-blk</text>
-  <text class="sub"  x="292" y="288">our disk, in software</text>
-
-  <g class="faded">
-    <rect class="dev" x="104" y="310" width="362" height="32" rx="8"/>
-    <text class="mono" x="118" y="331">00:05.0</text>
-    <text class="t"    x="196" y="331">virtio-net</text>
-    <text class="sub"  x="292" y="331">another device</text>
-  </g>
+  <rect class="dev" x="90" y="286" width="390" height="64" rx="10"/>
+  <text class="h"   x="110" y="314">Virtual disk 2</text>
+  <text class="sub" x="110" y="336">the same code, another file</text>
 
   <rect class="plain" x="90" y="360" width="390" height="140" rx="10"/>
   <text class="t"    x="110" y="392">The VMM does the real work</text>
-  <text class="mono" x="110" y="428">disk.img</text>
-  <text class="sub"  x="110" y="466">just a file on the host -</text>
+  <text class="mono" x="110" y="428">disk1.img</text>
+  <text class="mono" x="270" y="428">disk2.img</text>
+  <text class="sub"  x="110" y="466">just files on the host -</text>
   <text class="sub"  x="110" y="486">the guest never knows</text>
 
   <!-- ===== KVM ===== -->
@@ -84,28 +77,28 @@
   <text class="h"   x="764" y="164" fill="#1f7a45">Guest</text>
   <text class="sub" x="764" y="184">sees a normal computer</text>
 
-  <rect class="dev" x="770" y="205" width="340" height="145" rx="10"/>
-  <text class="h"    x="790" y="232">Disk</text>
-  <text class="mono" x="790" y="256">00:04.0 virtio-blk</text>
-  <text class="sub"  x="790" y="280">a PCI device on the guest's PCI bus,</text>
-  <text class="sub"  x="790" y="298">just like real hardware</text>
-  <text class="sub"  x="790" y="320">the guest kernel has a driver for it</text>
-  <text class="sub"  x="790" y="338">- could also be NVMe or SCSI</text>
+  <rect class="dev" x="770" y="210" width="340" height="64" rx="10"/>
+  <text class="h"    x="790" y="238">Disk 1</text>
+  <text class="mono" x="930" y="238">/dev/vda</text>
+
+  <rect class="dev" x="770" y="286" width="340" height="64" rx="10"/>
+  <text class="h"    x="790" y="314">Disk 2</text>
+  <text class="mono" x="930" y="314">/dev/vdb</text>
 
   <rect class="plain" x="770" y="360" width="340" height="140" rx="10"/>
   <text class="t"    x="790" y="392">The guest writes a file</text>
   <text class="mono" x="790" y="428">$ echo "hello" &gt; /mnt/notes.txt</text>
   <text class="sub"  x="790" y="466">/dev/vda is mounted at /mnt -</text>
-  <text class="sub"  x="790" y="486">the driver writes to the PCI device</text>
+  <text class="sub"  x="790" y="486">the driver talks to the disk</text>
 
   <!-- ===== relations ===== -->
-  <path class="prov" d="M86,275 C 32,255 28,112 140,112 H 870 C 938,112 940,155 940,198"/>
-  <text class="hint" x="540" y="102" text-anchor="middle" fill="#8a5a00">the VMM provides the device, the guest sees it</text>
+  <path class="prov" d="M86,240 C 32,222 28,112 140,112 H 870 C 938,112 940,158 940,202"/>
+  <text class="hint" x="540" y="102" text-anchor="middle" fill="#8a5a00">the VMM provides the devices, the guest sees them</text>
 
   <text class="lbl" x="625" y="444" text-anchor="middle">is forwarded</text>
   <path class="flow" d="M735,470 H 697"/>
   <path class="flow" d="M555,470 H 485"/>
-  <text class="lbl" x="625" y="404" text-anchor="middle">MMIO write</text>
-  <text class="lbl" x="625" y="424" text-anchor="middle">to the device</text>
+  <text class="lbl" x="625" y="404" text-anchor="middle">every access</text>
+  <text class="lbl" x="625" y="424" text-anchor="middle">to a disk</text>
   <text class="hint" x="600" y="606" text-anchor="middle">Virtual hardware is just software in the VMM.</text>
 </svg>

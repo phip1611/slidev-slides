@@ -76,7 +76,7 @@
   <!-- ===== Hardware ===== -->
   <rect class="hw" x="60" y="572" width="1100" height="58" rx="10"/>
   <text class="h"   x="80" y="598" style="font-size:16px">Hardware</text>
-  <text class="sub" x="80" y="620">CPU with virtualization extensions (VT-x / AMD-V), memory, devices</text>
+  <text class="sub" x="80" y="620">CPU with virtualization extensions (VMX / SVM), memory, devices</text>
 
   <!-- relations -->
   <path class="conn" d="M760,296 V 226"/>

@@ -47,6 +47,13 @@
 
   <text class="title" x="40" y="46">What customers buy vs. where it actually runs</text>
 
+  <!-- legend: tell the two kinds of boxes apart -->
+  <rect class="vm" x="700" y="28" width="26" height="20" rx="5" filter="url(#blur)" opacity="0.5"/>
+  <text class="t" x="734" y="45" filter="url(#blur)" opacity="0.5">VM (own guest kernel)</text>
+  <rect class="cB" x="906" y="28" width="26" height="20" rx="5" filter="url(#blur)" opacity="0.5"/>
+  <rect class="cC" x="938" y="28" width="26" height="20" rx="5" filter="url(#blur)" opacity="0.5"/>
+  <text class="t" x="972" y="45" style="font-size:14px" filter="url(#blur)" opacity="0.5">container (colour = customer)</text>
+
   <!-- ===== Customers (centred above their VM) ===== -->
   <rect class="cA" x="160" y="72" width="150" height="52" rx="26" filter="url(#blur)" opacity="0.5"/>
   <text class="h" x="235" y="95" text-anchor="middle" fill="#2a56b8" filter="url(#blur)" opacity="0.5">Customer A</text>
@@ -109,7 +116,7 @@
   <text class="monos" x="1069" y="317" text-anchor="middle">JRE:</text>
   <text class="monos" x="1069" y="335" text-anchor="middle">spring-boot</text>
   <rect class="layer" x="812" y="370" width="306" height="28" rx="6" filter="url(#blur)" opacity="0.5"/>
-  <text class="sub" x="965" y="389" text-anchor="middle" filter="url(#blur)" opacity="0.5">container runtime, one container per service</text>
+  <text class="sub" x="965" y="389" text-anchor="middle" filter="url(#blur)" opacity="0.5">container runtime</text>
   <rect class="layer" x="812" y="408" width="306" height="36" rx="6" filter="url(#blur)" opacity="0.5"/>
   <text class="t" x="965" y="431" text-anchor="middle" filter="url(#blur)" opacity="0.5">Guest kernel (C)</text>
 

@@ -3,14 +3,10 @@ Please generate me a basic SVG for a technical talk that visualizes the slide
 to from-host-vmm-process-to-vm-guest.svg. Keep it simple, high-level and
 approachable:
 
-- The VMM provides a virtual device, e.g. a virtio-blk disk, sitting in a
-  virtual PCI bus that the VMM emulates (show a second, faded device such as
-  virtio-net so the bus is visible)
-- The guest sees it as a normal PCI device (slot 00:04.0, virtio-blk) and
-  writes to it as usual; keep it light on PCI details: slot yes, no BARs,
-  no config space, no addresses
-- Every such access is an MMIO write that is trapped by KVM and forwarded
-  back to the VMM
-- The VMM implements the device and does the real work, e.g. writing into a
-  disk.img file on the host
+- The VMM provides virtual devices, e.g. two virtual disks (disk 1, disk 2)
+- The guest sees them as normal disks (/dev/vda, /dev/vdb) and writes to them
+  as usual; keep it free of PCI/NVMe details - high level, not technical
+- Every access to a disk is trapped by KVM and forwarded back to the VMM
+- The VMM implements the devices and does the real work, e.g. writing into
+  disk1.img / disk2.img on the host
 - Take-away: virtual hardware is just software in the VMM

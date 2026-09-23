@@ -28,7 +28,7 @@
 
   <text class="title" x="40" y="52">Containers vs. VMs: who enforces isolation?</text>
   <rect class="cust" x="850" y="32" width="28" height="24" rx="4"/>
-  <text class="t" x="890" y="51">Customer takes care of this</text>
+  <text class="t" x="890" y="51">Customer responsibility</text>
 
   <rect class="panel" x="40" y="80" width="540" height="505" rx="14"/>
   <rect class="panel" x="620" y="80" width="540" height="505" rx="14"/>
@@ -49,8 +49,8 @@
   <text class="t" x="442" y="397" text-anchor="middle">App 3</text>
 
   <rect class="kernel" x="60" y="440" width="500" height="70" rx="8"/>
-  <text class="b" x="310" y="470" text-anchor="middle" fill="#a86a00">Shared host kernel</text>
-  <text class="sub" x="310" y="492" text-anchor="middle">enforces isolation</text>
+  <text class="b" x="310" y="470" text-anchor="middle" fill="#a86a00">Shared host kernel (Linux)</text>
+  <text class="sub" x="310" y="492" text-anchor="middle">enforces the boundary in software (syscalls)</text>
 
   <rect class="hw" x="60" y="525" width="500" height="45" rx="8"/>
   <text class="t" x="310" y="554" text-anchor="middle">Hardware</text>
@@ -62,7 +62,8 @@
   <rect class="cust" x="658" y="168" width="199" height="110" rx="6"/>
   <text class="t" x="757" y="229" text-anchor="middle">App</text>
   <rect class="cust" x="658" y="292" width="199" height="110" rx="6"/>
-  <text class="b" x="757" y="353" text-anchor="middle" fill="#2a56b8">Guest kernel</text>
+  <text class="b" x="757" y="345" text-anchor="middle" fill="#2a56b8">Guest kernel</text>
+  <text class="sub" x="757" y="370" text-anchor="middle">its own Linux</text>
 
   <rect class="vm" x="905" y="150" width="235" height="270" rx="12"/>
   <rect class="cust" x="923" y="168" width="199" height="32" rx="6"/>
@@ -72,16 +73,24 @@
   <rect class="cust" x="923" y="246" width="199" height="32" rx="6"/>
   <text class="t" x="1022" y="268" text-anchor="middle">App 3</text>
   <rect class="cust" x="923" y="292" width="199" height="110" rx="6"/>
-  <text class="b" x="1022" y="353" text-anchor="middle" fill="#2a56b8">Guest kernel</text>
+  <text class="b" x="1022" y="345" text-anchor="middle" fill="#2a56b8">Guest kernel</text>
+  <text class="sub" x="1022" y="370" text-anchor="middle">its own Linux</text>
 
   <rect class="hv" x="640" y="440" width="500" height="70" rx="8"/>
-  <text class="b" x="890" y="470" text-anchor="middle" fill="#5b2fb0">Hypervisor</text>
-  <text class="sub" x="890" y="492" text-anchor="middle">enforces stronger isolation, with hardware support</text>
+  <text class="b" x="890" y="470" text-anchor="middle" fill="#5b2fb0">Hypervisor (Linux/KVM)</text>
+  <text class="sub" x="890" y="492" text-anchor="middle">enforces the boundary with the CPU itself (VMX / SVM)</text>
 
   <rect class="hw" x="640" y="525" width="500" height="45" rx="8"/>
   <text class="t" x="890" y="554" text-anchor="middle">Hardware</text>
 
+  <!-- ===== The isolation boundary, drawn where it is enforced ===== -->
+  <line x1="60" y1="440" x2="560" y2="440" stroke="#d98a00" stroke-width="5" stroke-dasharray="9 6"/>
+
+  <line x1="640" y1="440" x2="1140" y2="440" stroke="#2f9e5b" stroke-width="9"/>
+
   <!-- ===== Takeaways ===== -->
-  <text class="note" x="310" y="625" text-anchor="middle">Lightweight: just the app</text>
-  <text class="note" x="890" y="625" text-anchor="middle">Heavier: app + its own kernel</text>
+  <text class="note" x="310" y="612" text-anchor="middle" fill="#a86a00">Attack surface: the whole Linux syscall interface</text>
+  <text class="note" x="890" y="612" text-anchor="middle" fill="#1f7a45">Attack surface: a handful of virtual devices</text>
+  <text class="note" x="310" y="643" text-anchor="middle">Lightweight: just the app</text>
+  <text class="note" x="890" y="643" text-anchor="middle">Heavier: app + its own kernel</text>
 </svg>

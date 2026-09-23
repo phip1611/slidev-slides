@@ -17,7 +17,7 @@ Layered from top to bottom:
   (privileged).
 - Hypervisor: privileged kernel component, isolation and resource management,
   uses the CPU extensions; Linux/KVM (/dev/kvm).
-- Hardware: CPU with VT-x / AMD-V, memory, devices.
+- Hardware: CPU with virtualization extensions (VMX / SVM), memory, devices.
 
 Thin arrows: VMM provides the VM, VMM uses the hypervisor, hypervisor uses the
 hardware.

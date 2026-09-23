@@ -67,7 +67,7 @@
   <text class="tiny" x="220" y="408" text-anchor="middle">Linux: kvm module</text>
   <rect class="dim hw" x="52" y="450" width="336" height="54" rx="9"/>
   <text class="dim t"    x="220" y="474" text-anchor="middle">Hardware</text>
-  <text class="dim tiny" x="220" y="492" text-anchor="middle">CPU with VT-x / AMD-V</text>
+  <text class="dim tiny" x="220" y="492" text-anchor="middle">CPU with virtualization extensions (VMX / SVM)</text>
   <text class="dim tiny" x="220" y="540" text-anchor="middle" font-style="italic">the VMM is exchangeable - same hypervisor</text>
 
   <!-- ===== VirtualBox ===== -->
@@ -93,7 +93,7 @@
   <text class="tiny" x="600" y="408" text-anchor="middle">Linux: VirtualBox's kernel module</text>
   <rect class="dim hw" x="432" y="450" width="336" height="54" rx="9"/>
   <text class="dim t"    x="600" y="474" text-anchor="middle">Hardware</text>
-  <text class="dim tiny" x="600" y="492" text-anchor="middle">CPU with VT-x / AMD-V</text>
+  <text class="dim tiny" x="600" y="492" text-anchor="middle">CPU with virtualization extensions (VMX / SVM)</text>
   <text class="dim tiny" x="600" y="540" text-anchor="middle" font-style="italic">on Linux: loaded next to the host kernel</text>
 
   <!-- ===== VMware Workstation ===== -->
@@ -117,7 +117,7 @@
   <text class="tiny" x="980" y="408" text-anchor="middle">Linux: VMware's kernel module</text>
   <rect class="dim hw" x="812" y="450" width="336" height="54" rx="9"/>
   <text class="dim t"    x="980" y="474" text-anchor="middle">Hardware</text>
-  <text class="dim tiny" x="980" y="492" text-anchor="middle">CPU with VT-x / AMD-V</text>
+  <text class="dim tiny" x="980" y="492" text-anchor="middle">CPU with virtualization extensions (VMX / SVM)</text>
   <text class="dim tiny" x="980" y="540" text-anchor="middle" font-style="italic">ESXi instead ships its own OS for bare metal</text>
 
   <text class="note" x="600" y="632" text-anchor="middle">With KVM the hypervisor is shared and the VMM is just a program - VirtualBox and VMware ship both halves themselves.</text>
