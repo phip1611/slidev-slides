@@ -76,6 +76,14 @@
             title = "New Slidev Template Playground";
           };
         }
+        {
+          src = ./2026-09-what-is-a-vm-jsd;
+          depHash = "sha256-qNP3qsNUuOKfjFlggeYqdhV7VNwstnEimbVGrgvMTA8=";
+          meta = {
+            slug = "virtualization-saxony-jsd26";
+            title = "Virtualization Made in Saxony";
+          };
+        }
       ];
 
       # Builds a single slidev project.
