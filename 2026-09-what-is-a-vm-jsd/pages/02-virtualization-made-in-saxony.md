@@ -19,7 +19,7 @@ layout: default
 - Best-in-class expertise in x86 and virtualization
 - Focus in reproducible, trustworthy, and solid engineering and software
 - In Dresden, Germany (not silicon valley, not USA)
-- Claims to fame:
+- You might have heard of us ...
   - Leading role in discovery of CPU vulnerabilities Meltdown & Spectre (2018)
   - We developed the KVM-backend for VirtualBox
   - Major contributor to Cloud Hypervisor (next to Meta and Microsoft)
@@ -56,7 +56,7 @@ Selected items.
 - Virtualization based on Linux/KVM is main focus
 - **Cyberus Hypervisor** <small>(<span v-mark="{at: 5, type: 'underline', color: '#d61515'}">Cloud Hypervisor</span> + <span v-mark="{at: 5, type: 'underline', color: '#d61515'}">Linux/KVM</span> + Service & Expertise)</small>
   - For cloud and embedded use cases
-  - **BSI-accredited ("Zulassung") for _VS-NfD_ and _NATO Restricted_** 🎉 \
+  - **BSI-accredited ("Zulassung") for _VS-NfD_<sup>1</sup> and _NATO Restricted_** 🎉 \
     <small>(Since September 15th 2026 - [BSI Website](https://www.bsi.bund.de/DE/Themen/Oeffentliche-Verwaltung/Zulassung/Liste-zugelassener-Produkte/liste-zugelassener-produkte_node.html))</small>
   - The only virtualization stack in Germany
 - Enabling European solutions for sovereign clouds
@@ -64,3 +64,8 @@ Selected items.
 - We are building an open-source based cloud platform with SAP ([Apeiro / CobaltCore](https://apeirora.eu/content/projects/))
 
 </v-clicks>
+
+<div v-click="4" position="absolute" left="7ch" bottom="4ch" text="sm">
+  <sup>1</sup> <em>VS-NfD</em>: "Verschlusssache - Nur für den Dienstgebrauch",
+  the lowest German classification level for classified information
+</div>
