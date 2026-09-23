@@ -58,6 +58,10 @@ Maintainer of: <br>
       <span>Community</span>
       <p>Organizer of the <a href="https://ukvly.org/" target="_blank">Dresden Systems Meetup</a></p>
     </div>
+    <div v-click class="about-me-item">
+      <span>Talks</span>
+      <p>Regular speaker at meetups and conferences - and more to come (JUG Saxony Event Series & Day, EuroRust, local meetups)</p>
+    </div>
   </section>
 </div>
 
