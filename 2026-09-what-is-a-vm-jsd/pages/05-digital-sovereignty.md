@@ -34,6 +34,43 @@ TODO mehr abstand zum Logo
 alt="Cyberus Technology logo"
 class="corner-logo"/>
 
+---
+layout: default
+---
+
+# Backup: Live Demo - Networking
+
+```bash
+# host
+sudo ip tuntap add dev tap0 mode tap
+sudo ip addr add dev tap0 192.168.200.1/24
+sudo ip link set dev tap0 up
+
+# guest
+sudo ip addr add dev eth0 192.168.200.2/24
+sudo ip link set dev eth0 up
+```
+
+---
+layout: default
+---
+
+# Backup: Live Demo - Spawning a VM
+
+```bash
+cloud-hypervisor \
+  --kernel /etc/bootitems/linux/kernel_minimal/stable.bzImage \
+  --initramfs /etc/bootitems/linux/initrd_minimal/default \
+  --cmdline "console=ttyS0" \
+  --memory size=2048M,prefault=on \
+  --cpus boot=4 \
+  --serial tty \
+  --console file=/tmp/foo \
+  --api-socket path=/tmp/chv1.sock \
+  --event-monitor path=/tmp/events_ch.txt \
+  --net tap=tap0
+```
+
 
 <!--
 Review comments:
