@@ -71,17 +71,3 @@ layout: default
   (Everything focuses on `x86_64`)
 
 </v-clicks>
-
----
-layout: image
-image: /images/cloud-vms-vs-containers-what-customers-buy.svg
-transition: undefined
-class: no-chrome
----
-
----
-layout: image
-image: /images/cloud-vms-vs-containers-what-customers-buy--blurred.svg
-transition: slide-up
-class: no-chrome
----
