@@ -18,7 +18,11 @@ function updateHeading() {
   chromeHidden.value = Boolean(
     current?.classList.contains('no-chrome') || current?.querySelector('.no-chrome'),
   )
-  heading.value = current?.querySelector('h1')?.textContent?.trim() ?? ''
+  // Figures have no heading of their own: keep the one of the slide before,
+  // so the footer still shows the chapter they belong to.
+  const h1 = current?.querySelector('h1')?.textContent?.trim()
+  if (h1)
+    heading.value = h1
 }
 
 const chapter = computed(() => {
