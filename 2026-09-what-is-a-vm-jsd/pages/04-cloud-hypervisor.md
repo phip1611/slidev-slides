@@ -35,31 +35,7 @@ layout: default
 layout: default
 ---
 
-# 4.2 Involvement of Cyberus Technology
-
-And my role in the project.
-
-<v-clicks depth="2">
-
-- We are building major parts of our business around is open-source project
-- "Upstream first" policy: our work goes into the public project first, \
-  no private forks
-- We are among the top contributors for the past 18 months
-- I am maintaining live migration<sup>1</sup>
-
-</v-clicks>
-
-
-<div v-click="4" position="absolute" left="7ch" bottom="4ch" text="sm">
-  <sup>1</sup> Process of migrating a VM from host A to B while it keeps running
-</div>
-
-
----
-layout: default
----
-
-# 4.3 A VMM in Rust?
+# 4.2 A VMM in Rust?
 
 About developer productivity, safety, and robustness out of this world.
 
@@ -79,7 +55,50 @@ About developer productivity, safety, and robustness out of this world.
 layout: default
 ---
 
-# 4.4 Hands-on Cloud Hypervisor
+# 4.3 Involvement of Cyberus Technology
+
+<v-clicks depth="2">
+
+- We are building major parts of our business around is open-source project
+- "Upstream first" policy: our work goes into the public project first, \
+  no private forks
+- We are among the top contributors for the past 18 months
+
+</v-clicks>
+
+---
+layout: default
+---
+
+# 4.4 What We Are Working On
+
+Fields the whole company is involved in.
+
+<v-clicks depth="2">
+
+- Live migration<sup>1</sup>
+- VM and vCPU lifecycle management
+- Performance improvements
+- Testing
+
+</v-clicks>
+
+<div v-click>
+
+**My role**: upstream maintainer of live migration
+
+</div>
+
+<div v-click="1" position="absolute" left="7ch" bottom="4ch" text="sm">
+  <sup>1</sup> Process of migrating a VM from host A to B while it keeps running
+</div>
+
+
+---
+layout: default
+---
+
+# 4.5 Hands-on Cloud Hypervisor
 
 Spawning VMs and debugging!
 
@@ -108,7 +127,7 @@ guest: sudo ip addr add dev eth0 192.168.200.2/24; sudo ip link set dev eth0 up
 layout: default
 ---
 
-# 4.5 My Development Flow
+# 4.6 My Development Flow
 
 <v-clicks depth="2">
 
