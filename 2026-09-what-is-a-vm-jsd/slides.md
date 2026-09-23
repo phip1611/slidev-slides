@@ -21,9 +21,6 @@ transition: slide-up
 ---
 
 ---
-src: ./pages/00-why-you-should-care.md
----
----
 src: ./pages/01-introduction.md
 ---
 ---
