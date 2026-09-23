@@ -132,12 +132,13 @@ From the perspective of the host platform (hypervisor).
 <v-clicks depth="2">
 
 - One VM ←→ One VMM<sup>1</sup> process
-- One thread per (v)CPU
+- One thread per vCPU<sup>2</sup>
 - Multiple VMs → multiple VMM processes → all sharing same hypervisor
 
 </v-clicks>
 
-<div v-click="1" position="absolute" left="7ch" bottom="4ch" text="sm"><sup>1</sup> one instance of Cloud Hypervisor (or QEMU, VirtualBox, ...)</div>
+<div v-click="1" position="absolute" left="7ch" bottom="6ch" text="sm"><sup>1</sup> one instance of Cloud Hypervisor (or QEMU, VirtualBox, ...)</div>
+<div v-click="2" position="absolute" left="7ch" bottom="4ch" text="sm"><sup>2</sup> <em>virtual CPU</em>: a CPU of the VM - for the guest it looks and behaves like a real one</div>
 
 ---
 layout: image
@@ -148,7 +149,23 @@ image: /images/from-host-vmm-process-to-vm-guest.svg
 layout: default
 ---
 
-# 3.6 What is a VM (Technically)?
+# 3.7 Detour: How Does Hardware Access Work?
+
+Software talks to a device - on real hardware and in a VM alike.
+
+<v-clicks depth="2">
+
+- Read/write access to/from physical memory addresses ("MMIO regions") \
+  or I/O ports
+- These are accesses with **side effects**: they talk to a device
+
+</v-clicks>
+
+---
+layout: default
+---
+
+# 3.8 What Is a VM (Technically)?
 
 From the perspective of the guest (code running on CPU inside VM).
 
@@ -157,9 +174,6 @@ From the perspective of the guest (code running on CPU inside VM).
 - Normal x86 platform
 - Normal boot flow to initialize the system
 - Accesses hardware as it would in a baremetal system
-- Short derail: How does hardware access work? \
-  Read/write access to/from physical memory addresses ("MMIO regions") or I/O ports \
-  → Accesses with **side effects**
 
 </v-clicks>
 
@@ -168,7 +182,7 @@ From the perspective of the guest (code running on CPU inside VM).
 layout: default
 ---
 
-# 3.7 What does a VMM need to create a VM?
+# 3.9 What does a VMM need to create a VM?
 
 The thing that runs your VM. Simplified.
 
@@ -187,7 +201,7 @@ The thing that runs your VM. Simplified.
 layout: default
 ---
 
-# 3.7 What does a VMM need to create a VM?
+# 3.9 What does a VMM need to create a VM?
 
 Simplified.
 
@@ -196,11 +210,10 @@ Simplified.
 - Add (virtual) hardware, e.g. to the PCI bus
 - Configures the guest physical memory space so that:
   - Accessing guest RAM just works
-  - Accessing a MMIO region (representing a virtual hardware device) will
-    - Create "EPT violations" (like a page fault) \
-      → Cause a "VM Exit"
-    - Hypervisor first tries to handle the exit (and then forwards to VMM)
-    - VMM handles it, and let the vCPU thread enter the VM again
+  - Accessing an MMIO region (a virtual device) leaves the VM ("VM exit")
+- On such a VM exit:
+  - The hypervisor handles it if it can, otherwise the VMM does
+  - Afterwards, the vCPU thread enters the VM again
 
 </v-clicks>
 
@@ -215,14 +228,14 @@ layout: default
 transition: undefined
 ---
 
-# 3.8 Linux KVM
+# 3.10 Linux KVM
 
 _**K**ernel-based **V**irtual **M**achine_
 
 <v-clicks depth="3">
 
 - Part of Linux (since 2.6.20 in 2007)
-- Hypervisor: Provides mechanisms and enforces separation, otherwise useless on its own
+- Hypervisor in Linux kernel
 - Abstraction layer:
   - Hardware virtualization (Intel VMX, AMD SVM)
   - vCPU in VMM → Linux thread → physical CPU executing guest code
@@ -234,7 +247,7 @@ layout: default
 transition: slide-up
 ---
 
-# 3.8 Linux KVM
+# 3.10 Linux KVM
 
 _**K**ernel-based **V**irtual **M**achine_
 
@@ -264,7 +277,7 @@ layout: default
 transition: undefined
 ---
 
-# 3.9 CH vs. QEMU vs. VirtualBox vs. VMware
+# 3.11 CH vs. QEMU vs. VirtualBox vs. VMware
 
 VMMs and Hypervisors in comparision.
 
@@ -278,7 +291,7 @@ transition: slide-up
 layout: default
 ---
 
-# 3.10 Recap
+# 3.12 Recap
 
 <v-clicks depth="2">
 
