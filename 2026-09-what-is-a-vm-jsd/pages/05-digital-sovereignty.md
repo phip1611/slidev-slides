@@ -89,11 +89,7 @@ Review comments & TODOs:
 - [ ] Ich bin oft auf Cyberus zurück gekommen, evtl weniger
 - [ ] Bei allen großen Figures: schritt-für-schritt?
 - [ ] Auf Folien weniger Text
-- [ ] 1.2 My way into the low level world: folie nicht zeigen, einfach reden
 - [ ] 3.10: overview figure: ganz schön overkill, habe schon so oft darüber gesprochen.
   Grafik entweder woanders nutzen (am Anfang) oder ganz weglassen
-- [ ] 4.2 passt nicht ganz zusammen. mische cyberus und meine rolle und ich mixe das
-  to be more readable:  cloud-hypervisor --kernel /etc/bootitems/linux/kernel_minimal/stable.bzImage --memory size=2048M,prefault=on --initramfs /etc/bootitems/linux/initrd_minimal/default --cmdline "console=ttyS0" --serial tty --console file=/tmp/foo --api-socket path=/tmp/chv1.sock --event-monitor path=/tmp/events_ch.txt --net tap=tap0 --cpus boot=4
 - [ ] Demo: backup video machen!
-- [x] meine QR code komponente nutzen und auf der letzten folie zwei QR codes für die links platzieren
 -->
