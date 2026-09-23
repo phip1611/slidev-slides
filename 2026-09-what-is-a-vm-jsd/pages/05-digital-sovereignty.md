@@ -22,12 +22,20 @@ layout: default
 - The only virtualization stack in Germany
 - We love the technology, and we love doing something for Germany's & Europe's
   souvereignty
-- More info:
-  - [Cloud Hypervisor](https://www.cyberus-technology.de/)
-  - [Cyberus Technology](https://www.cyberus-technology.de/)
 - Thank you!
 
 </v-clicks>
+
+<div v-click="6" class="qr-codes">
+  <figure>
+    <QrCode value="https://www.cloudhypervisor.org/" :size="110" />
+    <figcaption><a href="https://www.cloudhypervisor.org/">Cloud Hypervisor</a></figcaption>
+  </figure>
+  <figure>
+    <QrCode value="https://www.cyberus-technology.de/" :size="110" />
+    <figcaption><a href="https://www.cyberus-technology.de/">Cyberus Technology</a></figcaption>
+  </figure>
+</div>
 
 <img src="/images/cyberus-logo.svg"
 alt="Cyberus Technology logo"
@@ -84,5 +92,5 @@ Review comments & TODOs:
 - [ ] 4.2 passt nicht ganz zusammen. mische cyberus und meine rolle und ich mixe das
   to be more readable:  cloud-hypervisor --kernel /etc/bootitems/linux/kernel_minimal/stable.bzImage --memory size=2048M,prefault=on --initramfs /etc/bootitems/linux/initrd_minimal/default --cmdline "console=ttyS0" --serial tty --console file=/tmp/foo --api-socket path=/tmp/chv1.sock --event-monitor path=/tmp/events_ch.txt --net tap=tap0 --cpus boot=4
 - [ ] Demo: backup video machen!
-- [ ] meine QR code komponente nutzen und auf der letzten folie zwei QR codes für die links platzieren
+- [x] meine QR code komponente nutzen und auf der letzten folie zwei QR codes für die links platzieren
 -->
