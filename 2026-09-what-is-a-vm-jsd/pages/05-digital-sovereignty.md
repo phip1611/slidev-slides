@@ -35,6 +35,10 @@ layout: default
     <QrCode value="https://www.cyberus-technology.de/" :size="110" />
     <figcaption><a href="https://www.cyberus-technology.de/">Cyberus Technology</a></figcaption>
   </figure>
+  <figure>
+    <QrCode value="https://virtualization-saxony-jsd26.slides.phip1611.dev" :size="110" />
+    <figcaption><a href="https://virtualization-saxony-jsd26.slides.phip1611.dev">Slides</a></figcaption>
+  </figure>
 </div>
 
 <img src="/images/cyberus-logo.svg"
