@@ -66,20 +66,3 @@ Maintainer of: <br>
   </section>
 </div>
 
----
-layout: default
----
-
-# 1.2 My Way into the Low-Level World
-
-<v-clicks depth="2">
-
-- 2015-2022: Studied at TU Dresden (Dipl.-Inf.)
-- 2016-2021: Working at Telekom MMS with Angular and Spring (Werkstudent)
-- 2018: I started learning Rust
-- 2020: My interest in low-level software starting growing
-- 2021: Werkstudent position at **Cyberus Technology**
-- 2022: Finished university, started full time
-- ... until today: working on various low level and virtualization components
-
-</v-clicks>
