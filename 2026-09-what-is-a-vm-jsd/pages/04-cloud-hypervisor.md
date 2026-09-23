@@ -16,7 +16,7 @@ layout: default
   runs on top of the **KVM hypervisor**_ - Naming is complicated 🤷‍♀️
 - Modern VMM written in Rust modern Cloud workloads
   - Almost no legacy devices,
-    64-bit only, virtio-based devices
+    64-bit only, virtio-based devices<sup>1</sup>
   - No display/graphics model, only basic virtual hardware
   - Live migration
 - ~150.000 SLOC (including tests, scripts, etc.)
@@ -24,6 +24,11 @@ layout: default
   Technology
 
 </v-clicks>
+
+<div v-click="3" position="absolute" left="7ch" bottom="4ch" text="sm">
+  <sup>1</sup> <em>virtio</em> = specification for (virtual) devices: guest
+  knows that it is virtualized and uses drivers made for that
+</div>
 
 ---
 layout: default
@@ -36,7 +41,8 @@ And my role in the project.
 <v-clicks depth="2">
 
 - We are building major parts of our business around is open-source project
-- "Upstream first" policy
+- "Upstream first" policy: our work goes into the public project first, \
+  no private forks
 - We are among the top contributors for the past 18 months
 - I am maintaining live migration<sup>1</sup>
 
