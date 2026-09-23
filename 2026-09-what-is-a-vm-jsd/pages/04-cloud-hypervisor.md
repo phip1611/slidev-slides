@@ -1,5 +1,6 @@
 ---
 layout: chapter
+chapter: Cloud Hypervisor
 ---
 
 # 4. Cloud Hypervisor

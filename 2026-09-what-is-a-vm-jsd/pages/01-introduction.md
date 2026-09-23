@@ -1,5 +1,6 @@
 ---
 layout: chapter
+chapter: About Me
 ---
 
 # 1. Introduction

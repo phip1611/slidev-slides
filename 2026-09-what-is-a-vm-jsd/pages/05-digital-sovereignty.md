@@ -1,5 +1,6 @@
 ---
 layout: chapter
+chapter: Digital Sovereignty
 ---
 
 # 5. Digital Sovereignty for Core Digital Infrastructure
@@ -74,7 +75,6 @@ cloud-hypervisor \
 Review comments & TODOs:
 
 - [ ] Ich bin oft auf Cyberus zurück gekommen, evtl weniger
-- [ ] Statt "Chapter 00" -> "Introduction"
 - [ ] Bei allen großen Figures: schritt-für-schritt?
 - [ ] Auf Folien weniger Text
 - [ ] Why you should care: detail slides weg, nur sprechen

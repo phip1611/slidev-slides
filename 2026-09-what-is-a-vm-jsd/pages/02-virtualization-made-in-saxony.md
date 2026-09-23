@@ -1,5 +1,6 @@
 ---
 layout: chapter
+chapter: Made in Saxony
 ---
 
 # 2. Virtualization Made in Saxony

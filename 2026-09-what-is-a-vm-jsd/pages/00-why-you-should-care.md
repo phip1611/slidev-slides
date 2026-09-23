@@ -16,6 +16,7 @@ Philipp Schuster, Software Engineer @ Cyberus Technology
 
 ---
 layout: chapter
+chapter: Introduction
 ---
 
 # 0. Why You Should Care and Why I am Here

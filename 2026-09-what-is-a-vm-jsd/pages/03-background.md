@@ -1,5 +1,6 @@
 ---
 layout: chapter
+chapter: Background
 ---
 
 # 3. Background
