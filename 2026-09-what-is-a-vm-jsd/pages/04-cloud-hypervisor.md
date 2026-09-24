@@ -5,6 +5,9 @@ chapter: Cloud Hypervisor
 
 # 4. Cloud Hypervisor
 
+<!--
+- The concrete product now - everything from chapter 3 applies 1:1
+-->
 ---
 layout: default
 ---
@@ -31,6 +34,21 @@ layout: default
   knows that it is virtualized and uses drivers made for that
 </div>
 
+<!--
+- [CLICK] Official definition
+- [CLICK] Rust, cloud workloads
+- [CLICK] No legacy, virtio
+- [CLICK] No graphics
+- [CLICK] Live migration
+- [CLICK] ~150k lines
+- [CLICK] Intel, now Microsoft/Meta
+
+Beyond the slide:
+- virtio = paravirtualization: the guest knows it is virtualized and uses
+  drivers made for that - far fewer VM exits than emulating real hardware
+- QEMU is ~1.5M lines and emulates floppy drives; CH deliberately does not
+- A small code base is reviewable - which is what an accreditation needs
+-->
 ---
 layout: default
 ---
@@ -50,7 +68,19 @@ About developer productivity, safety, and robustness out of this world.
 
 </v-clicks>
 
+<!--
+- [CLICK] Mature language
+- [CLICK] Fearless contributions
+- [CLICK] IDE support
+- [CLICK] Easy onboarding
+- [CLICK] Complex domain, approachable
 
+Beyond the slide:
+- For this audience: memory safety without a GC and without a runtime
+- A VMM bug breaks the isolation we sell - safety is a security property here
+- unsafe code exists where we touch hardware: small, isolated, reviewed
+- One toolchain (cargo, clippy, rustfmt) instead of five
+-->
 ---
 layout: default
 ---
@@ -66,6 +96,16 @@ layout: default
 
 </v-clicks>
 
+<!--
+- [CLICK] Business builds on it
+- [CLICK] Upstream first
+- [CLICK] Top contributors
+
+Beyond the slide:
+- No private forks: no divergence, no rebase hell
+- Customers can verify what they actually run
+- A small company from Dresden shapes a project driven by Microsoft and Meta
+-->
 ---
 layout: default
 ---
@@ -93,7 +133,18 @@ Fields the whole company is involved in.
   <sup>1</sup> Process of migrating a VM from host A to B while it keeps running
 </div>
 
+<!--
+- [CLICK] Live migration
+- [CLICK] Lifecycle management
+- [CLICK] Performance
+- [CLICK] Testing
+- [CLICK] My role: maintainer
 
+Beyond the slide:
+- Live migration makes host maintenance invisible to the customer
+- The hard part is memory: copy it while the guest keeps writing to it
+- Maintaining means reviewing other people's patches more than writing my own
+-->
 ---
 layout: default
 ---
@@ -111,7 +162,14 @@ Spawning VMs and debugging!
 
 </v-clicks>
 
+<!--
+- [CLICK] CLI, spawning a VM
+- [CLICK] Networking
+- [CLICK] Live debugging
+- [CLICK] Live migration
 
+- Keep it short - this is only the agenda for the demo
+-->
 ---
 layout: cover
 ---
@@ -119,10 +177,13 @@ layout: cover
 DEMO TIME
 
 <!--
+- Switch to the terminal; boot a VM first, they should see how fast it is
+- Then gdb on the running VMM: show the vCPU threads from chapter 3
+- If something breaks: keep talking, the backup slides are at the end
+
 host: sudo ip tuntap add dev tap0 mode tap; sudo ip addr add dev tap0 192.168.200.1/24; sudo ip link set dev tap0 up
 guest: sudo ip addr add dev eth0 192.168.200.2/24; sudo ip link set dev eth0 up
 -->
-
 ---
 layout: default
 ---
@@ -140,3 +201,15 @@ layout: default
 
 </v-clicks>
 
+<!--
+- [CLICK] Unit tests
+- [CLICK] Direct kernel boot
+- [CLICK] Minimal kernel, initrd
+- [CLICK] 99% of cases
+- [CLICK] Integration suites
+
+Beyond the slide:
+- Direct kernel boot skips firmware and bootloader - sub-second boots
+- The fast feedback loop is what makes low-level work bearable
+- This is also how I reproduce and debug customer issues
+-->

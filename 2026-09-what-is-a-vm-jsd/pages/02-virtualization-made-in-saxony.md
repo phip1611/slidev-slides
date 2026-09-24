@@ -7,6 +7,9 @@ chapter: Made in Saxony
 
 Crafted with love and passion by Cyberus Technology in Dresden.
 
+<!--
+- Signpost: who builds this, and why in Dresden
+-->
 ---
 layout: default
 ---
@@ -31,6 +34,23 @@ layout: default
   alt="Cyberus Technology logo"
   class="corner-logo"/>
 
+<!--
+- [CLICK] 2017, six founders
+- [CLICK] Independent, profitable
+- [CLICK] x86 expertise
+- [CLICK] Reproducible engineering
+- [CLICK] Dresden, not Silicon Valley
+- [CLICK] Heard of us?
+- [CLICK] Meltdown & Spectre
+- [CLICK] VirtualBox KVM backend
+- [CLICK] Cloud Hypervisor contributor
+
+Beyond the slide:
+- ~35 people today; no VC money, no exit pressure - we think in decades
+- Reproducible builds, Nix, everything auditable
+- Name the fresh BSI accreditation here too, details follow on 2.3
+- Dresden as a silicon location: Infineon, GlobalFoundries, TU Dresden
+-->
 ---
 layout: quote
 ---
@@ -44,6 +64,14 @@ decades._
 
 Our goal is digital sovereignty in Germany and Europe (while building cool stuff)!
 
+<!--
+- Read the mission, do not recite it word by word
+- Key words: open source, stands the test of time, reproducible
+
+Beyond the slide:
+- "Decades" is literal - customers run critical systems 10+ years
+- Sovereignty is the goal, but we also simply enjoy building this
+-->
 ---
 layout: default
 ---
@@ -70,3 +98,22 @@ Selected items.
   <sup>1</sup> <em>VS-NfD</em>: "Verschlusssache - Nur für den Dienstgebrauch",
   the lowest German classification level for classified information
 </div>
+
+<!--
+- [CLICK] Focus: Linux/KVM
+- [CLICK] Cyberus Hypervisor
+- [CLICK] Cloud and embedded
+- [CLICK] BSI accredited
+- [CLICK] Only one in Germany
+- [CLICK] Sovereign clouds
+- [CLICK] Components, not products
+- [CLICK] SAP: Apeiro
+
+Beyond the slide:
+- Cyberus Hypervisor = Cloud Hypervisor + Linux/KVM + service; both names carry
+  the rest of the talk
+- VS-NfD = "Verschlusssache - Nur für den Dienstgebrauch", lowest German level
+- Accredited since 15 September 2026 - days old
+- An accreditation is years of engineering discipline, not just paperwork
+- Be precise about what the "only" claim covers
+-->

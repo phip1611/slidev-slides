@@ -14,6 +14,15 @@ JUG Saxony Day - 25. September 2026
 
 Philipp Schuster, Software Engineer @ Cyberus Technology
 
+<!--
+- Welcome, thanks for having me
+- From your Java code down to the hypervisor
+- Hands up: who runs software in the cloud?
+
+Beyond the slide:
+- I have been visiting this conference for almost a decade
+- Promise: no rocket science, the core fits on a few slides
+-->
 ---
 layout: chapter
 chapter: Introduction
@@ -21,6 +30,10 @@ chapter: Introduction
 
 # 1. Why You Should Care and Why I am Here
 
+<!--
+- Signpost: why it matters, and why I am the one telling it
+- Two sentences, then move on
+-->
 ---
 layout: default
 ---
@@ -38,6 +51,18 @@ layout: default
 
 </v-clicks>
 
+<!--
+- [CLICK] Your app: in VMs
+- [CLICK] Built in Dresden
+- [CLICK] I came from Spring
+- [CLICK] Agenda
+
+Beyond the slide:
+- Virtualization is no rocket science - the main message of the talk
+- You work high-level, today we go into the (not so) dark arts
+- Everything is x86_64; ARM is similar, the details differ
+- Fasten your seatbelts
+-->
 ---
 layout: default
 ---
@@ -99,3 +124,19 @@ Maintainer of: <br>
   </section>
 </div>
 
+<!--
+- [CLICK] Name, role
+- [CLICK] GitHub, website
+- [CLICK] Cyberus, Dresden
+- [CLICK] Virtualization, KVM, Rust
+- [CLICK] uefi-rs, cloud-hypervisor
+- [CLICK] Dresden Systems Meetup
+- [CLICK] Talks
+
+Beyond the slide (the removed "My way into the low-level world" slide):
+- 2015-2022 TU Dresden (Dipl.-Inf.), 2016-2021 Telekom MMS (Angular/Spring)
+- 2018 started Rust, 2020 the low-level interest grew
+- 2021 working student at Cyberus, 2022 full time
+- I maintain live migration upstream; the meetup is open to everyone
+- Tell it as a story, not as dates - this is the bridge to the audience
+-->

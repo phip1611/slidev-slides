@@ -7,6 +7,10 @@ chapter: Digital Sovereignty
 
 Virtualization made in Saxony by Cyberus Technology
 
+<!--
+- Back from the technology to why it matters
+- Everything you just saw is built here, not imported
+-->
 ---
 layout: default
 ---
@@ -45,6 +49,20 @@ layout: default
 alt="Cyberus Technology logo"
 class="corner-logo"/>
 
+<!--
+- [CLICK] No US hyperscalers needed
+- [CLICK] Built in Dresden
+- [CLICK] BSI accredited
+- [CLICK] Only one in Germany
+- [CLICK] Technology and sovereignty
+- [CLICK] Thank you
+
+Beyond the slide:
+- Sovereignty is not autarky: open source with a global community, but the
+  critical layer stays auditable and in European hands
+- Invite them: contributions welcome, Dresden Systems Meetup is around the corner
+- QR codes: Cloud Hypervisor, Cyberus, these slides - leave it up during Q&A
+-->
 ---
 layout: default
 ---
@@ -62,6 +80,10 @@ sudo ip addr add dev eth0 192.168.200.2/24
 sudo ip link set dev eth0 up
 ```
 
+<!--
+- Backup slide - only if the demo networking breaks
+- Host side creates the tap device, guest side configures eth0
+-->
 ---
 layout: default
 ---
@@ -82,8 +104,10 @@ cloud-hypervisor \
   --net tap=tap0
 ```
 
-
 <!--
+- Backup slide - the exact command line from the demo
+- Walk the flags if asked: kernel, initramfs, memory, cpus, serial, api-socket
+
 Review comments & TODOs:
 
 - [ ] Demo: backup video machen!
