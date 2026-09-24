@@ -35,3 +35,6 @@ src: ./pages/04-cloud-hypervisor.md
 ---
 src: ./pages/05-digital-sovereignty.md
 ---
+---
+src: ./pages/06-backup.md
+---
