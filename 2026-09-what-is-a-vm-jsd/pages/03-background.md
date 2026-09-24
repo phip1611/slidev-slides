@@ -9,7 +9,7 @@ chapter: Background
 layout: default
 ---
 
-# 3.0 Terminology: Hypa Hyper Hypervisor?
+# 3.0 Terminology: Hypa Hypa Hypervisor?
 
 Many different wordings out there. I prefer these fine-grained definitions:
 
@@ -60,6 +60,11 @@ layout: default
 </v-clicks>
 
 <div v-click="7" position="absolute" left="7ch" bottom="4ch" text="sm"><sup>1</sup> the software (operating system) running in the VM</div>
+
+---
+layout: image
+image: /images/terminology-who-is-who.svg
+---
 
 ---
 layout: default
@@ -306,8 +311,3 @@ layout: default
 - Overview figure:
 
 </v-clicks>
-
----
-layout: image
-image: /images/terminology-who-is-who.svg
----

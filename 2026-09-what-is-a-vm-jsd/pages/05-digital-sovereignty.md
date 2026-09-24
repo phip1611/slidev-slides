@@ -89,7 +89,5 @@ Review comments & TODOs:
 - [ ] Ich bin oft auf Cyberus zurück gekommen, evtl weniger
 - [ ] Bei allen großen Figures: schritt-für-schritt?
 - [ ] Auf Folien weniger Text
-- [ ] 3.10: overview figure: ganz schön overkill, habe schon so oft darüber gesprochen.
-  Grafik entweder woanders nutzen (am Anfang) oder ganz weglassen
 - [ ] Demo: backup video machen!
 -->
