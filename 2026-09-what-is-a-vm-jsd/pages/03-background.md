@@ -285,7 +285,7 @@ transition: undefined
 
 # 3.11 CH vs. QEMU vs. VirtualBox vs. VMware
 
-VMMs and Hypervisors in comparision.
+VMMs and Hypervisors in comparison.
 
 ---
 layout: image

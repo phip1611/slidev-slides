@@ -15,13 +15,13 @@ layout: default
 
 <v-clicks depth="2">
 
-- No need for need Microsoft, Amazon, Oracle
+- No need for big US-based companies
 - We build core digital infrastructure here in Dresden
 - **BSI-accredited ("Zulassung") for _VS-NfD_ and _NATO Restricted_** 🎉 \
   <small>(Since September 15th 2026 - [BSI Website](https://www.bsi.bund.de/DE/Themen/Oeffentliche-Verwaltung/Zulassung/Liste-zugelassener-Produkte/liste-zugelassener-produkte_node.html))</small>
 - The only virtualization stack in Germany
 - We love the technology, and we love doing something for Germany's & Europe's
-  souvereignty
+  sovereignty
 - Thank you!
 
 </v-clicks>
