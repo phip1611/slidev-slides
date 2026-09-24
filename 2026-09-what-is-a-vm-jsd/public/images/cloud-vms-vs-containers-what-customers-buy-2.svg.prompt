@@ -1,0 +1,17 @@
+Step 2 of the build-up. Identical to
+cloud-vms-vs-containers-what-customers-buy-1.svg (see that prompt), with
+nothing moved, plus the reality behind the three orders:
+
+- One physical host operated by the cloud provider, wrapping everything.
+- A dashed "Container platform" area around B's and C's workloads, labelled
+  "rents one VM per customer".
+- A VM box around B's containers and another around C's containers, each
+  labelled "Platform VM" / "B only" resp. "C only". Never two customers in
+  one VM.
+- Bottom layers across all VMs: host kernel + KVM (one VMM process per VM,
+  e.g. Cloud Hypervisor), then hardware.
+- The footer becomes: "Where it actually runs: every customer ends up in a VM
+  of their own."
+
+The VMs stay empty here except for the containers from step 1; their contents
+follow in step 3.

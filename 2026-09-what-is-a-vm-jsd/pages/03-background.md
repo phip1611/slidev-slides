@@ -99,13 +99,19 @@ When to use what?
 
 ---
 layout: image
-image: /images/cloud-vms-vs-containers-what-customers-buy.svg
+image: /images/cloud-vms-vs-containers-what-customers-buy-1.svg
 transition: undefined
 ---
 
 ---
 layout: image
-image: /images/cloud-vms-vs-containers-what-customers-buy--blurred.svg
+image: /images/cloud-vms-vs-containers-what-customers-buy-2.svg
+transition: undefined
+---
+
+---
+layout: image
+image: /images/cloud-vms-vs-containers-what-customers-buy-3.svg
 transition: slide-up
 ---
 
