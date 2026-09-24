@@ -22,7 +22,9 @@ Many different wordings out there. I prefer these fine-grained definitions:
 - **Hypervisor**: Privileged software component running in kernel-space \
   (e.g. Linux/KVM)
 - **Virtual Machine Monitor (VMM)**: Unprivileged software component \
-  (like a regular user-space application, e.g. _Cloud Hypervisor_)
+  (like a regular user-space application)
+- **Cloud Hypervisor (CH)**: A VMM written in Rust, using Linux/KVM \
+  (Naming things is hard! 🫨)
 - **Virtualization Stack**: Hypervisor + VMM \[+ Management Software\]
 - **Guest**: Software running in a VM (OS + user applications), e.g. Windows or Debian
 
@@ -31,6 +33,7 @@ Many different wordings out there. I prefer these fine-grained definitions:
 <!--
 - [CLICK] Hypervisor: kernel space
 - [CLICK] VMM: user space
+- [CLICK] Cloud Hypervisor: a VMM
 - [CLICK] Stack: both together
 - [CLICK] Guest: Windows, Debian
 
@@ -395,7 +398,6 @@ image: /images/vmm-provides-virtual-device.svg
 -->
 ---
 layout: default
-transition: undefined
 ---
 
 # 3.10 Linux KVM
@@ -423,48 +425,6 @@ Beyond the slide:
 - KVM provides mechanisms and enforces separation, but is useless on its own:
   without a VMM there is no VM
 - Every Linux laptop in this room already has it - nothing to install
--->
----
-layout: default
-transition: slide-up
----
-
-# 3.10 Linux KVM
-
-_**K**ernel-based **V**irtual **M**achine_
-
-<v-clicks depth="3">
-
-- Entry point to KVM: `/dev/kvm`
-  - `open("/dev/kvm")` → KVM system FD
-  - `ioctl(kvm_fd, KVM_CREATE_VM, ...)` → VM FD
-  - `ioctl(vm_fd, KVM_CREATE_VCPU, ...)` → vCPU FD
-  - A vCPU thread calls `ioctl(vcpu_fd, KVM_RUN, 0)`
-  - The physical CPU running that thread then executes guest code \
-    (using hardware virtualization features)
-- That's it :)
-
-</v-clicks>
-
-<!--
-- [CLICK] /dev/kvm
-- [CLICK] System FD
-- [CLICK] VM FD
-- [CLICK] vCPU FD
-- [CLICK] KVM_RUN
-- [CLICK] Guest code runs
-- [CLICK] That's it
-
-Beyond the slide:
-- Everything else is ioctls on those three file descriptors
-- A plain Unix API: file descriptors, ioctl, threads - nothing exotic
-- People write toy VMMs in ~100 lines of C
-
-Interesting links:
-- https://elixir.bootlin.com/linux/v7.2.6/source/virt/kvm/kvm_main.c#L4441
-- https://elixir.bootlin.com/linux/v7.2.6/source/arch/x86/kvm/x86.c#L10970
-- https://elixir.bootlin.com/linux/v7.2.6/source/arch/x86/kvm/vmx/vmx.c#L7481
-- https://elixir.bootlin.com/linux/v7.2.6/source/arch/x86/kvm/vmx/vmenter.S#L106
 -->
 ---
 layout: default
@@ -507,7 +467,6 @@ layout: default
 - 1 host thread → 1 vCPU → 1 CPU in VM
 - Most implementation work happens inside the VMM
 - We'll focus in Cloud Hypervisor (VMM) with Linux/KVM (hypervisor) in the following
-- Overview figure:
 
 </v-clicks>
 
@@ -518,7 +477,6 @@ layout: default
 - [CLICK] Thread, vCPU, CPU
 - [CLICK] Work sits in VMM
 - [CLICK] Next: CH and KVM
-- [CLICK] Overview figure
 
 Beyond the slide:
 - One sentence to remember: the hypervisor enforces, the VMM implements

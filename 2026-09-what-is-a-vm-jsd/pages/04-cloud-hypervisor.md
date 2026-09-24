@@ -89,7 +89,7 @@ layout: default
 
 <v-clicks depth="2">
 
-- We are building major parts of our business around is open-source project
+- We are building major parts of our business around this open-source project
 - "Upstream first" policy: our work goes into the public project first, \
   no private forks
 - We are among the top contributors for the past 18 months
