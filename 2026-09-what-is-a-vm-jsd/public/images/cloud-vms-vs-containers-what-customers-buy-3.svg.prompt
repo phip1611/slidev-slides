@@ -1,0 +1,12 @@
+Step 3 of the build-up. Identical to
+cloud-vms-vs-containers-what-customers-buy-2.svg (see that prompt), with
+nothing moved, plus what is inside each VM:
+
+- A's VM: the concrete stack (nginx, postgres, JRE running a spring-boot
+  service) on A's own guest kernel. A's colour box wraps the whole inside of
+  that VM, kernel included, to make clear A owns the complete VM and can
+  modify the kernel.
+- B's and C's platform VMs: a container runtime row and their own guest
+  kernel below the containers.
+- The footer becomes the takeaway: container customers never see a VM, yet
+  each gets one (in a typical setup); the VM boundary separates customers.

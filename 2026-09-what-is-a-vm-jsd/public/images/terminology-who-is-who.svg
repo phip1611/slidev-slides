@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" font-family="'IBM Plex Sans', sans-serif">
+  <!--
+    Terminology overview for "Hypa Hyper?": who is who in a virtualization
+    stack. Guest inside the VM, the VMM as a normal user-space process, the
+    hypervisor in the kernel, hardware underneath, optional management
+    software next to the VMM.
+  -->
+  <style>
+    .title  { font-size: 24px; font-weight: 600; fill: #8a0404; letter-spacing: -0.035em; }
+    .h      { font-size: 18px; font-weight: 600; fill: #242126; }
+    .t      { font-size: 14px; fill: #242126; }
+    .sub    { font-size: 13px; fill: #706b6d; }
+    .tiny   { font-size: 12px; fill: #706b6d; }
+    .mono   { font-family: 'Source Code Pro', monospace; font-size: 13px; fill: #242126; }
+    .note   { font-size: 15px; fill: #706b6d; font-style: italic; }
+
+    .vm     { fill: #e9f7ef; stroke: #2f9e5b; stroke-width: 2.5; }
+    .guest  { fill: #ffffff; stroke: #2f9e5b; stroke-width: 1.5; }
+    .vmm    { fill: #eaf1ff; stroke: #3b6fd8; stroke-width: 2.5; }
+    .hyp    { fill: #f3ebff; stroke: #7c4dcc; stroke-width: 2.5; }
+    .hw     { fill: #e5e7eb; stroke: #9ca3af; stroke-width: 1.5; }
+    .mgmt   { fill: #fbfbfc; stroke: #9ca3af; stroke-width: 1.5; stroke-dasharray: 7 5; }
+    .stack  { fill: none; stroke: #8a0404; stroke-width: 2; stroke-dasharray: 8 6; }
+    .split  { stroke: #9ca3af; stroke-width: 1.5; stroke-dasharray: 5 5; }
+    .conn   { stroke: #6b7280; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+  </style>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="675" fill="#ffffff"/>
+
+  <text class="title" x="40" y="44">Who is who in a virtualization stack</text>
+
+  <!-- ===== VM with the guest inside ===== -->
+  <rect class="vm" x="60" y="72" width="840" height="150" rx="12"/>
+  <text class="h"   x="80" y="100" fill="#1f7a45">Virtual Machine (VM)</text>
+  <text class="sub" x="80" y="120">a virtual computer: vCPUs, memory, virtual devices</text>
+  <rect class="guest" x="80" y="134" width="800" height="70" rx="9"/>
+  <text class="h"   x="100" y="162" style="font-size:16px">Guest</text>
+  <text class="sub" x="100" y="184">the software running inside the VM: OS kernel, drivers, user applications</text>
+
+  <!-- ===== the virtualization stack ===== -->
+  <rect class="stack" x="40" y="252" width="1120" height="300" rx="14"/>
+  <text class="h" x="60" y="278" fill="#8a0404" style="font-size:16px">Virtualization stack</text>
+  <text class="sub" x="268" y="278">hypervisor + VMM [+ management software]</text>
+
+  <!-- VMM -->
+  <rect class="vmm" x="60" y="296" width="840" height="110" rx="12"/>
+  <text class="h"   x="80" y="324" fill="#2a56b8">Virtual Machine Monitor (VMM)</text>
+  <text class="sub" x="80" y="346">unprivileged user-space program: creates the VM and emulates its virtual hardware</text>
+  <text class="mono" x="80" y="372">Cloud Hypervisor (CH), QEMU, VirtualBox, ...</text>
+  <text class="tiny" x="80" y="394">one VMM process per VM</text>
+
+  <!-- Management software -->
+  <rect class="mgmt" x="920" y="296" width="240" height="110" rx="12"/>
+  <text class="t"    x="940" y="324" style="font-weight:600">Management software</text>
+  <text class="tiny" x="940" y="346">optional: API, scheduling,</text>
+  <text class="tiny" x="940" y="364">orchestration of many VMs</text>
+  <text class="tiny" x="940" y="388" font-style="italic">libvirt, OpenStack, ...</text>
+
+  <!-- user space / kernel space split -->
+  <line class="split" x1="60" y1="428" x2="1140" y2="428"/>
+  <text class="tiny" x="1140" y="422" text-anchor="end">user space (unprivileged)</text>
+  <text class="tiny" x="1140" y="446" text-anchor="end">kernel space (privileged)</text>
+
+  <!-- Hypervisor -->
+  <rect class="hyp" x="60" y="452" width="840" height="86" rx="12"/>
+  <text class="h"   x="80" y="480" fill="#5b2fb0">Hypervisor</text>
+  <text class="sub" x="80" y="502">privileged kernel component: isolation, resource management, uses the CPU extensions</text>
+  <text class="mono" x="80" y="526">Linux/KVM (/dev/kvm)</text>
+
+  <!-- ===== Hardware ===== -->
+  <rect class="hw" x="60" y="572" width="1100" height="58" rx="10"/>
+  <text class="h"   x="80" y="598" style="font-size:16px">Hardware</text>
+  <text class="sub" x="80" y="620">CPU with virtualization extensions (VMX / SVM), memory, devices</text>
+
+  <!-- relations -->
+  <path class="conn" d="M760,296 V 226"/>
+  <text class="tiny" x="776" y="266">provides the VM</text>
+  <path class="conn" d="M480,410 V 448"/>
+  <text class="tiny" x="496" y="422">uses the hypervisor</text>
+  <path class="conn" d="M480,542 V 568"/>
+</svg>

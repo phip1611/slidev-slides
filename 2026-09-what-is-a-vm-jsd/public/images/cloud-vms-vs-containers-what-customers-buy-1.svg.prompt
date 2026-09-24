@@ -1,0 +1,29 @@
+Create an SVG diagram for a technical talk: "What customers buy vs. where it
+actually runs". It is step 1 of a three-step build-up; steps 2 and 3 add to
+this figure without moving anything, so all coordinates chosen here are final.
+
+Step 1 shows only what each customer orders, not where it runs:
+- 16:9 canvas (1200×675), white background, content fills it with only a
+  slight margin.
+- Top row: 3 customer pills. A buys a VM; B and C buy containers.
+- Below each pill, what that order consists of:
+  - A: an empty VM (green box) - A rents a machine and brings their own stack.
+  - B: 2 generic containers.
+  - C: 3 containers running one service each: nginx, postgres, JRE with a
+    spring-boot service.
+- Straight arrows from each customer to what they ordered. A's arrow stops at
+  the VM boundary, B's and C's reach down to their containers, because they
+  never ordered a VM. Labels must not overlap arrows. One colour per customer.
+- One-line footer: "What each customer orders."
+- Style: clean, light, CSS classes in <style>, green for VMs, purple for the
+  virtualization layer.
+- Deck style (must match the talk's CSS tokens exactly):
+  - Fonts: text is 'IBM Plex Sans', sans-serif; monospace/code is
+    'Source Code Pro', monospace. No Inter, no JetBrains Mono.
+  - Diagram title: fill #8a0404 (deck heading red), font-weight 600,
+    letter-spacing -0.035em.
+  - Body text: fill #242126 (ink). Secondary/caption text: fill #706b6d
+    (muted). Neutral hairlines/box borders: #e6e1df.
+  - Background: #ffffff.
+  - Accent colours stay semantic (see above) and are only used for the
+    diagram's own boxes, never for the title or body text.

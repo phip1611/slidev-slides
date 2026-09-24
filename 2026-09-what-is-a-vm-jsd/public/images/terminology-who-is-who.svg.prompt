@@ -1,0 +1,23 @@
+Create an SVG figure for the slide "3.5 Terminology: Hypa Hyper?" that shows
+all terms of that slide at once, in a basic way. Same deck style as the other
+figures (1200x675, white background, 'IBM Plex Sans' / 'Source Code Pro',
+title in #8a0404, green = VM/guest, blue = VMM, purple = hypervisor,
+grey = hardware).
+
+Layered from top to bottom:
+- Virtual Machine (VM): a virtual computer (vCPUs, memory, virtual devices),
+  with the Guest inside it (OS kernel, drivers, user applications).
+- Virtual Machine Monitor (VMM): unprivileged user-space program that creates
+  the VM and emulates its virtual hardware; Cloud Hypervisor (CH), QEMU,
+  VirtualBox; one VMM process per VM.
+- Optional management software next to the VMM (libvirt, OpenStack, ...).
+- A dashed frame around VMM + hypervisor + management software labelled
+  "Virtualization stack".
+- A dashed line separating user space (unprivileged) from kernel space
+  (privileged).
+- Hypervisor: privileged kernel component, isolation and resource management,
+  uses the CPU extensions; Linux/KVM (/dev/kvm).
+- Hardware: CPU with virtualization extensions (VMX / SVM), memory, devices.
+
+Thin arrows: VMM provides the VM, VMM uses the hypervisor, hypervisor uses the
+hardware.

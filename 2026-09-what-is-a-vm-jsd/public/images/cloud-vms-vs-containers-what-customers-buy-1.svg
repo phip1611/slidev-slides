@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" font-family="'IBM Plex Sans', sans-serif">
+  <!--
+    16:9 canvas (1200x675) filled by the content with only a slight margin,
+    matching the other figures on a 16:9 slide.
+    Step 1 of 3: what each customer thinks they ordered.
+    Every step keeps the coordinates of the previous one, so the figure only
+    gains elements and nothing moves between slides.
+    Palette: green = VM, purple = virtualization layer, one colour per customer.
+  -->
+  <style>
+    .title  { font-size: 26px; font-weight: 600; fill: #8a0404; letter-spacing: -0.035em; }
+    .h      { font-size: 16px; font-weight: 600; fill: #242126; }
+    .t      { font-size: 15px; fill: #242126; }
+    .sub    { font-size: 13px; fill: #706b6d; }
+    .note   { font-size: 16px; fill: #706b6d; }
+    .mono   { font-family: 'Source Code Pro', monospace; font-size: 13px; fill: #242126; }
+    .monos  { font-family: 'Source Code Pro', monospace; font-size: 11.5px; fill: #242126; }
+
+    .host   { fill: #f7f7f8; stroke: #6b7280; stroke-width: 2; }
+    .vm     { fill: #e9f7ef; stroke: #2f9e5b; stroke-width: 2.5; }
+    .zone   { fill: none; stroke: #7c4dcc; stroke-width: 2; stroke-dasharray: 8 5; }
+    .kvm    { fill: #f3ebff; stroke: #7c4dcc; stroke-width: 2; }
+    .hw     { fill: #e5e7eb; stroke: #9ca3af; stroke-width: 1.5; }
+    .layer  { fill: #ffffff; stroke: #9ca3af; stroke-width: 1.5; }
+    .link   { stroke: #6b7280; stroke-width: 1.8; fill: none; marker-end: url(#arrow); }
+
+    /* One colour per customer: pill and workloads */
+    .cA { fill: #eaf1ff; stroke: #3b6fd8; stroke-width: 2; }
+    .cB { fill: #fff1d6; stroke: #d98a00; stroke-width: 2; }
+    .cC { fill: #fde7f1; stroke: #c2417a; stroke-width: 2; }
+  </style>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#706b6d"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="675" fill="#ffffff"/>
+
+  <text class="title" x="40" y="46">What customers buy vs. where it actually runs</text>
+
+  <!-- ===== Customers (centred above what they ordered) ===== -->
+  <rect class="cA" x="160" y="72" width="150" height="52" rx="26"/>
+  <text class="h" x="235" y="95" text-anchor="middle" fill="#2a56b8">Customer A</text>
+  <text class="sub" x="235" y="114" text-anchor="middle">buys a VM</text>
+
+  <rect class="cB" x="532" y="72" width="150" height="52" rx="26"/>
+  <text class="h" x="607" y="95" text-anchor="middle" fill="#a86a00">Customer B</text>
+  <text class="sub" x="607" y="114" text-anchor="middle">buys containers</text>
+
+  <rect class="cC" x="890" y="72" width="150" height="52" rx="26"/>
+  <text class="h" x="965" y="95" text-anchor="middle" fill="#a0305f">Customer C</text>
+  <text class="sub" x="965" y="114" text-anchor="middle">buys containers</text>
+
+  <!-- A ordered a VM and got exactly that -->
+  <rect class="vm" x="70" y="225" width="330" height="235" rx="12"/>
+  <text class="t" x="86" y="248">VM, rented by Customer A</text>
+  <rect class="cB" x="454" y="280" width="150" height="80" rx="8"/>
+  <text class="t" x="529" y="325" text-anchor="middle">B</text>
+  <rect class="cB" x="610" y="280" width="150" height="80" rx="8"/>
+  <text class="t" x="685" y="325" text-anchor="middle">B</text>
+  <rect class="cC" x="812" y="280" width="98" height="80" rx="8"/>
+  <text class="monos" x="861" y="325" text-anchor="middle">nginx</text>
+  <rect class="cC" x="916" y="280" width="98" height="80" rx="8"/>
+  <text class="monos" x="965" y="325" text-anchor="middle">postgres</text>
+  <rect class="cC" x="1020" y="280" width="98" height="80" rx="8"/>
+  <text class="monos" x="1069" y="317" text-anchor="middle">JRE:</text>
+  <text class="monos" x="1069" y="335" text-anchor="middle">spring-boot</text>
+
+  <!-- What each customer ordered -> what it turns into (drawn last, on top) -->
+  <path class="link" d="M235,124 V223"/>
+  <path class="link" d="M607,124 V278"/>
+  <path class="link" d="M965,124 V278"/>
+
+  <text class="note" x="600" y="638" text-anchor="middle">What each customer orders.</text>
+</svg>

@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" font-family="'IBM Plex Sans', sans-serif">
+  <!--
+    High-level story of "What does a VMM need to create a VM?":
+    the VMM (left) provides a virtual device (here: virtio-blk), the guest
+    (right) sees it as normal hardware, and every access the guest performs on
+    it is forwarded back to the VMM, which does the real work on the host.
+  -->
+  <style>
+    .title  { font-size: 24px; font-weight: 600; fill: #8a0404; letter-spacing: -0.035em; }
+    .h      { font-size: 17px; font-weight: 600; fill: #242126; }
+    .sub    { font-size: 13px; fill: #706b6d; }
+    .t      { font-size: 15px; fill: #242126; }
+    .mono   { font-family: 'Source Code Pro', monospace; font-size: 14px; fill: #242126; }
+    .hint   { font-size: 14px; fill: #706b6d; font-style: italic; }
+    .lbl    { font-size: 15px; font-weight: 600; fill: #8a0404; }
+
+    .vm     { fill: #e9f7ef; stroke: #2f9e5b; stroke-width: 2; }
+    .ch     { fill: #eaf1ff; stroke: #3b6fd8; stroke-width: 2; }
+    .kvm    { fill: #f3ebff; stroke: #7c4dcc; stroke-width: 2; }
+    .dev    { fill: #fff1d6; stroke: #d98a00; stroke-width: 2; }
+    .plain  { fill: #f9fafb; stroke: #9ca3af; stroke-width: 1.5; }
+    .bus    { fill: #f7f9ff; stroke: #3b6fd8; stroke-width: 1.5; stroke-dasharray: 7 5; }
+    .faded  { opacity: 0.45; }
+
+    .flow   { stroke: #8a0404; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+    .prov   { stroke: #d98a00; stroke-width: 2.5; fill: none; stroke-dasharray: 7 5;
+              marker-start: url(#dot-start); marker-end: url(#arrow-o); }
+  </style>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8a0404"/>
+    </marker>
+    <marker id="arrow-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#d98a00"/>
+    </marker>
+    <marker id="dot-start" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5">
+      <circle cx="5" cy="5" r="4" fill="#d98a00"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="675" fill="#ffffff"/>
+
+  <text class="title" x="60" y="60">The VMM provides the virtual hardware - the guest just uses it</text>
+  <text class="sub"   x="60" y="86" font-size="14">Example: two virtual disks</text>
+
+  <!-- ===== VMM ===== -->
+  <rect class="ch" x="60" y="130" width="450" height="420" rx="14"/>
+  <text class="h"   x="84" y="164" fill="#2a56b8">VMM (cloud-hypervisor)</text>
+  <text class="sub" x="84" y="184">a normal program on the host</text>
+
+  <rect class="dev" x="90" y="210" width="390" height="64" rx="10"/>
+  <text class="h"   x="110" y="238">Virtual disk 1</text>
+  <text class="sub" x="110" y="260">a few hundred lines of code in the VMM</text>
+
+  <rect class="dev" x="90" y="286" width="390" height="64" rx="10"/>
+  <text class="h"   x="110" y="314">Virtual disk 2</text>
+  <text class="sub" x="110" y="336">the same code, another file</text>
+
+  <rect class="plain" x="90" y="360" width="390" height="140" rx="10"/>
+  <text class="t"    x="110" y="392">The VMM does the real work</text>
+  <text class="mono" x="110" y="428">disk1.img</text>
+  <text class="mono" x="270" y="428">disk2.img</text>
+  <text class="sub"  x="110" y="466">just files on the host -</text>
+  <text class="sub"  x="110" y="486">the guest never knows</text>
+
+  <!-- ===== KVM ===== -->
+  <rect class="kvm" x="560" y="130" width="130" height="420" rx="14"/>
+  <text class="h"   x="625" y="164" text-anchor="middle" fill="#5b2fb0">KVM</text>
+  <text class="sub" x="625" y="184" text-anchor="middle">host kernel</text>
+  <text class="sub" x="625" y="338" text-anchor="middle">catches the</text>
+  <text class="sub" x="625" y="358" text-anchor="middle">access and</text>
+  <text class="sub" x="625" y="378" text-anchor="middle">hands it over</text>
+
+  <!-- ===== Guest ===== -->
+  <rect class="vm" x="740" y="130" width="400" height="420" rx="14"/>
+  <text class="h"   x="764" y="164" fill="#1f7a45">Guest</text>
+  <text class="sub" x="764" y="184">sees a normal computer</text>
+
+  <rect class="dev" x="770" y="210" width="340" height="64" rx="10"/>
+  <text class="h"    x="790" y="238">Disk 1</text>
+  <text class="mono" x="930" y="238">/dev/vda</text>
+
+  <rect class="dev" x="770" y="286" width="340" height="64" rx="10"/>
+  <text class="h"    x="790" y="314">Disk 2</text>
+  <text class="mono" x="930" y="314">/dev/vdb</text>
+
+  <rect class="plain" x="770" y="360" width="340" height="140" rx="10"/>
+  <text class="t"    x="790" y="392">The guest writes a file</text>
+  <text class="mono" x="790" y="428">$ echo "hello" &gt; /mnt/notes.txt</text>
+  <text class="sub"  x="790" y="466">/dev/vda is mounted at /mnt -</text>
+  <text class="sub"  x="790" y="486">the driver talks to the disk</text>
+
+  <!-- ===== relations ===== -->
+  <path class="prov" d="M86,240 C 32,222 28,112 140,112 H 870 C 938,112 940,158 940,202"/>
+  <text class="hint" x="540" y="102" text-anchor="middle" fill="#8a5a00">the VMM provides the devices, the guest sees them</text>
+
+  <text class="lbl" x="625" y="444" text-anchor="middle">is forwarded</text>
+  <path class="flow" d="M735,470 H 697"/>
+  <path class="flow" d="M555,470 H 485"/>
+  <text class="lbl" x="625" y="404" text-anchor="middle">every access</text>
+  <text class="lbl" x="625" y="424" text-anchor="middle">to a disk</text>
+  <text class="hint" x="600" y="606" text-anchor="middle">Virtual hardware is just software in the VMM.</text>
+</svg>

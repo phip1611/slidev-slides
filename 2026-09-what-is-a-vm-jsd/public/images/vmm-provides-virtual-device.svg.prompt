@@ -1,0 +1,12 @@
+Please generate me a basic SVG for a technical talk that visualizes the slide
+"What does a VMM need to create a VM?" (see 03-background.md), similar in style
+to from-host-vmm-process-to-vm-guest.svg. Keep it simple, high-level and
+approachable:
+
+- The VMM provides virtual devices, e.g. two virtual disks (disk 1, disk 2)
+- The guest sees them as normal disks (/dev/vda, /dev/vdb) and writes to them
+  as usual; keep it free of PCI/NVMe details - high level, not technical
+- Every access to a disk is trapped by KVM and forwarded back to the VMM
+- The VMM implements the devices and does the real work, e.g. writing into
+  disk1.img / disk2.img on the host
+- Take-away: virtual hardware is just software in the VMM
