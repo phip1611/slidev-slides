@@ -70,7 +70,7 @@
         }
         {
           src = ./2026-08-new-template;
-          depHash = "sha256-nnBkhbiSlYVmMq2NDhyenNkpuahRBZb77404FerOMFA=";
+          depHash = "sha256-llpJE01SKSnC7vD+FldE+kBEYd1FfzLGEnJmZ+TrLtw=";
           meta = {
             slug = "new-template";
             title = "New Slidev Template Playground";

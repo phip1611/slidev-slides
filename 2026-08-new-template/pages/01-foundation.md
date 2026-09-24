@@ -15,6 +15,7 @@ New Slidev Template Playground
 Philipp Schuster · Systems, Rust, and the lower layers
 ---
 layout: chapter
+chapter: Visual grammar
 ---
 
 # 1. A visual grammar

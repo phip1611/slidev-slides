@@ -3,34 +3,55 @@
 import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
 import { useNav } from '@slidev/client'
 
-const { currentPage, total } = useNav()
-const heading = ref('')
+const { currentPage, total, slides } = useNav()
 const chromeHidden = ref(false)
 let observer: MutationObserver | undefined
 
 const hidden = computed(() => chromeHidden.value)
 const progress = computed(() => `${(currentPage.value / total.value) * 100}%`)
 
-function updateHeading() {
+function updateChrome() {
   const current = document.querySelector(
     `[data-slidev-no="${currentPage.value}"]`,
   )
   chromeHidden.value = Boolean(
     current?.classList.contains('no-chrome') || current?.querySelector('.no-chrome'),
   )
-  heading.value = current?.querySelector('h1')?.textContent?.trim() ?? ''
 }
 
+/**
+ * The chapter label of the current slide: walk the slides upwards to the
+ * nearest `layout: chapter` slide, so every slide (figures included) shows the
+ * chapter it belongs to.
+ *
+ * That chapter slide may name itself in its frontmatter:
+ *
+ *   ---
+ *   layout: chapter
+ *   chapter: Introduction
+ *   ---
+ *
+ * Without such a name we fall back to the number of its heading ("Chapter 03").
+ */
 const chapter = computed(() => {
-  const match = heading.value.match(/^(\d+)(?:\.\d+)?[.·\s]/)
-  return match ? `Chapter ${match[1].padStart(2, '0')}` : 'Playground'
+  const DEFAULT_CHAPTER: string = ''
+  for (let i = currentPage.value - 1; i >= 0; i--) {
+    const slide = slides.value[i]?.meta?.slide
+    if (slide?.frontmatter?.layout !== 'chapter')
+      continue
+    if (slide.frontmatter.chapter)
+      return String(slide.frontmatter.chapter)
+    const number = String(slide.title ?? '').match(/^\s*(\d+)/)
+    return number ? `Chapter ${number[1].padStart(2, '0')}` : DEFAULT_CHAPTER
+  }
+  return DEFAULT_CHAPTER
 })
 
-watch(currentPage, () => nextTick(updateHeading), { flush: 'post' })
+watch(currentPage, () => nextTick(updateChrome), { flush: 'post' })
 
 onMounted(() => {
-  updateHeading()
-  observer = new MutationObserver(updateHeading)
+  updateChrome()
+  observer = new MutationObserver(updateChrome)
   observer.observe(document.body, { childList: true, subtree: true })
 })
 

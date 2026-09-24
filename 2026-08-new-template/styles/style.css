@@ -299,3 +299,38 @@ pre,
 .about-me-item code {
   font-size: 0.7rem;
 }
+
+img.corner-logo {
+  background: none;
+  border: unset;
+  position: absolute;
+  right: 3.6rem;
+  top: 2.2rem;
+  width: 14rem;
+  z-index: 5;
+}
+
+.qr-codes {
+  bottom: 3.2rem;
+  display: flex;
+  gap: 1.4rem;
+  position: absolute;
+  right: 3.6rem;
+}
+
+.qr-codes figure {
+  margin: 0;
+  text-align: center;
+}
+
+.qr-codes figcaption {
+  color: var(--muted);
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.6rem;
+  margin-top: 0.4rem;
+}
+
+.qr-codes a {
+  border-bottom: 0;
+  text-decoration: none;
+}
