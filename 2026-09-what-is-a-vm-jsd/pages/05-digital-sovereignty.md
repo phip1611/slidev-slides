@@ -86,7 +86,5 @@ cloud-hypervisor \
 <!--
 Review comments & TODOs:
 
-- [ ] Ich bin oft auf Cyberus zurück gekommen, evtl weniger
-- [ ] Auf Folien weniger Text
 - [ ] Demo: backup video machen!
 -->
