@@ -78,7 +78,7 @@ layout: default
 
 # 2.3 Our Offerings & Value Proposition
 
-Selected items.
+Selected items and one unique selling point.
 
 <v-clicks depth="2">
 
@@ -87,7 +87,7 @@ Selected items.
   - For cloud and embedded use cases
   - **BSI-accredited ("Zulassung") for _VS-NfD_<sup>1</sup> and _NATO Restricted_** 🎉 \
     <small>(Since September 15th 2026 - [BSI Website](https://www.bsi.bund.de/DE/Themen/Oeffentliche-Verwaltung/Zulassung/Liste-zugelassener-Produkte/liste-zugelassener-produkte_node.html))</small>
-  - The only virtualization stack in Germany
+  - The **only** virtualization stack in Germany
 - Enabling European solutions for sovereign clouds
 - We deliver components to integrators
 - We are building an open-source based cloud platform with SAP ([Apeiro / CobaltCore](https://apeirora.eu/content/projects/))
@@ -96,7 +96,7 @@ Selected items.
 
 <div v-click="4" position="absolute" left="7ch" bottom="4ch" text="sm">
   <sup>1</sup> <em>VS-NfD</em>: "Verschlusssache - Nur für den Dienstgebrauch",
-  the lowest German classification level for classified information
+  the German classification entry level for classified information
 </div>
 
 <!--

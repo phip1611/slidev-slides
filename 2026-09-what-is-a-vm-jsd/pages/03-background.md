@@ -69,7 +69,7 @@ layout: default
 
 <v-clicks depth="2">
 
-- Java Virtual Machine?
+- Java Virtual Machine? 🤔
   - Virtual in the sense that it defines an abstract machine (the Java bytecode)
   - A Java Runtime (JRE) implements the Java Virtual Machine + runtime libraries
 - Virtual Machine (this talk):
@@ -157,6 +157,8 @@ layout: default
 
 When to use what?
 
+Let's have a look at the following figure:
+
 <!--
 - Transition: ask the question, let the figures answer it
 - Ask the room: who deploys containers? who rents VMs?
@@ -214,9 +216,9 @@ layout: default
   - Run workloads with strict isolation on shared hardware (multi tenancy)
   - Utilize host hardware (€ / $)
 - For developers
+  - Bring your own OS (and kernel/drivers)
   - An environment that can be easily deployed
   - Or messed up and redeployed
-  - Bring your own OS (and kernel/drivers)
 
 </v-clicks>
 
@@ -282,11 +284,13 @@ Software talks to a device - on real hardware and in a VM alike.
 
 <v-clicks depth="2">
 
-- Read/write access to/from physical memory addresses ("MMIO regions") \
-  or I/O ports
+- Read/write access to/from physical memory addresses (MMIO<sup>1</sup>) or I/O ports<sup>2</sup>
 - These are accesses with **side effects**: they talk to a device
 
 </v-clicks>
+
+<div v-click="1" position="absolute" left="7ch" bottom="6ch" text="sm"><sup>1</sup> <em>Memory-Mapped I/O</em>: device registers mapped into the physical address space</div>
+<div v-click="1" position="absolute" left="7ch" bottom="4ch" text="sm"><sup>2</sup> <em>I/O ports</em>: a separate x86 address space, accessed with the <code>in</code> and <code>out</code> instructions</div>
 
 <!--
 - [CLICK] MMIO and I/O ports
@@ -365,12 +369,14 @@ Simplified.
 - Add (virtual) hardware, e.g. to the PCI bus
 - Configures the guest physical memory space so that:
   - Accessing guest RAM just works
-  - Accessing an MMIO region (a virtual device) leaves the VM ("VM exit")
+  - Accessing an MMIO<sup>1</sup> region (a virtual device) leaves the VM ("VM exit")
 - On such a VM exit:
   - The hypervisor handles it if it can, otherwise the VMM does
   - Afterwards, the vCPU thread enters the VM again
 
 </v-clicks>
+
+<div v-click="4" position="absolute" left="7ch" bottom="4ch" text="sm"><sup>1</sup> <em>Memory-Mapped I/O</em>: device registers mapped into the physical address space</div>
 
 <!--
 - [CLICK] Virtual devices, PCI
