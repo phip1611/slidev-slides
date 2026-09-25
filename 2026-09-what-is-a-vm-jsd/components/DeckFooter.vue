@@ -10,6 +10,20 @@ let observer: MutationObserver | undefined
 const hidden = computed(() => chromeHidden.value)
 const progress = computed(() => `${(currentPage.value / total.value) * 100}%`)
 
+/**
+ * A slide may lie about the deck's length:
+ *
+ *   ---
+ *   totalSlides: 1337
+ *   ---
+ *
+ * The progress bar keeps using the real total.
+ */
+const shownTotal = computed(() => {
+  const frontmatter = slides.value[currentPage.value - 1]?.meta?.slide?.frontmatter
+  return frontmatter?.totalSlides ?? total.value
+})
+
 function updateChrome() {
   const current = document.querySelector(
     `[data-slidev-no="${currentPage.value}"]`,
@@ -62,7 +76,7 @@ onUnmounted(() => observer?.disconnect())
   <footer v-if="!hidden" class="deck-footer">
     <span class="chapter-label">{{ chapter }}</span>
     <span class="progress-track"><span :style="{ width: progress }" /></span>
-    <span class="slide-number">{{ currentPage }} / {{ total }}</span>
+    <span class="slide-number">{{ currentPage }} / {{ shownTotal }}</span>
   </footer>
 </template>
 
