@@ -1,0 +1,22 @@
+Create an SVG diagram for a technical talk: three virtualization stacks side by
+side. Step 1 of a six-step build-up; the later steps add to this figure without
+moving anything, so the coordinates chosen here are final. Same deck style as
+the other figures (1200x675, white background,
+'IBM Plex Sans' / 'Source Code Pro', title in #8a0404, green = VM,
+blue = VMM/user space, purple = hypervisor/kernel, grey = hardware).
+
+Each of the three boxes shows the same layering: VMs on top, VMM processes
+below them, the hypervisor in the kernel, hardware at the bottom. Step 1 draws
+only the empty stacks: the three column frames with their headings (box 1
+Linux/KVM, box 2 VirtualBox, box 3 VMware Workstation) and the hardware row at
+the bottom of each. Nothing else - no VMs, no VMM row, no kernel module, no
+per-column subtitle or note, and no footer. Every VM appears later, together
+with the VMM that runs it.
+
+Reserve the space so that later steps fit without shifting anything: room for
+two VMs and two VMM processes in boxes 2 and 3, and for three VMs and three
+VMM processes in box 1.
+
+Emphasis: the VMM row and the hypervisor row are highlighted (stronger fill and
+border); everything else (column frames and headings, VMs, hardware, per-column
+notes) is not blurred but drawn lighter (reduced opacity) so it steps back.

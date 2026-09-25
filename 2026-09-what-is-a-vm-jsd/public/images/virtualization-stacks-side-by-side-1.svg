@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" font-family="'IBM Plex Sans', sans-serif">
+  <!--
+    Three virtualization stacks side by side. The shape is always the same:
+    a VMM process in user space, a hypervisor in the kernel, CPU virtualization
+    extensions underneath. Only the parts differ - and with KVM the VMM is
+    exchangeable, while VirtualBox and VMware bring their own hypervisor.
+
+    Step 1 of 6: the empty stacks - hardware at the bottom, nothing on it yet.
+    All steps share the same coordinates, so the figure only gains elements.
+  -->
+  <style>
+    .title  { font-size: 24px; font-weight: 600; fill: #8a0404; letter-spacing: -0.035em; }
+    .h      { font-size: 17px; font-weight: 600; fill: #242126; }
+    .t      { font-size: 14px; fill: #242126; }
+    .sub    { font-size: 13px; fill: #706b6d; }
+    .tiny   { font-size: 11.5px; fill: #706b6d; }
+    .mono   { font-family: 'Source Code Pro', monospace; font-size: 14px; fill: #242126; }
+    .monos  { font-family: 'Source Code Pro', monospace; font-size: 12px; fill: #242126; }
+    .note   { font-size: 15px; fill: #706b6d; font-style: italic; }
+
+    .col    { fill: #fbfbfc; stroke: #e6e1df; stroke-width: 2; }
+    .vm     { fill: #e9f7ef; stroke: #2f9e5b; stroke-width: 2; }
+    .vmm    { fill: #dfeaff; stroke: #2a56b8; stroke-width: 3; }
+    .hyp    { fill: #ece0ff; stroke: #5b2fb0; stroke-width: 3; }
+    .hw     { fill: #e5e7eb; stroke: #9ca3af; stroke-width: 1.5; }
+    .ghost  { opacity: 0.35; stroke-dasharray: 6 4; }
+    /* everything that is not VMM or hypervisor stays readable, but steps back */
+    .dim    { opacity: 0.4; }
+    .dim2   { opacity: 0.7; }  /* column headings stay identifiable */
+    .conn   { stroke: #7c4dcc; stroke-width: 2; }
+  </style>
+
+  <rect width="1200" height="675" fill="#ffffff"/>
+
+  <text class="title" x="40" y="48">Always the same shape: a VMM in user space, a hypervisor in the kernel</text>
+  <text class="sub"   x="40" y="74" font-size="14">Only the parts differ.</text>
+
+
+  <!-- ===== Linux / KVM ===== -->
+  <rect class="dim col" x="40" y="100" width="360" height="480" rx="14"/>
+  <text class="dim2 h"   x="60" y="132">Linux / KVM</text>
+  <rect class="dim hw" x="52" y="450" width="336" height="54" rx="9"/>
+  <text class="dim t"    x="220" y="474" text-anchor="middle">Hardware</text>
+  <text class="dim tiny" x="220" y="492" text-anchor="middle">CPU with virtualization extensions (VMX / SVM)</text>
+
+  <!-- ===== VirtualBox ===== -->
+  <rect class="dim col" x="420" y="100" width="360" height="480" rx="14"/>
+  <text class="dim2 h"   x="440" y="132">VirtualBox</text>
+  <rect class="dim hw" x="432" y="450" width="336" height="54" rx="9"/>
+  <text class="dim t"    x="600" y="474" text-anchor="middle">Hardware</text>
+  <text class="dim tiny" x="600" y="492" text-anchor="middle">CPU with virtualization extensions (VMX / SVM)</text>
+
+  <!-- ===== VMware Workstation ===== -->
+  <rect class="dim col" x="800" y="100" width="360" height="480" rx="14"/>
+  <text class="dim2 h"   x="820" y="132">VMware Workstation</text>
+  <rect class="dim hw" x="812" y="450" width="336" height="54" rx="9"/>
+  <text class="dim t"    x="980" y="474" text-anchor="middle">Hardware</text>
+  <text class="dim tiny" x="980" y="492" text-anchor="middle">CPU with virtualization extensions (VMX / SVM)</text>
+</svg>

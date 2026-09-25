@@ -1,0 +1,9 @@
+Step 4 of the build-up. Identical to virtualization-stacks-side-by-side-3.svg (see that prompt), with nothing
+moved, plus the kernel half of the Linux/KVM box and its first VMM:
+
+- The hypervisor row of box 1: /dev/kvm, labelled as the kvm module in Linux.
+- Cloud Hypervisor as the leftmost VMM on top of it, connected to that row, and
+  the VM it runs (with faded "ghost" VMs behind it, indicating that many VMs
+  run side by side).
+
+The other two VMM slots of that box stay empty.

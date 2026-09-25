@@ -1,0 +1,3 @@
+Step 5 of the build-up. Identical to virtualization-stacks-side-by-side-4.svg (see that prompt), with nothing
+moved, plus QEMU as a second VMM in the Linux/KVM box - on the very same
+hypervisor row - with the VM it runs.

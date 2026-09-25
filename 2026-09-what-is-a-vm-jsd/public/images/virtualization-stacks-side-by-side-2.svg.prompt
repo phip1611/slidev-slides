@@ -1,0 +1,10 @@
+Step 2 of the build-up. Identical to virtualization-stacks-side-by-side-1.svg (see that prompt), with nothing
+moved, plus the complete VMware Workstation box (box 3):
+
+- Its two VMs, and below them its two VMM processes.
+- Its own hypervisor: the vmmon kernel module on Linux, connected to the VMMs
+  by short vertical lines.
+- The subtitle "brings its own hypervisor" and the note "ESXi instead ships its
+  own OS for bare metal".
+
+Boxes 1 and 2 stay empty.

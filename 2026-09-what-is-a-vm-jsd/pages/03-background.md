@@ -446,18 +446,80 @@ VMMs and Hypervisors in comparison.
 -->
 ---
 layout: image
-image: /images/virtualization-stacks-side-by-side.svg
+image: /images/virtualization-stacks-side-by-side-1.svg
+transition: undefined
+---
+
+<!--
+- The bare shape: hardware at the bottom, nothing on it yet
+- Ask: what has to sit in between so a VM can run?
+-->
+
+---
+layout: image
+image: /images/virtualization-stacks-side-by-side-2.svg
+transition: undefined
+---
+
+<!--
+- VMware ships both halves: its own VMM and its own kernel module
+- Installing it means loading a hypervisor into your kernel
+
+Beyond the slide:
+- ESXi is the other model: its own OS, straight on the hardware
+-->
+
+---
+layout: image
+image: /images/virtualization-stacks-side-by-side-3.svg
+transition: undefined
+---
+
+<!--
+- VirtualBox does exactly the same - a second hypervisor for your kernel
+- Two products, two kernel modules, same shape
+
+Beyond the slide:
+- Both bring the user-space half and the kernel half from one vendor
+-->
+
+---
+layout: image
+image: /images/virtualization-stacks-side-by-side-4.svg
+transition: undefined
+---
+
+<!--
+- With KVM the hypervisor is already there - part of the kernel you run
+- Cloud Hypervisor is just a program on top of it
+-->
+
+---
+layout: image
+image: /images/virtualization-stacks-side-by-side-5.svg
+transition: undefined
+---
+
+<!--
+- QEMU sits on the very same hypervisor
+- Different VMM, same kernel half, same hardware
+-->
+
+---
+layout: image
+image: /images/virtualization-stacks-side-by-side-6.svg
 transition: slide-up
 ---
 
 <!--
-- Left to right: same hardware, different split between VMM and hypervisor
-- CH and QEMU use Linux/KVM; VirtualBox and VMware bring their own
+- Even VirtualBox can be one of them, through its KVM backend
+- One hypervisor, three VMMs - the VMM is exchangeable
 
 Beyond the slide:
 - QEMU is the swiss army knife (emulation, many architectures, legacy devices)
 - Cloud Hypervisor is the focused modern one - the next chapter
 -->
+
 ---
 layout: default
 ---

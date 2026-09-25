@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" font-family="'IBM Plex Sans', sans-serif">
+  <!--
+    Three virtualization stacks side by side. The shape is always the same:
+    a VMM process in user space, a hypervisor in the kernel, CPU virtualization
+    extensions underneath. Only the parts differ - and with KVM the VMM is
+    exchangeable, while VirtualBox and VMware bring their own hypervisor.
+
+    Step 4 of 6: Linux/KVM: the hypervisor is already in the kernel, and Cloud Hypervisor is just a program on top of it.
+    All steps share the same coordinates, so the figure only gains elements.
+  -->
+  <style>
+    .title  { font-size: 24px; font-weight: 600; fill: #8a0404; letter-spacing: -0.035em; }
+    .h      { font-size: 17px; font-weight: 600; fill: #242126; }
+    .t      { font-size: 14px; fill: #242126; }
+    .sub    { font-size: 13px; fill: #706b6d; }
+    .tiny   { font-size: 11.5px; fill: #706b6d; }
+    .mono   { font-family: 'Source Code Pro', monospace; font-size: 14px; fill: #242126; }
+    .monos  { font-family: 'Source Code Pro', monospace; font-size: 12px; fill: #242126; }
+    .note   { font-size: 15px; fill: #706b6d; font-style: italic; }
+
+    .col    { fill: #fbfbfc; stroke: #e6e1df; stroke-width: 2; }
+    .vm     { fill: #e9f7ef; stroke: #2f9e5b; stroke-width: 2; }
+    .vmm    { fill: #dfeaff; stroke: #2a56b8; stroke-width: 3; }
+    .hyp    { fill: #ece0ff; stroke: #5b2fb0; stroke-width: 3; }
+    .hw     { fill: #e5e7eb; stroke: #9ca3af; stroke-width: 1.5; }
+    .ghost  { opacity: 0.35; stroke-dasharray: 6 4; }
+    /* everything that is not VMM or hypervisor stays readable, but steps back */
+    .dim    { opacity: 0.4; }
+    .dim2   { opacity: 0.7; }  /* column headings stay identifiable */
+    .conn   { stroke: #7c4dcc; stroke-width: 2; }
+  </style>
+
+  <rect width="1200" height="675" fill="#ffffff"/>
+
+  <text class="title" x="40" y="48">Always the same shape: a VMM in user space, a hypervisor in the kernel</text>
+  <text class="sub"   x="40" y="74" font-size="14">Only the parts differ.</text>
+
+
+  <!-- ===== Linux / KVM ===== -->
+  <rect class="dim col" x="40" y="100" width="360" height="480" rx="14"/>
+  <text class="dim2 h"   x="60" y="132">Linux / KVM</text>
+  <rect class="dim vm ghost" x="60" y="164" width="106" height="68" rx="9"/>
+  <rect class="dim vm ghost" x="56" y="168" width="106" height="68" rx="9"/>
+  <rect class="dim vm" x="52" y="172" width="106" height="68" rx="9"/>
+  <text class="dim t"    x="105" y="204" text-anchor="middle" fill="#1f7a45">VM</text>
+  <text class="dim tiny" x="105" y="222" text-anchor="middle">guest</text>
+  <rect class="vmm" x="52" y="256" width="106" height="68" rx="9"/>
+  <text class="monos" x="105" y="296" text-anchor="middle" style="font-size:10px">Cloud Hypervisor</text>
+  <path class="conn" d="M105,324 V 356"/>
+  <rect class="hyp" x="52" y="356" width="336" height="72" rx="9"/>
+  <text class="mono" x="220" y="386" text-anchor="middle" fill="#5b2fb0">/dev/kvm</text>
+  <text class="tiny" x="220" y="408" text-anchor="middle">Linux: kvm module</text>
+  <rect class="dim hw" x="52" y="450" width="336" height="54" rx="9"/>
+  <text class="dim t"    x="220" y="474" text-anchor="middle">Hardware</text>
+  <text class="dim tiny" x="220" y="492" text-anchor="middle">CPU with virtualization extensions (VMX / SVM)</text>
+
+  <!-- ===== VirtualBox ===== -->
+  <rect class="dim col" x="420" y="100" width="360" height="480" rx="14"/>
+  <text class="dim2 h"   x="440" y="132">VirtualBox</text>
+  <text class="dim2 sub" x="440" y="152">brings its own hypervisor</text>
+  <rect class="dim vm" x="432" y="172" width="160" height="68" rx="9"/>
+  <text class="dim t"    x="512" y="204" text-anchor="middle" fill="#1f7a45">VM</text>
+  <text class="dim tiny" x="512" y="222" text-anchor="middle">guest</text>
+  <rect class="dim vm" x="608" y="172" width="160" height="68" rx="9"/>
+  <text class="dim t"    x="688" y="204" text-anchor="middle" fill="#1f7a45">VM</text>
+  <text class="dim tiny" x="688" y="222" text-anchor="middle">guest</text>
+  <rect class="vmm" x="432" y="256" width="160" height="68" rx="9"/>
+  <text class="monos" x="512" y="286" text-anchor="middle">VirtualBox</text>
+  <text class="tiny"  x="512" y="304" text-anchor="middle">(default version)</text>
+  <path class="conn" d="M512,324 V 356"/>
+  <rect class="vmm" x="608" y="256" width="160" height="68" rx="9"/>
+  <text class="monos" x="688" y="286" text-anchor="middle">VirtualBox</text>
+  <text class="tiny"  x="688" y="304" text-anchor="middle">(default version)</text>
+  <path class="conn" d="M688,324 V 356"/>
+  <rect class="hyp" x="432" y="356" width="336" height="72" rx="9"/>
+  <text class="mono" x="600" y="386" text-anchor="middle" fill="#5b2fb0">/dev/vboxdrv</text>
+  <text class="tiny" x="600" y="408" text-anchor="middle">Linux: VirtualBox's kernel module</text>
+  <rect class="dim hw" x="432" y="450" width="336" height="54" rx="9"/>
+  <text class="dim t"    x="600" y="474" text-anchor="middle">Hardware</text>
+  <text class="dim tiny" x="600" y="492" text-anchor="middle">CPU with virtualization extensions (VMX / SVM)</text>
+  <text class="dim tiny" x="600" y="540" text-anchor="middle" font-style="italic">on Linux: loaded next to the host kernel</text>
+
+  <!-- ===== VMware Workstation ===== -->
+  <rect class="dim col" x="800" y="100" width="360" height="480" rx="14"/>
+  <text class="dim2 h"   x="820" y="132">VMware Workstation</text>
+  <text class="dim2 sub" x="820" y="152">brings its own hypervisor</text>
+  <rect class="dim vm" x="812" y="172" width="160" height="68" rx="9"/>
+  <text class="dim t"    x="892" y="204" text-anchor="middle" fill="#1f7a45">VM</text>
+  <text class="dim tiny" x="892" y="222" text-anchor="middle">guest</text>
+  <rect class="dim vm" x="988" y="172" width="160" height="68" rx="9"/>
+  <text class="dim t"    x="1068" y="204" text-anchor="middle" fill="#1f7a45">VM</text>
+  <text class="dim tiny" x="1068" y="222" text-anchor="middle">guest</text>
+  <rect class="vmm" x="812" y="256" width="160" height="68" rx="9"/>
+  <text class="monos" x="892" y="296" text-anchor="middle">VMware</text>
+  <path class="conn" d="M892,324 V 356"/>
+  <rect class="vmm" x="988" y="256" width="160" height="68" rx="9"/>
+  <text class="monos" x="1068" y="296" text-anchor="middle">VMware</text>
+  <path class="conn" d="M1068,324 V 356"/>
+  <rect class="hyp" x="812" y="356" width="336" height="72" rx="9"/>
+  <text class="mono" x="980" y="386" text-anchor="middle" fill="#5b2fb0">/dev/vmmon</text>
+  <text class="tiny" x="980" y="408" text-anchor="middle">Linux: VMware's kernel module</text>
+  <rect class="dim hw" x="812" y="450" width="336" height="54" rx="9"/>
+  <text class="dim t"    x="980" y="474" text-anchor="middle">Hardware</text>
+  <text class="dim tiny" x="980" y="492" text-anchor="middle">CPU with virtualization extensions (VMX / SVM)</text>
+  <text class="dim tiny" x="980" y="540" text-anchor="middle" font-style="italic">ESXi instead ships its own OS for bare metal</text>
+</svg>

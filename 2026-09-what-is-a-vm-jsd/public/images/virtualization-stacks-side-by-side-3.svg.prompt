@@ -1,0 +1,8 @@
+Step 3 of the build-up. Identical to virtualization-stacks-side-by-side-2.svg (see that prompt), with nothing
+moved, plus the complete VirtualBox box (box 2), built exactly like the VMware
+one: two VMs, two VMM processes, its own vboxdrv kernel module, the subtitle
+"brings its own hypervisor" and the note "on Linux: loaded next to the host
+kernel".
+
+Box 1 (Linux/KVM) stays empty: two stacks that ship both halves themselves,
+side by side.

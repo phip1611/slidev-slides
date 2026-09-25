@@ -1,0 +1,9 @@
+Step 6 of the build-up. Identical to virtualization-stacks-side-by-side-5.svg (see that prompt), with nothing
+moved, plus everything that makes the point that the VMM is exchangeable:
+
+- VirtualBox (KVM backend) as a third VMM in the Linux/KVM box, with its VM -
+  the same product as box 2, but here it is only the user-space half.
+- The subtitle "one hypervisor, many VMMs" and the note "the VMM is
+  exchangeable - same hypervisor" for that box.
+- The footer: with KVM the hypervisor is shared and the VMM is just a program,
+  while VirtualBox and VMware ship both halves themselves.
