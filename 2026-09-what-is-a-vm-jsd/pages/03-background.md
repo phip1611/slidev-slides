@@ -23,8 +23,8 @@ Many different wordings out there. I prefer these fine-grained definitions:
 - **Hypervisor**: Privileged software component running in kernel-space \
   (e.g. Linux/KVM)
 - **Virtual Machine Monitor (VMM)**: Unprivileged software component \
-  (like a regular user-space application)
-- **Cloud Hypervisor (CH)**: A VMM written in Rust, using Linux/KVM \
+  (like a regular user-space application, e.g. QEMU, VirtualBox, Cloud Hypervisor)
+- **Cloud Hypervisor (CH)**: A VMM written in Rust, using Linux/KVM as hypervisor \
   (Naming things is hard! 🫨)
 - **Virtualization Stack**: Hypervisor + VMM \[+ Management Software\]
 - **Guest**: Software running in a VM (OS + user applications), e.g. Windows or Debian
