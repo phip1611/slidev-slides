@@ -15,7 +15,33 @@ Virtualization made in Saxony by Cyberus Technology
 layout: default
 ---
 
-# 5.1 Virtualization Made in Saxony
+# 5.1 How to Use Our Virtualization Stack
+
+For production deployments with service: Cyberus Hypervisor. Else: Open Source
+
+<v-clicks depth="2">
+
+- Use stock Linux with `CONFIG_KVM=y` (default on almost all distros)
+- Use upstream Cloud Hypervisor<sup>1</sup> or check out our development version<sup>2</sup>
+- You get: start VMs + API socket: pause, resume, hotplug, migrate, ...
+- You bring: Broader VM management (storage, networking, lifecycle, customer → VM)
+- We provide `libvirt`<sup>3</sup> integration
+- With trivial patches to OpenStack, you can "just use it" via libvirt backend
+- For VS-NfD / NATO Restricted: commercial Cyberus Hypervisor package
+
+</v-clicks>
+
+
+<div v-click="2" position="absolute" left="7ch" bottom="8ch" text="sm"><sup>1</sup> <a href="https://github.com/cloud-hypervisor/cloud-hypervisor">GitHub: cloud-hypervisor/cloud-hypervisor</a></div>
+<div v-click="2" position="absolute" left="7ch" bottom="6ch" text="sm"><sup>2</sup> <a href="https://github.com/cyberus-technology/cloud-hypervisor">GitHub: cyberus-technology/cloud-hypervisor</a></div>
+<div v-click="5" position="absolute" left="7ch" bottom="4ch" text="sm"><sup>3</sup> <a href="https://github.com/cyberus-technology/libvirt?ref=gardenlinux">GitHub: cyberus-technology/libvirt.git</a></div>
+
+
+---
+layout: default
+---
+
+# 5.2 Virtualization Made in Saxony
 
 <v-clicks depth="2">
 
