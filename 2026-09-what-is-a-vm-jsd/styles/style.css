@@ -334,3 +334,13 @@ img.corner-logo {
   border-bottom: 0;
   text-decoration: none;
 }
+
+.demo-video {
+  background: #fafafa;
+  border: 1px solid var(--line);
+  border-radius: 0.55rem;
+  display: block;
+  margin: 0 auto;
+  max-height: 20rem;
+  max-width: 100%;
+}

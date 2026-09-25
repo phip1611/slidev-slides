@@ -184,11 +184,45 @@ DEMO TIME
 host: sudo ip tuntap add dev tap0 mode tap; sudo ip addr add dev tap0 192.168.200.1/24; sudo ip link set dev tap0 up
 guest: sudo ip addr add dev eth0 192.168.200.2/24; sudo ip link set dev eth0 up
 -->
+
 ---
 layout: default
 ---
 
-# 4.6 My Development Flow
+# 4.6 Recording: Networking into the Guest
+
+<SlidevVideo controls autoplay="once" autoreset="slide" muted class="demo-video">
+  <source src="/videos/jug26-recording-ch-networking.webm" type="video/webm">
+</SlidevVideo>
+
+<!--
+- The recorded version of the networking demo - also the fallback if the live
+  one fails
+- tap device on the host, one IP on each side, then ping and ssh into the guest
+- Point out: from the guest's view this is a normal NIC (virtio-net)
+-->
+
+---
+layout: default
+---
+
+# 4.7 Recording: Live Migration
+
+<SlidevVideo controls autoplay="once" autoreset="slide" muted class="demo-video">
+  <source src="/videos/jug26-recording-ch-livemig.webm" type="video/webm">
+</SlidevVideo>
+
+<!--
+- The VM keeps running while it moves from host A to host B
+- Watch the guest console: it does not notice the move
+- The part I maintain upstream - memory is copied while the guest writes to it
+-->
+
+---
+layout: default
+---
+
+# 4.8 My Development Flow
 
 <v-clicks depth="2">
 
