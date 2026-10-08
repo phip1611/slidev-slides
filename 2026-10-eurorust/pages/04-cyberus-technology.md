@@ -35,11 +35,12 @@ layout: default
 
 # 4.2 A Rust Success Story
 
+Rust as a fantastic language.
+
 <v-clicks>
 
 - Cloud Hypervisor enables us to ship secure, reliable, fast, and robust
   software
-- We are actively contributing to it and participate in the community
 - Easy to onboard new developers into the project
 
 </v-clicks>
@@ -66,7 +67,6 @@ Changing the digital landscape in Germany and Europe.
   - Little technical debt
 - Our ambition is to change the digital landscape \
   (especially for the digitalization of the governmental sector)
-- Thank You
 
 </v-clicks>
 
@@ -83,3 +83,38 @@ Changing the digital landscape in Germany and Europe.
 <img src="/images/cyberus-logo.svg"
 alt="Cyberus Technology logo"
 class="corner-logo"/>
+
+---
+layout: cover
+---
+
+# Thank You!
+
+Questions?
+
+<div class="qr-codes">
+  <figure>
+    <QrCode value="https://www.cloudhypervisor.org/" :size="110" />
+    <figcaption><a href="https://www.cloudhypervisor.org/">Cloud Hypervisor</a></figcaption>
+  </figure>
+  <figure>
+    <QrCode value="https://www.cyberus-technology.de/" :size="110" />
+    <figcaption><a href="https://www.cyberus-technology.de/">Cyberus Technology</a></figcaption>
+  </figure>
+  <figure>
+    <QrCode value="https://www.bsi.bund.de/DE/Themen/Oeffentliche-Verwaltung/Zulassung/Liste-zugelassener-Produkte/liste-zugelassener-produkte_node.html" :size="110" />
+    <figcaption><a href="https://www.bsi.bund.de/DE/Themen/Oeffentliche-Verwaltung/Zulassung/Liste-zugelassener-Produkte/liste-zugelassener-produkte_node.html">BSI: approved products</a></figcaption>
+  </figure>
+  <figure>
+    <QrCode value="https://eurorust-2026-inside-cloud-hypervisor.slides.phip1611.dev" :size="110" />
+    <figcaption><a href="https://eurorust-2026-inside-cloud-hypervisor.slides.phip1611.dev">Slides</a></figcaption>
+  </figure>
+</div>
+
+::bottom-left::
+
+EuroRust, Barcelona - 2026-10-15
+
+::bottom-right::
+
+Philipp Schuster, Software Engineer @ Cyberus Technology

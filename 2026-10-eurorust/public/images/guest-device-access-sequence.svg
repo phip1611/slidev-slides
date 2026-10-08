@@ -32,7 +32,7 @@
 
   <rect width="1200" height="675" fill="#ffffff"/>
 
-  <text class="title" x="60" y="62">B.1 The guest accesses a device - the VMM emulates it</text>
+  <text class="title" x="60" y="62">B.2 The guest accesses a device - the VMM emulates it</text>
   <text class="sub" x="60" y="88" font-size="15">Example: the guest's disk driver submits a write request²</text>
 
   <!-- Participants -->

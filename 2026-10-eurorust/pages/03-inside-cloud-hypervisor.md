@@ -15,12 +15,11 @@ layout: default
 
 <v-clicks>
 
-- Cloud Hypervisor tech lead in my unit and coordination with upstream
 - Frequent contributor and active in the community
+- Active in most parts of the code
 - Honored to work with some incredible and talented folks
 - I am primarily working on live migration and maintain that code \
   (Unfortunately, no time for that today but feel free to reach out)
-- Active in most parts of the code
 - Let's look into a running VM - from my view as a developer
 
 </v-clicks>
@@ -52,7 +51,38 @@ Interesting links:
 - https://elixir.bootlin.com/linux/v7.2.6/source/arch/x86/kvm/vmx/vmenter.S#L106
 -->
 
-# 3.3 Recording: Networking into the Guest
+---
+layout: default
+---
+
+# 3.3 Recording: Basic CLI Usage and Starting a VM
+
+<SlidevVideo controls autoplay="once" autoreset="slide" muted class="demo-video">
+  <source src="/videos/recording-ch-cli.webm" type="video/webm">
+</SlidevVideo>
+
+<!--
+- The recorded version of the networking demo - also the fallback if the live
+  one fails
+- tap device on the host, one IP on each side, then ping and ssh into the guest
+- Point out: from the guest's view this is a normal NIC (virtio-net)
+-->
+
+---
+layout: default
+---
+
+# 3.4 Recording: Booting in RustRover + Debugger
+
+<SlidevVideo controls autoplay="once" autoreset="slide" muted class="demo-video">
+  <source src="/videos/recording-ch-debugger-kvmrun.webm" type="video/webm">
+</SlidevVideo>
+
+---
+layout: default
+---
+
+# 3.5 Recording: Networking into the Guest
 
 <SlidevVideo controls autoplay="once" autoreset="slide" muted class="demo-video">
   <source src="/videos/recording-ch-networking.webm" type="video/webm">
@@ -69,7 +99,7 @@ Interesting links:
 layout: default
 ---
 
-# 3.4 Recording: Live Migration
+# 3.6 Recording: Live Migration
 
 <SlidevVideo controls autoplay="once" autoreset="slide" muted class="demo-video">
   <source src="/videos/recording-ch-livemig.webm" type="video/webm">

@@ -335,6 +335,21 @@ img.corner-logo {
   text-decoration: none;
 }
 
+.cover-layout .qr-codes {
+  margin-top: 1.6rem;
+  position: static;
+}
+
+.cover-layout .qr-codes svg {
+  background: #ffffff;
+  padding: 0.5rem;
+}
+
+.cover-layout .qr-codes figcaption,
+.cover-layout .qr-codes a {
+  color: #fff9f0;
+}
+
 .demo-video {
   background: #fafafa;
   border: 1px solid var(--line);

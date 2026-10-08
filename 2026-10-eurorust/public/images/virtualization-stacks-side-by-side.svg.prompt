@@ -1,0 +1,29 @@
+Create an SVG diagram for a technical talk: three virtualization stacks side by
+side, title "B.3 Always the same shape: a VMM in user space, a hypervisor in
+the kernel", subtitle "Only the parts differ.". Same deck style as the other
+figures (1200x675, white background, 'IBM Plex Sans' / 'Source Code Pro',
+title in #8a0404, green = VM, blue = VMM/user space, purple =
+hypervisor/kernel, grey = hardware).
+
+Each of the three boxes shows the same layering: VMs on top, VMM processes
+below them, the hypervisor in the kernel, hardware at the bottom. VMMs connect
+to their hypervisor by short vertical lines.
+
+- Box 1, Linux/KVM ("one hypervisor, many VMMs"): three VMMs - Cloud
+  Hypervisor, QEMU and VirtualBox (KVM backend) - each with its VM (with faded
+  "ghost" VMs behind it, indicating that many VMs run side by side), all on
+  one hypervisor row: /dev/kvm, labelled as the kvm module in Linux. Note:
+  "the VMM is exchangeable - same hypervisor".
+- Box 2, VirtualBox ("brings its own hypervisor"): two VMs, two VirtualBox VMM
+  processes, its own vboxdrv kernel module. Note: "on Linux: loaded next to
+  the host kernel".
+- Box 3, VMware Workstation ("brings its own hypervisor"): two VMs, two VMware
+  VMM processes, its own vmmon kernel module. Note: "ESXi instead ships its own
+  OS for bare metal".
+
+Footer: with KVM the hypervisor is shared and the VMM is just a program, while
+VirtualBox and VMware ship both halves themselves.
+
+Emphasis: the VMM row and the hypervisor row are highlighted (stronger fill and
+border); everything else (column frames and headings, VMs, hardware, per-column
+notes) is not blurred but drawn lighter (reduced opacity) so it steps back.

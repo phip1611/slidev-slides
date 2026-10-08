@@ -1,4 +1,4 @@
-Create an SVG sequence diagram for a technical talk: "B.1 The guest
+Create an SVG sequence diagram for a technical talk: "B.2 The guest
 accesses a device - the VMM emulates it" (backup chapter B), subtitle "Example: the guest's disk driver
 submits a write request²". Same deck style as kvm-and-vmm.svg
 (canvas, fonts, colour tokens, empty footnote band below y ~ 530).

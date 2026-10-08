@@ -1,0 +1,43 @@
+Create an SVG diagram for a technical talk: "B.1 Guest drivers and their
+device models in the VMM" (backup chapter B), subtitle "Every driver in the
+guest has a counterpart in Cloud Hypervisor". Same deck style as
+guest-device-access-sequence.svg (1200x675, white background, 'IBM Plex Sans'
+/ 'Source Code Pro', title in #8a0404, green = guest, purple = KVM, blue =
+VMM, grey = host; empty footnote band below y ~ 530).
+
+Very high level, generic device classes instead of concrete products. Four
+full-width horizontal layers on the left ~3/4 of the canvas, each with its
+name and a short subtitle on the left: Guest VM (guest kernel), KVM (host
+kernel, a thin band), cloud-hypervisor (VMM, user space), Host (files and
+devices).
+
+Two columns of boxes inside the layers, one per device class:
+- "Block device driver" (e.g. virtio-blk) in the guest, "Block device model"
+  (emulates the device) in the VMM, disk.img (disk image file) on the host.
+- "Network device driver" (e.g. virtio-net) in the guest, "Network device
+  model" (emulates the device) in the VMM, tap0 (tap device) on the host.
+
+Make the pairing discoverable: driver and device model of one class share a
+colour (block: orange, network: teal) that differs from the layer colours,
+sit exactly above each other, and are joined by a dashed line in that colour
+that crosses the KVM band. Like puzzle pieces, each driver has a joint sticking
+out of its bottom edge and its device model has the matching cut-out in its
+top edge, with a different shape per class: zigzag teeth for block, a
+half-moon for network. Device models connect to their host backend with a
+plain grey line.
+
+Right column: "Driver ↔ device model" - each driver in the guest talks to its
+counterpart, a device model in the VMM; both speak the same device interface.
+
+One block access as a red path with numbered badges in the block column, next
+to the dashed pairing line:
+
+1. Driver accesses a device register (arrow from the driver into KVM).
+2. VM exit: trap into KVM (badge inside the KVM band).
+3. KVM_RUN returns to the VMM (arrow from KVM into the block device model).
+4. The device model does the I/O on disk.img (arrow down to the host).
+5. VM entry: guest continues (dashed arrow from the device model back up to
+   the driver, with the badge in the KVM band).
+
+The right column gets a matching numbered list "One block access" below the
+driver/device model text.

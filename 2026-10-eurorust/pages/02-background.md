@@ -22,7 +22,7 @@ Hypa, hypa, hypervisor? Naming things is hard.
 <v-clicks>
 
 - **Hypervisor**: Privileged software component running in kernel-space \
-  (e.g. Linux/KVM)
+  (e.g. Linux/KVM<sup>1</sup>)
 - **Virtual Machine Monitor (VMM)**: Unprivileged software component \
   (like a regular user-space application, e.g. QEMU, VirtualBox, Cloud Hypervisor)
 - **Cloud Hypervisor (CH)**: A VMM written in Rust, using Linux/KVM as hypervisor \
@@ -31,6 +31,12 @@ Hypa, hypa, hypervisor? Naming things is hard.
 - **Guest**: Software running in a VM (OS + user applications), e.g. Windows or Debian
 
 </v-clicks>
+
+<Footnotes>
+  <Footnote n="1" v-click="1">
+    Linux <b>K</b>ernel-based <b>V</b>irtual <b>M</b>achine.
+  </Footnote>
+</Footnotes>
 
 ---
 layout: default
@@ -46,6 +52,9 @@ layout: default
 - Roughly 100,000 SLOC without tests and documentation
 - Focus on modern<sup>2</sup> cloud workloads (`x86_64`, `aarch64`)
 - Runs on Linux exclusively (this is independent of the supported guests<sup>3</sup>)
+- Run a (strongly) isolated system with a modern and secure Rust code base
+- Safer alternative to QEMU, VirtualBox, VMware \
+  (only if you do not need a display - CH is for headless guests)
 
 </v-clicks>
 
@@ -62,35 +71,11 @@ layout: default
   </Footnote>
 </Footnotes>
 
-
----
-layout: default
----
-
-# 2.3 Why Use a (Cloud Hypervisor) VM?
-
-<v-clicks depth="3">
-
-- Run a (strongly) isolated system
-- Bring your own kernel plus operating system
-- Modern and secure Rust code base
-- Safer alternative to QEMU, VirtualBox, VMware \
-  (only if you do not need a display - CH is for headless guests)
-- Hardware-accelerated virtualization with Linux/KVM<sup>1</sup>
-
-</v-clicks>
-
-<Footnotes>
-  <Footnote n="1" v-click="5">
-    Linux <b>K</b>ernel-based <b>V</b>irtual <b>M</b>achine.
-  </Footnote>
-</Footnotes>
-
 ---
 layout: two-cols-header
 ---
 
-# 2.4 What Is a (Cloud Hypervisor) VM
+# 2.3 What Is a (Cloud Hypervisor) VM
 
 From a technical perspective: **View from inside the VM**
 
@@ -115,7 +100,7 @@ From a technical perspective: **View from inside the VM**
 layout: two-cols-header
 ---
 
-# 2.5 What Is a (Cloud Hypervisor) VM
+# 2.4 What Is a (Cloud Hypervisor) VM
 
 From a technical perspective: **View from host**
 
@@ -125,9 +110,10 @@ From a technical perspective: **View from host**
 
 - A process running on your system \
   (akin to Firefox, Chrome, rustc)
-- vCPUs are threads of that process
+- vCPUs<sup>1</sup> are threads of that process
 - Guest RAM is memory of that process
 - Disks and network are host files and tap devices
+- Multiple VMs → multiple CH processes
 
 </v-clicks>
 
@@ -135,11 +121,18 @@ From a technical perspective: **View from host**
 
 <HostViewFigure />
 
+<Footnotes>
+  <Footnote n="1" v-click="2">
+    <b>vCPU</b>: virtual CPU - abstraction of a physical CPU: 1 vCPU → 1 CPU in
+    the guest
+  </Footnote>
+</Footnotes>
+
 ---
 layout: default
 ---
 
-# 2.6 What Is a Running Cloud Hypervisor Instance
+# 2.5 What Is a Running Cloud Hypervisor Instance
 
 And its responsibilities
 
@@ -158,18 +151,6 @@ And its responsibilities
   - Handles vCPUs trapping: for example to emulate hardware access
 
 </v-clicks>
-
----
-layout: image
-image: /images/kvm-and-vmm.svg
----
-
-<Footnotes>
-  <Footnote n="1">
-    <code>ioctl()</code>: system call to invoke a specific function of a kernel
-    driver (here <code>/dev/kvm</code>)
-  </Footnote>
-</Footnotes>
 
 ---
 layout: image

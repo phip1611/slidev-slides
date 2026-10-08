@@ -1,14 +1,20 @@
 <!--
   The VM seen from the host: the computer of GuestViewFigure mapped onto one
-  cloud-hypervisor process. Parts reveal on clicks 1-4.
+  cloud-hypervisor process. Parts reveal on clicks 1-5; click 5 stacks further
+  processes behind it, which is why the viewBox starts above y=0.
 -->
 <template>
-  <svg class="figure" viewBox="0 0 480 320" xmlns="http://www.w3.org/2000/svg">
+  <svg class="figure" viewBox="0 -14 480 334" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <marker id="host-view-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
         <path d="M0,0 L10,5 L0,10 z" fill="#706b6d" />
       </marker>
     </defs>
+
+    <g v-click="5">
+      <rect class="ch ghost" x="140" y="-13" width="339" height="266" rx="10" />
+      <rect class="ch ghost" x="133" y="-6" width="339" height="266" rx="10" />
+    </g>
 
     <g v-click="1">
       <rect class="app" x="1" y="1" width="110" height="40" rx="6" />
@@ -16,9 +22,8 @@
       <rect class="app" x="1" y="53" width="110" height="40" rx="6" />
       <text class="mono" x="56" y="78" text-anchor="middle">rustc</text>
 
-      <rect class="ch" x="126" y="1" width="353" height="266" rx="10" />
+      <rect class="ch" x="126" y="1" width="339" height="266" rx="10" />
       <text class="h" x="142" y="26" fill="#2a56b8">cloud-hypervisor</text>
-      <text class="sub" x="142" y="46">one process per VM</text>
       <rect class="vm" x="138" y="54" width="136" height="204" rx="8" />
       <text class="vm-h" x="146" y="73">Guest VM</text>
 
@@ -52,6 +57,8 @@
       <line class="map" x1="278" y1="231" x2="304" y2="231" />
       <text class="mono" x="312" y="236">tap device</text>
     </g>
+
+    <text v-click="5" class="sub" x="142" y="46">one process per VM</text>
   </svg>
 </template>
 
@@ -72,6 +79,7 @@
 .vm { fill: #e9f7ef; stroke: #2f9e5b; stroke-width: 1.5; }
 .vm-h { fill: #1f7a44; font-size: 14px; font-weight: 600; }
 .ch { fill: #eaf1ff; stroke: #3b6fd8; stroke-width: 2; }
+.ghost { fill: #f5f8ff; stroke-dasharray: 6 4; }
 .kernel { fill: #f9fafb; stroke: #9ca3af; stroke-width: 1.5; }
 .kvm { fill: #f3ebff; stroke: #7c4dcc; stroke-width: 1.5; }
 .cpu { fill: #fff1d6; stroke: #d98a00; stroke-width: 1.5; }
