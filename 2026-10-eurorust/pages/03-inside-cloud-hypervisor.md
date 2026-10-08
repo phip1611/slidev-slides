@@ -15,7 +15,6 @@ layout: default
 
 <v-clicks>
 
-- Cloud Hypervisor tech lead in my unit and coordination with upstream
 - Frequent contributor and active in the community
 - Honored to work with some incredible and talented folks
 - I am primarily working on live migration and maintain that code \
@@ -51,6 +50,10 @@ Interesting links:
 - https://elixir.bootlin.com/linux/v7.2.6/source/arch/x86/kvm/vmx/vmx.c#L7481
 - https://elixir.bootlin.com/linux/v7.2.6/source/arch/x86/kvm/vmx/vmenter.S#L106
 -->
+
+---
+layout: default
+---
 
 # 3.3 Recording: Networking into the Guest
 

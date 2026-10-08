@@ -125,7 +125,7 @@ From a technical perspective: **View from host**
 
 - A process running on your system \
   (akin to Firefox, Chrome, rustc)
-- vCPUs are threads of that process
+- vCPUs<sup>1</sup> are threads of that process
 - Guest RAM is memory of that process
 - Disks and network are host files and tap devices
 
@@ -134,6 +134,13 @@ From a technical perspective: **View from host**
 ::right::
 
 <HostViewFigure />
+
+<Footnotes>
+  <Footnote n="1" v-click="2">
+    <b>vCPU</b>: virtual CPU - abstraction of a physical CPU: 1 vCPU → 1 CPU in
+    the guest
+  </Footnote>
+</Footnotes>
 
 ---
 layout: default
