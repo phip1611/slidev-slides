@@ -16,10 +16,10 @@ layout: default
 <v-clicks>
 
 - Frequent contributor and active in the community
+- Active in most parts of the code
 - Honored to work with some incredible and talented folks
 - I am primarily working on live migration and maintain that code \
   (Unfortunately, no time for that today but feel free to reach out)
-- Active in most parts of the code
 - Let's look into a running VM - from my view as a developer
 
 </v-clicks>
