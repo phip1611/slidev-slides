@@ -34,6 +34,32 @@
 - Keep presentation text concise and scannable. Avoid speaker-note style prose
   on slides unless the existing deck already uses it.
 - Prefer bullet points inside `<v-clicks depth="2">` for typical reveal lists.
+- Number headings consecutively without duplicates: chapters `2.`, slides
+  `2.1`, `2.2`, ... A backup chapter at the end uses `B.` / `B.1`.
+- `2026-08-new-template` is the base for new decks; fold generally useful
+  improvements (components, styles) back into it.
+
+## Figures and Footnotes
+
+- Full-slide figures are SVGs in `<talk>/public/images/` (1200x675, white
+  background, the deck's fonts and colour tokens), shown via `layout: image`.
+- SVGs created with the help of an LLM may have a `<name>.svg.prompt` next
+  to them.
+- Figures that build up use `<name>-1.svg`, `-2.svg`, ... on identical
+  coordinates; later steps only add. The `-1` prompt is the full
+  description, later prompts list only their diff.
+- Set `transition: none` on every build-up step except the last.
+- Figure titles carry heading numbers: a new topic takes the next number, a
+  figure that directly belongs to the previous heading keeps its number.
+- Decide build-up strategies and figure content with the user; offer options
+  instead of picking one.
+- Figures that reveal with clicks next to text are inline-SVG components with
+  `v-click` on groups. Background-image SVGs cannot load the deck's web fonts.
+- Use `<Footnotes>` / `<Footnote n="1">` where a deck has them. Keep the
+  bottom band of figures free for them. In build-ups, list later footnotes
+  as `invisible` so earlier ones do not move.
+- Check figure slides in the browser; footnote overlap and font fallback do
+  not show in a plain SVG render.
 
 ## Dependencies and Nix
 
