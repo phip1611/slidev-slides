@@ -1,0 +1,21 @@
+Create an SVG sequence diagram for a technical talk: "B.1 The guest
+accesses a device - the VMM emulates it" (backup chapter B), subtitle "Example: the guest's disk driver
+submits a write request²". Same deck style as kvm-and-vmm.svg
+(canvas, fonts, colour tokens, empty footnote band below y ~ 530).
+
+Participants (boxes on top, dashed lifelines, small activation bars showing
+who is running): Guest (vCPU in guest mode, green), KVM (host kernel,
+purple), VMM (cloud-hypervisor, blue), Host file (disk.img, grey). A vertical
+"time" arrow on the far left.
+
+Messages, top to bottom:
+1. Guest -> KVM, red: "MMIO¹ write -> VM exit"
+2. KVM -> VMM, red: "KVM_RUN returns" (mono)
+3. VMM -> Host file: "write data to disk.img"
+4. Host file -> VMM, dashed grey: "done"
+   Hint next to the VMM bar, italic muted: "device emulation: plain Rust code
+   in the VMM"
+5. VMM -> KVM: "KVM_RUN" (mono)
+6. KVM -> Guest: "VM entry -> guest continues"
+
+High-level only: no exit reason names, no virtio queue details.

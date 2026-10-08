@@ -1,0 +1,19 @@
+Create an SVG diagram for a technical talk: "2.8 Relation normal Linux thread
+and vCPU thread + KVM". Step 1 of a nine-step build-up; later steps only add
+elements, so the coordinates chosen here are final. The title carries the
+number of the matching slide heading. Same deck style as kvm-and-vmm.svg
+(canvas, fonts, colour tokens, empty footnote band below y ~ 530).
+
+Timeline lanes with a shared horizontal time axis ("time ->") at the bottom,
+visible from step 1. Lane labels sit right-aligned left of the lanes; lanes
+are light grey bands, the activity on each lane is a rounded bar with a short
+mono label (blue = user mode, purple = kernel mode, green = guest mode). Thin
+grey vertical connectors join consecutive bars across lanes. Each lane only
+appears together with the first bar that uses it.
+
+Final layout: upper row "Normal thread, e.g. rustc" with lanes user mode and
+kernel mode; lower row "vCPU thread of cloud-hypervisor" with lanes user mode
+(VMM), kernel mode (KVM) and guest mode. Reserve that space.
+
+Step 1 shows only the heading "Normal thread, e.g. rustc", its user mode lane
+and the first "rustc code" bar.

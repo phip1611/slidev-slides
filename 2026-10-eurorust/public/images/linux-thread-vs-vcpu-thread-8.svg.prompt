@@ -1,0 +1,6 @@
+Step 8 of the build-up. Identical to linux-thread-vs-vcpu-thread-7.svg (see
+that prompt), with nothing moved, plus a VM exit that KVM handles itself:
+
+- "handle + vmx" (kernel) -> "guest code" (guest).
+- A dashed red leader line from that kernel bar down to the caption
+  "VM exit³, handled in KVM (e.g. timer)".

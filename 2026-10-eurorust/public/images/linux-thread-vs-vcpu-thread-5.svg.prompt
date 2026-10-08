@@ -1,0 +1,3 @@
+Step 5 of the build-up. Identical to linux-thread-vs-vcpu-thread-4.svg (see
+that prompt), with nothing moved, plus the "kernel mode (KVM)" lane and the
+"handle + vmx¹" bar.

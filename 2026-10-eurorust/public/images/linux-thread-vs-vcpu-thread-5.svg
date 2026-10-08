@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" font-family="'IBM Plex Sans', sans-serif">
+  <style>
+    .title { font-size: 26px; font-weight: 600; fill: #8a0404; letter-spacing: -0.035em; }
+    .h     { font-size: 17px; font-weight: 600; fill: #242126; }
+    .lane-l { font-size: 13.5px; fill: #706b6d; }
+    .bar-t { font-family: 'Source Code Pro', monospace; font-size: 12.5px; fill: #242126; }
+    .note  { font-size: 13.5px; fill: #242126; }
+    .key-h { font-size: 15px; font-weight: 600; fill: #8a0404; }
+    .key-t { font-size: 14px; fill: #8a0404; }
+
+    .lane  { fill: #f9fafb; stroke: #e6e1df; stroke-width: 1; }
+    .user  { fill: #c9d9fb; stroke: #3b6fd8; stroke-width: 1.5; }
+    .kern  { fill: #ddccf7; stroke: #7c4dcc; stroke-width: 1.5; }
+    .guest { fill: #bfe6cf; stroke: #2f9e5b; stroke-width: 1.5; }
+    .step  { stroke: #706b6d; stroke-width: 1.5; }
+    .lead  { stroke: #8a0404; stroke-width: 1.5; stroke-dasharray: 4 4; }
+    .axis  { stroke: #706b6d; stroke-width: 2; marker-end: url(#arrow); }
+    .key-ring { fill: #8a0404; fill-opacity: 0.06; stroke: #8a0404; stroke-width: 2.5; }
+    .key   { stroke: #8a0404; stroke-width: 3.5; marker-end: url(#arrow-red); }
+    .key-ptr { stroke: #8a0404; stroke-width: 1.5; }
+  </style>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#706b6d"/>
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4" markerHeight="4" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8a0404"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="675" fill="#ffffff"/>
+
+  <text class="title" x="60" y="62">2.8 Relation normal Linux thread and vCPU thread + KVM</text>
+
+  <!-- Time axis -->
+  <line class="axis" x1="300" y1="500" x2="1140" y2="500"/>
+  <text class="lane-l" x="1140" y="520" text-anchor="end">time</text>
+
+  <!-- Normal thread, e.g. rustc -->
+  <text class="h" x="60" y="112">Normal thread, e.g. rustc</text>
+  <rect class="lane" x="300" y="124" width="840" height="40" rx="4"/>
+  <text class="lane-l" x="286" y="149" text-anchor="end">user mode</text>
+  <rect class="user" x="300" y="130" width="200" height="28" rx="4"/>
+  <text class="bar-t" x="400.0" y="148.5" text-anchor="middle">rustc code</text>
+  <rect class="lane" x="300" y="168" width="840" height="40" rx="4"/>
+  <text class="lane-l" x="286" y="193" text-anchor="end">kernel mode</text>
+  <line class="step" x1="500" y1="158" x2="500" y2="174"/>
+  <rect class="kern" x="500" y="174" width="90" height="28" rx="4"/>
+  <text class="bar-t" x="545.0" y="192.5" text-anchor="middle">syscall</text>
+  <line class="step" x1="590" y1="158" x2="590" y2="174"/>
+  <rect class="user" x="590" y="130" width="210" height="28" rx="4"/>
+  <text class="bar-t" x="695.0" y="148.5" text-anchor="middle">rustc code</text>
+  <line class="step" x1="800" y1="158" x2="800" y2="174"/>
+  <rect class="kern" x="800" y="174" width="90" height="28" rx="4"/>
+  <text class="bar-t" x="845.0" y="192.5" text-anchor="middle">interrupt</text>
+  <line class="step" x1="890" y1="158" x2="890" y2="174"/>
+  <rect class="user" x="890" y="130" width="250" height="28" rx="4"/>
+  <text class="bar-t" x="1015.0" y="148.5" text-anchor="middle">rustc code</text>
+
+  <!-- vCPU thread of cloud-hypervisor -->
+  <text class="h" x="60" y="264">vCPU thread of cloud-hypervisor</text>
+  <rect class="lane" x="300" y="276" width="840" height="40" rx="4"/>
+  <text class="lane-l" x="286" y="301" text-anchor="end">user mode (VMM)</text>
+  <rect class="user" x="300" y="282" width="125" height="28" rx="4"/>
+  <text class="bar-t" x="362.5" y="300.5" text-anchor="middle">ioctl(KVM_RUN)</text>
+  <rect class="lane" x="300" y="320" width="840" height="40" rx="4"/>
+  <text class="lane-l" x="286" y="345" text-anchor="end">kernel mode (KVM)</text>
+  <line class="step" x1="425" y1="310" x2="425" y2="326"/>
+  <rect class="kern" x="425" y="326" width="110" height="28" rx="4"/>
+  <text class="bar-t" x="480.0" y="344.5" text-anchor="middle">handle + vmx¹</text>
+</svg>

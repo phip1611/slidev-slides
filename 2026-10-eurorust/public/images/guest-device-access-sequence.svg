@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" font-family="'IBM Plex Sans', sans-serif">
+  <style>
+    .title { font-size: 26px; font-weight: 600; fill: #8a0404; letter-spacing: -0.035em; }
+    .h     { font-size: 17px; font-weight: 600; fill: #242126; }
+    .sub   { font-size: 13px; fill: #706b6d; }
+    .msg   { font-size: 14px; fill: #242126; }
+    .mono  { font-family: 'Source Code Pro', monospace; font-size: 13.5px; fill: #242126; }
+    .hint  { font-size: 13.5px; fill: #706b6d; font-style: italic; }
+
+    .vm    { fill: #e9f7ef; stroke: #2f9e5b; stroke-width: 2; }
+    .ch    { fill: #eaf1ff; stroke: #3b6fd8; stroke-width: 2; }
+    .kvm   { fill: #f3ebff; stroke: #7c4dcc; stroke-width: 2; }
+    .host  { fill: #f9fafb; stroke: #9ca3af; stroke-width: 2; }
+    .life  { stroke: #9ca3af; stroke-width: 1.5; stroke-dasharray: 5 5; }
+    .call  { stroke: #242126; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+    .trap  { stroke: #8a0404; stroke-width: 2.5; fill: none; marker-end: url(#arrow-red); }
+    .ret   { stroke: #706b6d; stroke-width: 1.5; fill: none; stroke-dasharray: 6 4; marker-end: url(#arrow-grey); }
+    .axis  { stroke: #706b6d; stroke-width: 2; marker-end: url(#arrow-grey); }
+  </style>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#242126"/>
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8a0404"/>
+    </marker>
+    <marker id="arrow-grey" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#706b6d"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="675" fill="#ffffff"/>
+
+  <text class="title" x="60" y="62">B.1 The guest accesses a device - the VMM emulates it</text>
+  <text class="sub" x="60" y="88" font-size="15">Example: the guest's disk driver submits a write request²</text>
+
+  <!-- Participants -->
+  <rect class="vm"   x="95"  y="112" width="210" height="52" rx="10"/>
+  <text class="h"    x="200" y="135" text-anchor="middle">Guest</text>
+  <text class="sub"  x="200" y="154" text-anchor="middle">vCPU in guest mode</text>
+
+  <rect class="kvm"  x="365" y="112" width="210" height="52" rx="10"/>
+  <text class="h"    x="470" y="135" text-anchor="middle">KVM</text>
+  <text class="sub"  x="470" y="154" text-anchor="middle">host kernel</text>
+
+  <rect class="ch"   x="635" y="112" width="210" height="52" rx="10"/>
+  <text class="h"    x="740" y="135" text-anchor="middle">VMM</text>
+  <text class="sub"  x="740" y="154" text-anchor="middle">cloud-hypervisor</text>
+
+  <rect class="host" x="905" y="112" width="210" height="52" rx="10"/>
+  <text class="h"    x="1010" y="135" text-anchor="middle">Host file</text>
+  <text class="sub"  x="1010" y="154" text-anchor="middle">disk.img</text>
+
+  <!-- Lifelines -->
+  <line class="life" x1="200"  y1="164" x2="200"  y2="520"/>
+  <line class="life" x1="470"  y1="164" x2="470"  y2="520"/>
+  <line class="life" x1="740"  y1="164" x2="740"  y2="520"/>
+  <line class="life" x1="1010" y1="164" x2="1010" y2="520"/>
+
+  <!-- Who is running -->
+  <rect class="vm"   x="193"  y="176" width="14" height="34"  rx="3"/>
+  <rect class="kvm"  x="463"  y="210" width="14" height="50"  rx="3"/>
+  <rect class="ch"   x="733"  y="260" width="14" height="170" rx="3"/>
+  <rect class="host" x="1003" y="306" width="14" height="44"  rx="3"/>
+  <rect class="kvm"  x="463"  y="430" width="14" height="44"  rx="3"/>
+  <rect class="vm"   x="193"  y="474" width="14" height="40"  rx="3"/>
+
+  <!-- Messages -->
+  <line class="trap" x1="207" y1="210" x2="461" y2="210"/>
+  <text class="msg"  x="334" y="200" text-anchor="middle">MMIO¹ write → VM exit</text>
+
+  <line class="trap" x1="477" y1="260" x2="731" y2="260"/>
+  <text class="mono" x="604" y="250" text-anchor="middle">KVM_RUN returns</text>
+
+  <line class="call" x1="747" y1="306" x2="1001" y2="306"/>
+  <text class="msg"  x="874" y="296" text-anchor="middle">write data to disk.img</text>
+
+  <line class="ret"  x1="1001" y1="350" x2="749" y2="350"/>
+  <text class="sub"  x="874" y="342" text-anchor="middle">done</text>
+
+  <text class="hint" x="760" y="384">device emulation:</text>
+  <text class="hint" x="760" y="402">plain Rust code in the VMM</text>
+
+  <line class="call" x1="733" y1="430" x2="479" y2="430"/>
+  <text class="mono" x="604" y="420" text-anchor="middle">KVM_RUN</text>
+
+  <line class="call" x1="463" y1="474" x2="209" y2="474"/>
+  <text class="msg"  x="334" y="464" text-anchor="middle">VM entry → guest continues</text>
+
+  <!-- Time -->
+  <line class="axis" x1="60" y1="190" x2="60" y2="510"/>
+  <text class="sub" x="52" y="350" text-anchor="middle" transform="rotate(-90 52 350)">time</text>
+</svg>
