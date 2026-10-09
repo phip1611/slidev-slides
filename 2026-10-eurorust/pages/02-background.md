@@ -71,6 +71,7 @@ layout: default
 
 <v-clicks depth="3">
 
+- Good hardware utilization → multi tenancy
 - Run a (strongly) isolated system
 - Bring your own kernel plus operating system
 - Modern and secure Rust code base
@@ -143,10 +144,15 @@ From a technical perspective: **View from host**
 </Footnotes>
 
 ---
+layout: image
+image: /images/kvm-and-vmm.svg
+---
+
+---
 layout: default
 ---
 
-# 2.6 What Is a Running Cloud Hypervisor Instance
+# 2.7 What Is a Running Cloud Hypervisor Instance
 
 And its responsibilities
 
@@ -165,11 +171,6 @@ And its responsibilities
   - Handles vCPUs trapping: for example to emulate hardware access
 
 </v-clicks>
-
----
-layout: image
-image: /images/kvm-and-vmm.svg
----
 
 <Footnotes>
   <Footnote n="1">

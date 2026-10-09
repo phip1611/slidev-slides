@@ -35,11 +35,12 @@ layout: default
 
 # 4.2 A Rust Success Story
 
+Rust as a fantastic language.
+
 <v-clicks>
 
 - Cloud Hypervisor enables us to ship secure, reliable, fast, and robust
   software
-- We are actively contributing to it and participate in the community
 - Easy to onboard new developers into the project
 
 </v-clicks>

@@ -25,7 +25,7 @@
 
   <rect width="1200" height="675" fill="#ffffff"/>
 
-  <text class="title" x="60" y="62">2.7 Cloud Hypervisor and KVM</text>
+  <text class="title" x="60" y="62">2.6 Cloud Hypervisor and KVM</text>
   <text class="lead"  x="60" y="88">The VMM is a user-space application - KVM is the privileged part in the kernel</text>
 
   <!-- User space -->

@@ -1,4 +1,4 @@
-Create an SVG diagram for a technical talk: "2.7 Cloud Hypervisor and KVM", with
+Create an SVG diagram for a technical talk: "2.6 Cloud Hypervisor and KVM", with
 the lead line "The VMM is a user-space application - KVM is the privileged
 part in the kernel". Keep it simple: one static figure, no task lists.
 
