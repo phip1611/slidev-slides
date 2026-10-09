@@ -144,15 +144,10 @@ From a technical perspective: **View from host**
 </Footnotes>
 
 ---
-layout: image
-image: /images/kvm-and-vmm.svg
----
-
----
 layout: default
 ---
 
-# 2.7 What Is a Running Cloud Hypervisor Instance
+# 2.6 What Is a Running Cloud Hypervisor Instance
 
 And its responsibilities
 
@@ -171,13 +166,6 @@ And its responsibilities
   - Handles vCPUs trapping: for example to emulate hardware access
 
 </v-clicks>
-
-<Footnotes>
-  <Footnote n="1">
-    <code>ioctl()</code>: system call to invoke a specific function of a kernel
-    driver (here <code>/dev/kvm</code>)
-  </Footnote>
-</Footnotes>
 
 ---
 layout: image

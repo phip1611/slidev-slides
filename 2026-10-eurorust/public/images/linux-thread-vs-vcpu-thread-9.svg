@@ -31,7 +31,7 @@
 
   <rect width="1200" height="675" fill="#ffffff"/>
 
-  <text class="title" x="60" y="62">2.8 Relation normal Linux thread and vCPU thread + KVM</text>
+  <text class="title" x="60" y="62">2.7 Relation normal Linux thread and vCPU thread + KVM</text>
 
   <!-- Time axis -->
   <line class="axis" x1="300" y1="500" x2="1140" y2="500"/>
