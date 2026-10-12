@@ -13,34 +13,15 @@ layout: default
 
 # 4.1 Cyberus Technology
 
-And the Cyberus Hypervisor
+Deliver digital infrastructure solutions designed to last decades.
 
 <v-clicks>
 
-- Company with ~35 employees in Dresden, Germany
-- Passion for solid, safe, secure, and reproducible software
-- Focus on virtualization in `x86_64` open-source Linux/KVM space
-- All our virtualization engagements are using the open source Cloud Hypervisor
-  project: \
-  Upstream first policy
-- **Cyberus Hypervisor**: Cloud Hypervisor + Linux/KVM + Service & Expertise
+- German company with focus on virtualization solutions
 - We believe in solid core digital infrastructure for a digital sovereign
   Germany and Europe
-
-</v-clicks>
-
----
-layout: default
----
-
-# 4.2 A Rust Success Story
-
-Rust as a fantastic language.
-
-<v-clicks>
-
-- Cloud Hypervisor enables us to ship secure, reliable, fast, and robust
-  software
+- Rust and Cloud Hypervisor enables us to ship secure, fast, and robust
+  virtualization solutions
 - Easy to onboard new developers into the project
 
 </v-clicks>
@@ -53,20 +34,21 @@ class="corner-logo"/>
 layout: default
 ---
 
-# 4.3 A Rust Success Story
+# 4.2 A Rust Success Story
 
 Changing the digital landscape in Germany and Europe.
 
-<v-clicks>
+<v-clicks depth="2">
 
 - **BSI<sup>1</sup>-accredited ("Zulassung") for _VS-NfD_<sup>2</sup> and _NATO Restricted_** 🎉 \
   <small>(Since September 15th 2026 - [BSI Website](https://www.bsi.bund.de/DE/Themen/Oeffentliche-Verwaltung/Zulassung/Liste-zugelassener-Produkte/liste-zugelassener-produkte_node.html))</small>
+- In short: process governmental classified documents in our VMs
 - Rust made this possible 🦀🦀🦀 - so thanks to you and the whole ecosystem
-  - Easy to audit
-  - Modern code base
+  - Memory safety: a whole class of bugs gone
+  - Error handling done right and graceful
+  - Modern vibe and mindset compared to decade old C projects
   - Little technical debt
-- Our ambition is to change the digital landscape \
-  (especially for the digitalization of the governmental sector)
+  - Modern code base, easier to audit and reason about
 
 </v-clicks>
 
@@ -94,19 +76,19 @@ Questions?
 
 <div class="qr-codes">
   <figure>
-    <QrCode value="https://www.cloudhypervisor.org/" :size="110" />
+    <QrCode value="https://www.cloudhypervisor.org/" :size="121" />
     <figcaption><a href="https://www.cloudhypervisor.org/">Cloud Hypervisor</a></figcaption>
   </figure>
   <figure>
-    <QrCode value="https://www.cyberus-technology.de/" :size="110" />
+    <QrCode value="https://www.cyberus-technology.de/" :size="121" />
     <figcaption><a href="https://www.cyberus-technology.de/">Cyberus Technology</a></figcaption>
   </figure>
   <figure>
-    <QrCode value="https://www.bsi.bund.de/DE/Themen/Oeffentliche-Verwaltung/Zulassung/Liste-zugelassener-Produkte/liste-zugelassener-produkte_node.html" :size="110" />
+    <QrCode value="https://www.bsi.bund.de/DE/Themen/Oeffentliche-Verwaltung/Zulassung/Liste-zugelassener-Produkte/liste-zugelassener-produkte_node.html" :size="121" />
     <figcaption><a href="https://www.bsi.bund.de/DE/Themen/Oeffentliche-Verwaltung/Zulassung/Liste-zugelassener-Produkte/liste-zugelassener-produkte_node.html">BSI: approved products</a></figcaption>
   </figure>
   <figure>
-    <QrCode value="https://eurorust-2026-inside-cloud-hypervisor.slides.phip1611.dev" :size="110" />
+    <QrCode value="https://eurorust-2026-inside-cloud-hypervisor.slides.phip1611.dev" :size="121" />
     <figcaption><a href="https://eurorust-2026-inside-cloud-hypervisor.slides.phip1611.dev">Slides</a></figcaption>
   </figure>
 </div>

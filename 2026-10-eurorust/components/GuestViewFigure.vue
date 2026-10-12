@@ -19,7 +19,7 @@
     <g v-click="2">
       <rect class="os" x="16" y="36" width="448" height="48" rx="8" />
       <text class="h" x="32" y="66">Guest OS</text>
-      <text class="sub" x="126" y="66">unmodified: Linux, Windows, ...</text>
+      <text class="sub" x="126" y="66">Linux, Windows, ...</text>
     </g>
 
     <g v-click="3">

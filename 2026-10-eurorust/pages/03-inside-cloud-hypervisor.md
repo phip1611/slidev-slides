@@ -11,16 +11,20 @@ From KVM to a Running VM
 layout: default
 ---
 
-# 3.1 My Engagement
+# 3.1 Rust and Virtualization? A Fantastic Fit!
 
 <v-clicks>
 
-- Frequent contributor and active in the community
-- Active in most parts of the code
-- Honored to work with some incredible and talented folks
-- I am primarily working on live migration and maintain that code \
-  (Unfortunately, no time for that today but feel free to reach out)
-- Let's look into a running VM - from my view as a developer
+- Modern language, modern toolchain, "it just works" \
+  → Fearless contributions
+- `rust-vmm` crates as a open source base:
+  - Firecracker (Amazon)
+  - crosvm (Google)
+  - Cloud Hypervisor
+- Modeling complexity with convenient abstractions
+- Handling of all possible errors
+- Memory safety
+- Compiler complains about a lot of mistakes!
 
 </v-clicks>
 
@@ -34,7 +38,7 @@ layout: default
 
 - Explore Cloud Hypervisor CLI
 - Spawn a VM
-- Use a bash shell inside a console
+- Use a bash shell in the VM
 - Attach the debugger in my IDE
 - Show where `KVM_RUN` can be found in code
 

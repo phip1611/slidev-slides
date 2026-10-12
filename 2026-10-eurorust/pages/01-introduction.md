@@ -35,9 +35,9 @@ layout: default
 
 <v-clicks>
 
-- Almost every website or app backend runs in some cloud environment
+- Almost every website or app backend runs in some cloud environment in a VM
 - Some of you likely deploy software into such clouds
-- Even if backend is deployed as a container, it might still run in a VM<sup>1</sup>
+- Even if you a container, it might still run in a VM<sup>1</sup>
 
 </v-clicks>
 
@@ -132,4 +132,21 @@ Actively working on various Rust projects:
     </div>
   </section>
 </div>
+
+---
+layout: default
+---
+
+# 1.4 My Engagement with Cloud Hypervisor
+
+<v-clicks>
+
+- Frequent contributor to the open source project and part of the community
+- Active in most parts of the code base
+- Honored to work with some incredible talented folks
+- I am primarily working on live migration and maintain that code \
+  (Unfortunately, no time for that today but feel free to reach out)
+- Let's look into a running VM - from my view as a developer
+
+</v-clicks>
 

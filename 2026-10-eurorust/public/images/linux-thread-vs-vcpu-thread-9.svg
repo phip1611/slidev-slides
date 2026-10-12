@@ -81,7 +81,7 @@
   <line class="key-ptr" x1="535" y1="404" x2="535" y2="468"/>
   <text class="key-h" x="525" y="428" text-anchor="end">KVM solves this problem:</text>
   <text class="key-t" x="525" y="446" text-anchor="end">context switch into the VM -</text>
-  <text class="key-t" x="525" y="464" text-anchor="end">guest code runs on the real CPU</text>
+  <text class="key-t" x="525" y="464" text-anchor="end">guest code runs on the physical CPU</text>
 
   <!-- VM exit handled in KVM -->
   <line class="step" x1="640" y1="354" x2="640" y2="370"/>

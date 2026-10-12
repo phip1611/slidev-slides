@@ -336,6 +336,7 @@ img.corner-logo {
 }
 
 .cover-layout .qr-codes {
+  justify-content: space-between;
   margin-top: 1.6rem;
   position: static;
 }

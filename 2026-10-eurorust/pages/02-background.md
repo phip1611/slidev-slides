@@ -22,19 +22,23 @@ Hypa, hypa, hypervisor? Naming things is hard.
 <v-clicks>
 
 - **Hypervisor**: Privileged software component running in kernel-space \
-  (e.g. Linux/KVM<sup>1</sup>)
+  (e.g., KVM<sup>1</sup> or vboxdrv)
 - **Virtual Machine Monitor (VMM)**: Unprivileged software component \
-  (like a regular user-space application, e.g. QEMU, VirtualBox, Cloud Hypervisor)
-- **Cloud Hypervisor (CH)**: A VMM written in Rust, using Linux/KVM as hypervisor \
+  (like a regular user-space application, e.g., QEMU, VirtualBox<sup>2</sup>, Cloud Hypervisor)
+- **Cloud Hypervisor (CH)**: A VMM written in Rust, supporting KVM as hypervisor \
   (Naming things is hard! 🫨)
 - **Virtualization Stack**: Hypervisor + VMM \[+ Management Software\]
-- **Guest**: Software running in a VM (OS + user applications), e.g. Windows or Debian
+- **vCPU**: Abstraction of a physical CPU: hardware state + management state
+- **Guest**: Software running in a VM (OS + user applications), e.g., Windows or Debian
 
 </v-clicks>
 
 <Footnotes>
   <Footnote n="1" v-click="1">
     Linux <b>K</b>ernel-based <b>V</b>irtual <b>M</b>achine.
+  </Footnote>
+  <Footnote n="2" v-click="2">
+    By default using vboxdrv as hypervisor, but a KVM backend exists.
   </Footnote>
 </Footnotes>
 
@@ -51,7 +55,7 @@ layout: default
 - Main organizations: Cyberus Technology, Meta, Crusoe, Microsoft
 - Roughly 100,000 SLOC without tests and documentation
 - Focus on modern<sup>2</sup> cloud workloads (`x86_64`, `aarch64`)
-- Runs on Linux exclusively (this is independent of the supported guests<sup>3</sup>)
+- Runs on Linux exclusively (independent of the supported guests<sup>3</sup>)
 - Run a (strongly) isolated system with a modern and secure Rust code base
 - Safer alternative to QEMU, VirtualBox, VMware \
   (only if you do not need a display - CH is for headless guests)
@@ -86,7 +90,7 @@ From a technical perspective: **View from inside the VM**
 - A normal computer \
   (e.g., `x86_64` on a `x86_64` host)
 - Needs no knowledge it runs virtualized
-- OS takes ownership of visible hardware
+- OS takes ownership of hardware
 - Discovers RAM and devices \
   (PCIe: disks, network)
 
@@ -112,7 +116,7 @@ From a technical perspective: **View from host**
   (akin to Firefox, Chrome, rustc)
 - vCPUs<sup>1</sup> are threads of that process
 - Guest RAM is memory of that process
-- Disks and network are host files and tap devices
+- Disks, network, etc. are backed by host devices
 - Multiple VMs → multiple CH processes
 
 </v-clicks>
@@ -138,17 +142,17 @@ And its responsibilities
 
 <v-clicks depth="2">
 
-- From a broader perspective, its usage and runtime behavior are similar to
-  QEMU's
-- A running instance of Cloud Hypervisor manages at most one VM
+- A running instance of Cloud Hypervisor manages at most one VM: \
+  Either boot directly or wait for incoming API request
 - Handle VM lifecycle
   - External events: boot VM from config, reboot, destroy VM, ...
-  - Guest-induced events: shutdown, reboot/reset
+  - Guest induced events: shutdown, reboot/reset
 - Manages vCPUs (virtual CPUs)
   - **Abstraction** of a physical CPU in the guest: 1 vCPU → 1 CPU in guest
   - Hardware registers (real hardware state) + management state
   - Uses KVM to run the guest code on hardware
   - Handles vCPUs trapping: for example to emulate hardware access
+  - 1 vCPU → needs one thread ("vCPU thread")
 
 </v-clicks>
 
@@ -184,14 +188,14 @@ transition: none # build-up step
 
 <Footnotes>
   <Footnote n="1">
-    <code>vmx</code>: VM entry, e.g. the <code>vmresume</code> instruction on
+    <code>vmx</code>: VM entry, e.g., the <code>vmresume</code> instruction on
     Intel CPUs with VMX
   </Footnote>
   <Footnote n="2" invisible>
     Guest mode: CPU mode for running VM code (Intel: VMX non-root mode)
   </Footnote>
   <Footnote n="3" invisible>
-    VM exit: the CPU leaves guest mode, e.g. on sensitive instructions or
+    VM exit: the CPU leaves guest mode, e.g., on sensitive instructions or
     device access, and returns control to KVM
   </Footnote>
 </Footnotes>
@@ -204,14 +208,14 @@ transition: none # build-up step
 
 <Footnotes>
   <Footnote n="1">
-    <code>vmx</code>: VM entry, e.g. the <code>vmresume</code> instruction on
+    <code>vmx</code>: VM entry, e.g., the <code>vmresume</code> instruction on
     Intel CPUs with VMX
   </Footnote>
   <Footnote n="2">
     Guest mode: CPU mode for running VM code (Intel: VMX non-root mode)
   </Footnote>
   <Footnote n="3" invisible>
-    VM exit: the CPU leaves guest mode, e.g. on sensitive instructions or
+    VM exit: the CPU leaves guest mode, e.g., on sensitive instructions or
     device access, and returns control to KVM
   </Footnote>
 </Footnotes>
@@ -224,14 +228,14 @@ transition: none # build-up step
 
 <Footnotes>
   <Footnote n="1">
-    <code>vmx</code>: VM entry, e.g. the <code>vmresume</code> instruction on
+    <code>vmx</code>: VM entry, e.g., the <code>vmresume</code> instruction on
     Intel CPUs with VMX
   </Footnote>
   <Footnote n="2">
     Guest mode: CPU mode for running VM code (Intel: VMX non-root mode)
   </Footnote>
   <Footnote n="3" invisible>
-    VM exit: the CPU leaves guest mode, e.g. on sensitive instructions or
+    VM exit: the CPU leaves guest mode, e.g., on sensitive instructions or
     device access, and returns control to KVM
   </Footnote>
 </Footnotes>
@@ -244,14 +248,14 @@ transition: none # build-up step
 
 <Footnotes>
   <Footnote n="1">
-    <code>vmx</code>: VM entry, e.g. the <code>vmresume</code> instruction on
+    <code>vmx</code>: VM entry, e.g., the <code>vmresume</code> instruction on
     Intel CPUs with VMX
   </Footnote>
   <Footnote n="2">
     Guest mode: CPU mode for running VM code (Intel: VMX non-root mode)
   </Footnote>
   <Footnote n="3">
-    VM exit: the CPU leaves guest mode, e.g. on sensitive instructions or
+    VM exit: the CPU leaves guest mode, e.g., on sensitive instructions or
     device access, and returns control to KVM
   </Footnote>
 </Footnotes>
@@ -263,14 +267,14 @@ image: /images/linux-thread-vs-vcpu-thread-9.svg
 
 <Footnotes>
   <Footnote n="1">
-    <code>vmx</code>: VM entry, e.g. the <code>vmresume</code> instruction on
+    <code>vmx</code>: VM entry, e.g., the <code>vmresume</code> instruction on
     Intel CPUs with VMX
   </Footnote>
   <Footnote n="2">
     Guest mode: CPU mode for running VM code (Intel: VMX non-root mode)
   </Footnote>
   <Footnote n="3">
-    VM exit: the CPU leaves guest mode, e.g. on sensitive instructions or
+    VM exit: the CPU leaves guest mode, e.g., on sensitive instructions or
     device access, and returns control to KVM
   </Footnote>
 </Footnotes>

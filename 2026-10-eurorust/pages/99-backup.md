@@ -14,7 +14,7 @@ image: /images/guest-driver-and-device-model.svg
 
 <!--
 - Each driver in the guest has its counterpart in the VMM: the device model
-- Same device interface on both sides, e.g. virtio-blk driver and virtio-blk
+- Same device interface on both sides, e.g., virtio-blk driver and virtio-blk
   device in Cloud Hypervisor
 - [1] The driver touches a device register
 - [2] That traps: VM exit into KVM
