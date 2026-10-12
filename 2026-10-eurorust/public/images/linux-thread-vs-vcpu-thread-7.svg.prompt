@@ -1,0 +1,13 @@
+Step 7 of the build-up. Identical to linux-thread-vs-vcpu-thread-6.svg (see
+that prompt), with nothing moved, plus a prominent mark on the first
+kernel -> guest switch as the problem KVM solves:
+
+- A bold red (#8a0404) arrow from the kernel bar down to the guest bar, drawn
+  on top of the grey connector, framed by a red rounded ring (light red
+  fill) around the switch.
+- A thin red pointer from the ring down into the free area below the lanes,
+  with a right-aligned red callout left of it: "KVM solves this problem:"
+  (bold) / "context switch into the VM -" / "guest code runs on the real
+  CPU".
+- Keep the callout left of x ~ 560; steps 8 and 9 put their captions to the
+  right of it.

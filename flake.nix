@@ -84,6 +84,14 @@
             title = "Virtualization Made in Saxony";
           };
         }
+        {
+          src = ./2026-10-eurorust;
+          depHash = "sha256-qNP3qsNUuOKfjFlggeYqdhV7VNwstnEimbVGrgvMTA8=";
+          meta = {
+            slug = "eurorust-2026-inside-cloud-hypervisor";
+            title = "Inside Cloud Hypervisor: From KVM to a Running VM";
+          };
+        }
       ];
 
       # Builds a single slidev project.

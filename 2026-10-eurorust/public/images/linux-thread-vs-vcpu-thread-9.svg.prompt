@@ -1,0 +1,7 @@
+Step 9 of the build-up. Identical to linux-thread-vs-vcpu-thread-8.svg (see
+that prompt), with nothing moved, plus a VM exit that goes to the VMM:
+
+- Kernel (unlabelled, exit to user space) -> "emulate" (user) ->
+  "handle + vmx" (kernel) -> guest code continues to the right edge.
+- A dashed red leader line from the "emulate" bar down to the caption
+  "VM exit to the VMM (e.g. device access)".
