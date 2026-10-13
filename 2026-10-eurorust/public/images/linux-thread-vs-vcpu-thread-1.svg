@@ -1,6 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" font-family="'IBM Plex Sans', sans-serif">
   <style>
-    .title { font-size: 26px; font-weight: 600; fill: #8a0404; letter-spacing: -0.035em; }
     .h     { font-size: 17px; font-weight: 600; fill: #242126; }
     .lane-l { font-size: 13.5px; fill: #706b6d; }
     .bar-t { font-family: 'Source Code Pro', monospace; font-size: 12.5px; fill: #242126; }
@@ -30,17 +29,18 @@
   </defs>
 
   <rect width="1200" height="675" fill="#ffffff"/>
-  <!-- TODO heading size could be aligned -->
-  <text class="title" x="60" y="62">2.6 Relation normal Linux thread and vCPU thread + KVM</text>
 
-  <!-- Time axis -->
-  <line class="axis" x1="300" y1="500" x2="1140" y2="500"/>
-  <text class="lane-l" x="1140" y="520" text-anchor="end">time</text>
+  <!-- below the slide heading, aligned with the slide text -->
+  <g transform="translate(19.4 46.5) scale(0.9685)">
+    <!-- Time axis -->
+    <line class="axis" x1="300" y1="488" x2="1140" y2="488"/>
+    <text class="lane-l" x="1140" y="478" text-anchor="end">time</text>
 
-  <!-- Normal thread, e.g. rustc -->
-  <text class="h" x="60" y="112">Normal thread, e.g. rustc</text>
-  <rect class="lane" x="300" y="124" width="840" height="40" rx="4"/>
-  <text class="lane-l" x="286" y="149" text-anchor="end">user mode</text>
-  <rect class="user" x="300" y="130" width="200" height="28" rx="4"/>
-  <text class="bar-t" x="400.0" y="148.5" text-anchor="middle">rustc code</text>
+    <!-- Normal thread, e.g. rustc -->
+    <text class="h" x="60" y="112">Normal thread, e.g. rustc</text>
+    <rect class="lane" x="300" y="124" width="840" height="40" rx="4"/>
+    <text class="lane-l" x="286" y="149" text-anchor="end">user mode</text>
+    <rect class="user" x="300" y="130" width="200" height="28" rx="4"/>
+    <text class="bar-t" x="400.0" y="148.5" text-anchor="middle">rustc code</text>
+  </g>
 </svg>

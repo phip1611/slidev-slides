@@ -1,7 +1,12 @@
-Create an SVG sequence diagram for a technical talk: "B.2 The guest
-accesses a device - the VMM emulates it" (backup chapter B), subtitle "Example: the guest's disk driver
-submits a write request²". Same deck style as kvm-and-vmm.svg
-(canvas, fonts, colour tokens, empty footnote band below y ~ 530).
+Create an SVG sequence diagram for a technical talk, for the slide "B.2 The
+VMM Emulates Device Access" (backup chapter B) with the subtitle "Example:
+the guest's disk driver submits a write request²". Deck style: 1200x675,
+white background, 'IBM Plex Sans' / 'Source Code Pro', the deck's colour
+tokens, empty footnote band below y ~ 570.
+No title or subtitle in the SVG: the slide's markdown heading provides
+them, so they match normal slides. Keep the top free (content starts at
+y ~ 175) and align the content with the slide text area (x 77.5 -
+1122.5).
 
 Participants (boxes on top, dashed lifelines, small activation bars showing
 who is running): Guest (vCPU in guest mode, green), KVM (host kernel,

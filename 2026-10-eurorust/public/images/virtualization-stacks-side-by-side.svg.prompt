@@ -1,9 +1,14 @@
 Create an SVG diagram for a technical talk: three virtualization stacks side by
-side, title "B.3 Always the same shape: a VMM in user space, a hypervisor in
-the kernel", subtitle "Only the parts differ.". Same deck style as the other
-figures (1200x675, white background, 'IBM Plex Sans' / 'Source Code Pro',
-title in #8a0404, green = VM, blue = VMM/user space, purple =
+side, for the slide "B.3 Always the Same Shape" with the subtitle "A VMM in
+user space, a hypervisor in the kernel - only the parts differ". Same deck
+style as the other figures (1200x675, white background, 'IBM Plex Sans' /
+'Source Code Pro', green = VM, blue = VMM/user space, purple =
 hypervisor/kernel, grey = hardware).
+No title or subtitle in the SVG: the slide's markdown heading provides
+them, so they match normal slides. Keep the top free (content starts at
+y ~ 175) and align the content with the slide text area (x 77.5 -
+1122.5).
+Keep the bottom free for the deck footer (below y ~ 640).
 
 Each of the three boxes shows the same layering: VMs on top, VMM processes
 below them, the hypervisor in the kernel, hardware at the bottom. VMMs connect

@@ -1,8 +1,12 @@
-Create an SVG diagram for a technical talk: "2.6 Relation normal Linux thread
-and vCPU thread + KVM". Step 1 of a nine-step build-up; later steps only add
-elements, so the coordinates chosen here are final. The title carries the
-number of the matching slide heading. Same deck style as kvm-and-vmm.svg
-(canvas, fonts, colour tokens, empty footnote band below y ~ 530).
+Create an SVG diagram for a technical talk, for the slide "2.6 Normal Linux
+Thread vs. vCPU Thread + KVM". Step 1 of a nine-step build-up; later steps
+only add elements, so the coordinates chosen here are final. Deck style:
+1200x675, white background, 'IBM Plex Sans' / 'Source Code Pro', the deck's
+colour tokens, empty footnote band below y ~ 545.
+No title or subtitle in the SVG: the slide's markdown heading provides
+them, so they match normal slides. Keep the top free (content starts at
+y ~ 140) and align the content with the slide text area (x 77.5 -
+1122.5).
 
 Timeline lanes with a shared horizontal time axis ("time ->") at the bottom,
 visible from step 1. Lane labels sit right-aligned left of the lanes; lanes

@@ -43,14 +43,18 @@
 
 - Full-slide figures are SVGs in `<talk>/public/images/` (1200x675, white
   background, the deck's fonts and colour tokens), shown via `layout: image`.
+- The heading and subtitle of a figure slide are markdown on that slide, not
+  part of the SVG, so they match normal slides. Keep the SVG's top band free
+  and align its content with the slide text area.
 - SVGs created with the help of an LLM may have a `<name>.svg.prompt` next
   to them.
 - Figures that build up use `<name>-1.svg`, `-2.svg`, ... on identical
   coordinates; later steps only add. The `-1` prompt is the full
   description, later prompts list only their diff.
 - Set `transition: none` on every build-up step except the last.
-- Figure titles carry heading numbers: a new topic takes the next number, a
-  figure that directly belongs to the previous heading keeps its number.
+- Figure slide headings follow the heading numbering: a new topic takes the
+  next number, a figure that directly belongs to the previous heading keeps
+  its number.
 - Decide build-up strategies and figure content with the user; offer options
   instead of picking one.
 - Figures that reveal with clicks next to text are inline-SVG components with

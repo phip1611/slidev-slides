@@ -162,11 +162,15 @@ image: /images/linux-thread-vs-vcpu-thread-1.svg
 transition: none # build-up step
 ---
 
+# 2.6 Normal Linux Thread vs. vCPU Thread + KVM
+
 ---
 layout: image
 image: /images/linux-thread-vs-vcpu-thread-2.svg
 transition: none # build-up step
 ---
+
+# 2.6 Normal Linux Thread vs. vCPU Thread + KVM
 
 ---
 layout: image
@@ -174,17 +178,23 @@ image: /images/linux-thread-vs-vcpu-thread-3.svg
 transition: none # build-up step
 ---
 
+# 2.6 Normal Linux Thread vs. vCPU Thread + KVM
+
 ---
 layout: image
 image: /images/linux-thread-vs-vcpu-thread-4.svg
 transition: none # build-up step
 ---
 
+# 2.6 Normal Linux Thread vs. vCPU Thread + KVM
+
 ---
 layout: image
 image: /images/linux-thread-vs-vcpu-thread-5.svg
 transition: none # build-up step
 ---
+
+# 2.6 Normal Linux Thread vs. vCPU Thread + KVM
 
 <Footnotes>
   <Footnote n="1">
@@ -206,6 +216,8 @@ image: /images/linux-thread-vs-vcpu-thread-6.svg
 transition: none # build-up step
 ---
 
+# 2.6 Normal Linux Thread vs. vCPU Thread + KVM
+
 <Footnotes>
   <Footnote n="1">
     <code>vmx</code>: VM entry, e.g., the <code>vmresume</code> instruction on
@@ -225,6 +237,8 @@ layout: image
 image: /images/linux-thread-vs-vcpu-thread-7.svg
 transition: none # build-up step
 ---
+
+# 2.6 Normal Linux Thread vs. vCPU Thread + KVM
 
 <Footnotes>
   <Footnote n="1">
@@ -246,6 +260,8 @@ image: /images/linux-thread-vs-vcpu-thread-8.svg
 transition: none # build-up step
 ---
 
+# 2.6 Normal Linux Thread vs. vCPU Thread + KVM
+
 <Footnotes>
   <Footnote n="1">
     <code>vmx</code>: VM entry, e.g., the <code>vmresume</code> instruction on
@@ -264,6 +280,8 @@ transition: none # build-up step
 layout: image
 image: /images/linux-thread-vs-vcpu-thread-9.svg
 ---
+
+# 2.6 Normal Linux Thread vs. vCPU Thread + KVM
 
 <Footnotes>
   <Footnote n="1">

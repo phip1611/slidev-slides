@@ -18,8 +18,6 @@ Deliver digital infrastructure solutions designed to last decades.
 <v-clicks>
 
 - German company with focus on virtualization solutions
-- We believe in solid core digital infrastructure for a digital sovereign
-  Germany and Europe
 - Rust and Cloud Hypervisor enables us to ship secure, fast, and robust
   virtualization solutions
 - Easy to onboard new developers into the project

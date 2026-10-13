@@ -1,9 +1,12 @@
-Create an SVG diagram for a technical talk: "B.1 Guest drivers and their
-device models in the VMM" (backup chapter B), subtitle "Every driver in the
-guest has a counterpart in Cloud Hypervisor". Same deck style as
+Create an SVG diagram for a technical talk, for the slide "B.1 Guest Drivers
+and Their Device Models" (backup chapter B) with the subtitle "Every driver
+in the guest has a counterpart in Cloud Hypervisor". Same deck style as
 guest-device-access-sequence.svg (1200x675, white background, 'IBM Plex Sans'
-/ 'Source Code Pro', title in #8a0404, green = guest, purple = KVM, blue =
-VMM, grey = host; empty footnote band below y ~ 530).
+/ 'Source Code Pro', green = guest, purple = KVM, blue = VMM, grey = host).
+No title or subtitle in the SVG: the slide's markdown heading provides
+them, so they match normal slides. Keep the top free (content starts at
+y ~ 175) and align the content with the slide text area (x 77.5 -
+1122.5).
 
 Very high level, generic device classes instead of concrete products. Four
 full-width horizontal layers on the left ~3/4 of the canvas, each with its

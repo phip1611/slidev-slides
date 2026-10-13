@@ -25,6 +25,11 @@ body {
   padding: 2.9rem 3.6rem 2.7rem;
 }
 
+/* `layout: image` sets white text for its background; our figures are white */
+.slidev-layout[style*='background-image'] {
+  color: var(--ink) !important;
+}
+
 h1,
 h2,
 h3 {

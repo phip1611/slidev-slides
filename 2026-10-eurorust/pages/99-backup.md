@@ -12,6 +12,10 @@ layout: image
 image: /images/guest-driver-and-device-model.svg
 ---
 
+# B.1 Guest Drivers and Their Device Models
+
+Every driver in the guest has a counterpart in Cloud Hypervisor
+
 <!--
 - Each driver in the guest has its counterpart in the VMM: the device model
 - Same device interface on both sides, e.g., virtio-blk driver and virtio-blk
@@ -28,6 +32,10 @@ layout: image
 image: /images/guest-device-access-sequence.svg
 ---
 
+# B.2 The VMM Emulates Device Access
+
+Example: the guest's disk driver submits a write request<sup>2</sup>
+
 <Footnotes>
   <Footnote n="1">
     MMIO: memory-mapped I/O - device registers at addresses without RAM;
@@ -43,6 +51,10 @@ image: /images/guest-device-access-sequence.svg
 layout: image
 image: /images/virtualization-stacks-side-by-side.svg
 ---
+
+# B.3 Always the Same Shape
+
+A VMM in user space, a hypervisor in the kernel - only the parts differ
 
 <!--
 - VMware and VirtualBox ship both halves: their own VMM and their own kernel
