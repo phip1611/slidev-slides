@@ -37,7 +37,7 @@ layout: default
 
 - Almost every website or app backend runs in some cloud environment in a VM
 - Some of you likely deploy software into such clouds
-- Even if you a container, it might still run in a VM<sup>1</sup>
+- Even if you deploy a container, it might still run in a VM<sup>1</sup>
 
 </v-clicks>
 
