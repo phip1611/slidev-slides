@@ -141,7 +141,7 @@ layout: default
 
 <v-clicks>
 
-- Frequent contributor to the open source project and part of the community
+- Frequent full-time contributor to the open source project and part of the community
 - Active in most parts of the code base
 - Honored to work with some incredible talented folks
 - I am primarily working on live migration and maintain that code \

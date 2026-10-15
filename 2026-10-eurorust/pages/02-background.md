@@ -52,7 +52,7 @@ layout: default
 
 - Open source VMM<sup>1</sup> written in Rust
 - Started in 2019, now has ~12 regular contributors
-- Main organizations: Cyberus Technology, Meta, Crusoe, Microsoft
+- Main organizations: Cyberus Technology, Meta, Crusoe, Microsoft, SAP, ...
 - Roughly 100,000 SLOC without tests and documentation
 - Focus on modern<sup>2</sup> cloud workloads (`x86_64`, `aarch64`)
 - Runs on Linux exclusively (independent of the supported guests<sup>3</sup>)
@@ -116,7 +116,7 @@ From a technical perspective: **View from host**
   (akin to Firefox, Chrome, rustc)
 - vCPUs<sup>1</sup> are threads of that process
 - Guest RAM is memory of that process
-- Disks, network, etc. are backed by host devices
+- Disks, network, etc. are backed by host resources
 - Multiple VMs → multiple CH processes
 
 </v-clicks>
