@@ -17,10 +17,7 @@ layout: default
 
 - Modern language, modern toolchain, "it just works" \
   → Fearless contributions
-- `rust-vmm` crates as a open source base:
-  - Firecracker (Amazon)
-  - crosvm (Google)
-  - Cloud Hypervisor
+- _rust-vmm_ crates as open source base (`vm-memory`, ...)
 - Modeling complexity with convenient abstractions
 - Handling of all possible errors
 - Memory safety
