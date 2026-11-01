@@ -2,7 +2,9 @@
   description = "My Slidev slides";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    # pnpm builders change often, affecting build hashes. keep in sync
+    # with my nixos-configs repo.
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
   };
 
   outputs =
@@ -22,7 +24,7 @@
       projectDefs = [
         {
           src = ./2025-10-10-eurorust-minimal-rust-kernel;
-          depHash = "sha256-9YEeyExg955BWLVFSDgdjbf3ByypAiW8GyUtUZ1d7Nc=";
+          depHash = "sha256-+Ro1c7eS5ROiDwp5oTtGaaDhTeb1lJk7hzLp98EIMlM=";
           meta = {
             slug = "eurorust-2025";
             title = "A Minimal Rust Kernel - Printing to QEMU with core::fmt";
@@ -30,7 +32,7 @@
         }
         {
           src = ./2025-10-cyberus-combine-demo;
-          depHash = "sha256-Pb8W/WLM9JnSSzxqTru+rMPgC2nsWon86AYOyIoj9fM=";
+          depHash = "sha256-X8NpgiDhuXBAPm0G+GutV5NDVmM3cq6fLSnjTE4zTSk=";
           meta = {
             slug = "cyberus-combine-2025-10";
             title = "Slidev demo for Cyberus Combine";
@@ -38,7 +40,7 @@
         }
         {
           src = ./2025-11-jug-saxony-writing-an-os-loader-in-rust;
-          depHash = "sha256-Pb8W/WLM9JnSSzxqTru+rMPgC2nsWon86AYOyIoj9fM=";
+          depHash = "sha256-X8NpgiDhuXBAPm0G+GutV5NDVmM3cq6fLSnjTE4zTSk=";
           meta = {
             slug = "jug-saxony-loader-uefi-rs-2025-11";
             title = "Writing an OS-Loader in Rust with uefi-rs";
@@ -46,7 +48,7 @@
         }
         {
           src = ./2026-03-cyberus-tech-talk-the-art-of-serial;
-          depHash = "sha256-Rs1NH1QQ//Kz8C7Z9UB366LyZDmXvLfYtyv81I0SFnU=";
+          depHash = "sha256-81TlfiuHcEH7DjTCA003WyuGIwxtT4hh81TPs94yr8s=";
           meta = {
             slug = "cyberus-tech-talk-the-art-of-serial";
             title = "The (U)Art of Serial - A 16550 Deep Dive";
@@ -54,7 +56,7 @@
         }
         {
           src = ./2026-06-rust-for-osdev-at-rust-dresden;
-          depHash = "sha256-Q46KviUOKfxdvDz42Retqyqy2ofjruM3mO0ixRqySvA=";
+          depHash = "sha256-c+ebrbi+jjzzYFxIAeHimDhHrsFh82/M4et9h7vRAl8=";
           meta = {
             slug = "rust-for-os-development";
             title = "Rust for OS Development";
@@ -62,7 +64,7 @@
         }
         {
           src = ./2026-08-cyberus-combine;
-          depHash = "sha256-dzHPZK2oMEcdabAi1nM3gNvDygKs/0eVnBOI8BcongE=";
+          depHash = "sha256-lZn7Yea/icSBBwNpIIwwV9bc0lTugrh5TFHbNQ3TxYs=";
           meta = {
             slug = "2026-08-cyberus-combine";
             title = "Cyberus Combine: How to become a better speaker";
@@ -70,7 +72,7 @@
         }
         {
           src = ./2026-08-new-template;
-          depHash = "sha256-llpJE01SKSnC7vD+FldE+kBEYd1FfzLGEnJmZ+TrLtw=";
+          depHash = "sha256-cyWWKnSP2oFtknmM9Z4L/dQwhhfJhBLuS1RoLq5oR/U=";
           meta = {
             slug = "new-template";
             title = "New Slidev Template Playground";
@@ -78,7 +80,7 @@
         }
         {
           src = ./2026-09-what-is-a-vm-jsd;
-          depHash = "sha256-qNP3qsNUuOKfjFlggeYqdhV7VNwstnEimbVGrgvMTA8=";
+          depHash = "sha256-DUP0+HMwftiQ1JObE8ysQHGYW62dTfKC31SZ3l3Wss4=";
           meta = {
             slug = "virtualization-saxony-jsd26";
             title = "Virtualization Made in Saxony";
@@ -86,7 +88,7 @@
         }
         {
           src = ./2026-10-eurorust;
-          depHash = "sha256-qNP3qsNUuOKfjFlggeYqdhV7VNwstnEimbVGrgvMTA8=";
+          depHash = "sha256-DUP0+HMwftiQ1JObE8ysQHGYW62dTfKC31SZ3l3Wss4=";
           meta = {
             slug = "eurorust-2026-inside-cloud-hypervisor";
             title = "Inside Cloud Hypervisor: From KVM to a Running VM";
