@@ -3,7 +3,7 @@
 ## Project Shape
 
 - This repository contains independent Slidev decks, one directory per talk.
-- There is no root `package.json`; run `pnpm` commands inside the deck you are
+- There is no root `package.json`; run `npm` commands inside the deck you are
   changing.
 - Root Nix files build all decks and individual `talk-<slug>` packages.
 - Keep changes scoped to the affected talk unless updating shared root build
@@ -12,10 +12,10 @@
 ## Common Commands
 
 - Enter the dev shell when tooling is missing: `nix develop`.
-- Install dependencies for one deck: `cd <talk> && pnpm install`.
-- Install dependencies for all decks: `nix run .#installAllPnpmDeps`.
-- Develop one deck: `cd <talk> && pnpm run dev`.
-- Build one deck with Slidev: `cd <talk> && pnpm run build`.
+- Install dependencies for one deck: `cd <talk> && npm ci`.
+- Install dependencies for all decks: `nix run .#installAllNpmDeps`.
+- Develop one deck: `cd <talk> && npm run dev`.
+- Build one deck with Slidev: `cd <talk> && npm run build`.
 - Build all static deployments: `nix build .#combined`.
 - Build one static deployment: `nix build .#talk-<slug>`.
 - Run the same broad checks as CI when practical: `nix flake check -L`,
@@ -67,14 +67,16 @@
 
 ## Dependencies and Nix
 
-- Each deck owns its own `package.json`, `pnpm-lock.yaml`, and dependency
+- Each deck owns its own `package.json`, `package-lock.json`, and dependency
   versions.
-- If dependencies or lockfiles change, update the deck's `depHash` in
-  `flake.nix` and verify the matching Nix package builds.
+- Use `npm ci` to install; it installs exactly the lockfile and never changes
+  it. Use `npm install` only to change dependencies.
+- Nix fetches dependencies with the integrity hashes from `package-lock.json`,
+  so there is no dependency hash to maintain. If dependencies or lockfiles
+  change, verify the matching Nix package builds.
 - When adding a new deck, add it to `projectDefs` in `flake.nix` with a stable
   deployment `slug` and talk `title`.
-- Do not commit generated `dist/`, `result*`, `.pnpm-store`, or `.direnv`
-  output.
+- Do not commit generated `dist/`, `result*`, or `.direnv` output.
 
 ## Style
 

@@ -4,8 +4,8 @@ This deck is a living, Markdown-first pattern catalog for the local Slidev
 template. Copy it when starting a new talk; it is not a finished talk itself.
 
 ```sh
-pnpm install
-pnpm run dev
+npm ci
+npm run dev
 ```
 
 Normal slides use a numbered H1 (`# 2.1 A focused idea`). The first heading in
