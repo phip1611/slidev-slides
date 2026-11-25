@@ -1,18 +1,16 @@
-# Returns a function building a derivation for a single pnpm-based slidev project.
+# Returns a function building a derivation for a single npm-based slidev project.
 
 {
   # Helpers
+  lib,
   stdenv,
 
   # Packages
-  fetchPnpmDeps,
+  importNpmLock,
   nodejs,
-  pnpm,
-  pnpmConfigHook,
 
   # Config
   pname,
-  depHash,
   meta,
   src,
 }:
@@ -23,14 +21,15 @@ stdenv.mkDerivation (finalAttrs: {
 
   nativeBuildInputs = [
     nodejs
-    pnpm
-    pnpmConfigHook
+    importNpmLock.npmConfigHook
   ];
 
-  pnpmDeps = fetchPnpmDeps {
-    inherit (finalAttrs) pname version src;
-    fetcherVersion = 4;
-    hash = depHash;
+  # Fetches each package with the integrity hash from package-lock.json, so
+  # no dependency hash needs to be maintained.
+  npmDeps = importNpmLock {
+    inherit (finalAttrs) pname version;
+    package = lib.importJSON "${src}/package.json";
+    packageLock = lib.importJSON "${src}/package-lock.json";
   };
 
   buildPhase = ''

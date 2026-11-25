@@ -19,14 +19,13 @@ Hosting is done via
 
 ### Context
 
-To locally build and serve the slides, you need `nodejs` and `pnpm`. They will
+To locally build and serve the slides, you need `nodejs` and `npm`. They will
 run the `slidev` utility. Without that, you **will not** be able to use all the
 magic including live reload of the spawned dev server, the on-page editor, etc.
 
 _Hint: The Nix shell gives you everything you need._
 
-_Hint: `npm` would also work as replacement for `pnpm`, but in this project I
-decided to use `pnpm`. `deno` might also work as `nodejs` replacement.)._
+_Hint: `deno` might also work as `nodejs` replacement._
 
 The Nix build provided by this project's Flake is only suited for static
 deployments, not for local development!
@@ -35,9 +34,9 @@ deployments, not for local development!
 
 - `$ cd <talk>`
 - Optional/once: Enter the Nix shell
-- Optional/once: `$ pnpm install`
-- `$ pnpm run dev` to develop and serve slides locally
-- `$ pnpm run build` to build a static HTML deployment
+- Optional/once: `$ npm ci`
+- `$ npm run dev` to develop and serve slides locally
+- `$ npm run build` to build a static HTML deployment
 
 ### Nix: Static HTML Build + Serve
 

@@ -13,16 +13,14 @@
         function:
         inputs.nixpkgs.lib.genAttrs systems (system: function inputs.nixpkgs.legacyPackages.${system});
 
-      # All slides (sub projects) with their pnpm dep hash for Nix.
+      # All slides (sub projects).
       # Structure:
       # - `src`       : Nix path to source
-      # - `depHash`   : pnpm dependency hash
       # - `meta.slug` : URL friendly short-name
       # - `meta.title`: Title of the talk
       projectDefs = [
         {
           src = ./2025-10-10-eurorust-minimal-rust-kernel;
-          depHash = "sha256-9YEeyExg955BWLVFSDgdjbf3ByypAiW8GyUtUZ1d7Nc=";
           meta = {
             slug = "eurorust-2025";
             title = "A Minimal Rust Kernel - Printing to QEMU with core::fmt";
@@ -30,7 +28,6 @@
         }
         {
           src = ./2025-10-cyberus-combine-demo;
-          depHash = "sha256-Pb8W/WLM9JnSSzxqTru+rMPgC2nsWon86AYOyIoj9fM=";
           meta = {
             slug = "cyberus-combine-2025-10";
             title = "Slidev demo for Cyberus Combine";
@@ -38,7 +35,6 @@
         }
         {
           src = ./2025-11-jug-saxony-writing-an-os-loader-in-rust;
-          depHash = "sha256-Pb8W/WLM9JnSSzxqTru+rMPgC2nsWon86AYOyIoj9fM=";
           meta = {
             slug = "jug-saxony-loader-uefi-rs-2025-11";
             title = "Writing an OS-Loader in Rust with uefi-rs";
@@ -46,7 +42,6 @@
         }
         {
           src = ./2026-03-cyberus-tech-talk-the-art-of-serial;
-          depHash = "sha256-Rs1NH1QQ//Kz8C7Z9UB366LyZDmXvLfYtyv81I0SFnU=";
           meta = {
             slug = "cyberus-tech-talk-the-art-of-serial";
             title = "The (U)Art of Serial - A 16550 Deep Dive";
@@ -54,7 +49,6 @@
         }
         {
           src = ./2026-06-rust-for-osdev-at-rust-dresden;
-          depHash = "sha256-Q46KviUOKfxdvDz42Retqyqy2ofjruM3mO0ixRqySvA=";
           meta = {
             slug = "rust-for-os-development";
             title = "Rust for OS Development";
@@ -62,7 +56,6 @@
         }
         {
           src = ./2026-08-cyberus-combine;
-          depHash = "sha256-dzHPZK2oMEcdabAi1nM3gNvDygKs/0eVnBOI8BcongE=";
           meta = {
             slug = "2026-08-cyberus-combine";
             title = "Cyberus Combine: How to become a better speaker";
@@ -70,7 +63,6 @@
         }
         {
           src = ./2026-08-new-template;
-          depHash = "sha256-llpJE01SKSnC7vD+FldE+kBEYd1FfzLGEnJmZ+TrLtw=";
           meta = {
             slug = "new-template";
             title = "New Slidev Template Playground";
@@ -78,7 +70,6 @@
         }
         {
           src = ./2026-09-what-is-a-vm-jsd;
-          depHash = "sha256-qNP3qsNUuOKfjFlggeYqdhV7VNwstnEimbVGrgvMTA8=";
           meta = {
             slug = "virtualization-saxony-jsd26";
             title = "Virtualization Made in Saxony";
@@ -86,7 +77,6 @@
         }
         {
           src = ./2026-10-eurorust;
-          depHash = "sha256-qNP3qsNUuOKfjFlggeYqdhV7VNwstnEimbVGrgvMTA8=";
           meta = {
             slug = "eurorust-2026-inside-cloud-hypervisor";
             title = "Inside Cloud Hypervisor: From KVM to a Running VM";
@@ -99,11 +89,10 @@
         pkgs:
         {
           src,
-          depHash ? pkgs.lib.fakeHash,
           meta,
         }:
         pkgs.callPackage ./nix/build.nix {
-          inherit depHash meta;
+          inherit meta;
           # Limit the files to what is actually relevant.
           src = pkgs.lib.fileset.toSource {
             root = src;
@@ -123,14 +112,11 @@
             inputsFrom = builtins.attrValues self.packages.${system};
             packages = with pkgs; [
               nodejs
-              pnpm
             ];
             shellHook = ''
-              export NPM_CONFIG_STORE_DIR="$PWD/.pnpm-store"
-
               echo "You may:"
-              echo "- run \`$ nix run .#installAllPnpmDeps\` to install pnpm dependencies in all projects"
-              echo "- run \`$ pnpm run dev\` in an *individual project* to get started (pnpm, not npm!)"
+              echo "- run \`$ nix run .#installAllNpmDeps\` to install npm dependencies in all projects"
+              echo "- run \`$ npm run dev\` in an *individual project* to get started"
             '';
           };
         }
@@ -166,19 +152,19 @@
             ) (lib.attrValues allTalksAttrs);
           };
 
-          installAllPnpmDeps = pkgs.writeShellScriptBin "install-all-pnpm-deps" ''
-            echo "Running `pnpm install` on each package ..."
+          installAllNpmDeps = pkgs.writeShellScriptBin "install-all-npm-deps" ''
+            echo "Running 'npm ci' on each package ..."
             find . -maxdepth 2 -name package.json -type f -print0 |
               while IFS= read -r -d "" pkg; do
                 dir=$(dirname "$pkg")
                 echo ">>> Installing in $dir"
-                (cd "$dir" && pnpm install)
+                (cd "$dir" && npm ci)
               done
           '';
         in
         (
           {
-            inherit installAllPnpmDeps;
+            inherit installAllNpmDeps;
             combined = allTalksCombinedDrv;
             default = allTalksCombinedDrv;
           }
